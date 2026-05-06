@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>PodologIA — Tu salud podal, en las mejores manos</title>
-<meta name="description" content="PodologIA, especialistas en el cuidado integral del pie. Reflexología, fascitis, papilomas, pie diabético, láser, geriatría y más.">
+<title>WhiteMoon Podología — Tu salud podal, en las mejores manos</title>
+<meta name="description" content="WhiteMoon Podología, especialistas en el cuidado integral del pie. Quiropodía, biomecánica, pie diabético, cirugía ungueal, verrugas plantares y podología deportiva.">
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
 :root{
@@ -35,6 +35,11 @@ nav{position:fixed;top:0;left:0;width:100%;background:rgba(255,255,255,.95);back
 .nav-links a:hover{color:var(--azul)}
 .nav-cta{background:var(--grad);color:#fff;padding:11px 24px;border-radius:30px;font-size:.88rem;font-weight:700;border:none;cursor:pointer;transition:all .2s;font-family:inherit;box-shadow:0 4px 14px rgba(59,130,246,.25)}
 .nav-cta:hover{transform:translateY(-2px);box-shadow:0 8px 22px rgba(236,72,153,.35)}
+.nav-burger{display:none;background:none;border:none;cursor:pointer;width:40px;height:40px;flex-direction:column;justify-content:center;align-items:center;gap:5px;padding:0}
+.nav-burger span{width:22px;height:2px;background:var(--texto);border-radius:2px;transition:all .25s}
+.nav-burger.open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+.nav-burger.open span:nth-child(2){opacity:0}
+.nav-burger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
 
 /* HERO */
 .hero{padding:140px 28px 90px;background:linear-gradient(165deg,#eff6ff 0%,#fff 45%,#fdf2f8 100%);position:relative;overflow:hidden}
@@ -53,10 +58,8 @@ nav{position:fixed;top:0;left:0;width:100%;background:rgba(255,255,255,.95);back
 .stats{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;max-width:560px}
 .stat .n{font-size:1.7rem;font-weight:800;background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent;letter-spacing:-.5px}
 .stat .l{font-size:.78rem;color:var(--texto2);font-weight:600;margin-top:2px}
-.hero-imgs{display:grid;grid-template-columns:1fr 1fr;gap:18px;position:relative}
-.hero-imgs img{width:100%;border-radius:24px;box-shadow:0 18px 50px rgba(15,23,42,.12);object-fit:cover}
-.hero-imgs img:nth-child(1){height:340px;margin-top:30px}
-.hero-imgs img:nth-child(2){height:300px}
+.hero-img-wrap{position:relative}
+.hero-img{width:100%;border-radius:24px;box-shadow:0 18px 50px rgba(15,23,42,.12);object-fit:cover;height:480px}
 .hero-badge{position:absolute;bottom:-18px;left:50%;transform:translateX(-50%);background:#fff;padding:14px 22px;border-radius:18px;box-shadow:0 12px 36px rgba(15,23,42,.12);display:flex;align-items:center;gap:12px;font-size:.85rem;font-weight:700;white-space:nowrap}
 .hero-badge .dot{width:10px;height:10px;border-radius:50%;background:#22c55e;box-shadow:0 0 0 4px rgba(34,197,94,.18)}
 
@@ -71,14 +74,14 @@ nav{position:fixed;top:0;left:0;width:100%;background:rgba(255,255,255,.95);back
 
 /* SERVICIOS */
 #servicios{background:var(--gris)}
-.serv-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:20px}
-.serv{background:#fff;border:1px solid var(--borde);border-radius:20px;padding:28px 24px;transition:all .25s;cursor:pointer;position:relative;overflow:hidden}
+.serv-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.serv{background:#fff;border:1px solid var(--borde);border-radius:20px;padding:32px 28px;transition:all .25s;cursor:pointer;position:relative;overflow:hidden}
 .serv::before{content:'';position:absolute;top:0;left:0;width:100%;height:3px;background:var(--grad);transform:scaleX(0);transform-origin:left;transition:transform .3s}
 .serv:hover{transform:translateY(-6px);box-shadow:0 18px 40px rgba(15,23,42,.10);border-color:transparent}
 .serv:hover::before{transform:scaleX(1)}
-.serv .ico{width:54px;height:54px;border-radius:14px;background:linear-gradient(135deg,rgba(59,130,246,.12),rgba(236,72,153,.12));display:flex;align-items:center;justify-content:center;margin-bottom:18px;color:var(--azul)}
-.serv h3{font-size:1.05rem;font-weight:700;margin-bottom:8px;color:var(--texto)}
-.serv p{font-size:.88rem;color:var(--texto2);line-height:1.55}
+.serv .ico{width:56px;height:56px;border-radius:14px;background:linear-gradient(135deg,rgba(59,130,246,.12),rgba(236,72,153,.12));display:flex;align-items:center;justify-content:center;margin-bottom:20px;color:var(--azul)}
+.serv h3{font-size:1.15rem;font-weight:700;margin-bottom:10px;color:var(--texto)}
+.serv p{font-size:.92rem;color:var(--texto2);line-height:1.6}
 
 /* QUIENES */
 .qui{display:grid;grid-template-columns:1fr 1fr;gap:70px;align-items:center;margin-bottom:80px}
@@ -89,13 +92,19 @@ nav{position:fixed;top:0;left:0;width:100%;background:rgba(255,255,255,.95);back
 .valores{display:flex;gap:14px;margin-top:28px;flex-wrap:wrap}
 .val{background:linear-gradient(135deg,rgba(59,130,246,.08),rgba(236,72,153,.08));border:1px solid rgba(59,130,246,.18);padding:10px 20px;border-radius:30px;font-size:.85rem;font-weight:700;color:var(--azul2)}
 
-.equipo{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.equipo{display:grid;grid-template-columns:repeat(2,1fr);gap:24px}
 .miembro{background:#fff;border:1px solid var(--borde);border-radius:20px;padding:30px 24px;text-align:center;transition:all .25s}
 .miembro:hover{transform:translateY(-4px);box-shadow:0 14px 36px rgba(15,23,42,.08)}
-.av{width:84px;height:84px;border-radius:50%;background:var(--grad);margin:0 auto 16px;display:flex;align-items:center;justify-content:center;color:#fff;font-weight:800;font-size:1.6rem;letter-spacing:-1px}
+.miembro img{width:120px;height:120px;border-radius:50%;object-fit:cover;margin:0 auto 16px;display:block;box-shadow:0 8px 22px rgba(15,23,42,.12)}
 .miembro h4{font-size:1.08rem;font-weight:700;margin-bottom:4px}
 .miembro .rol{font-size:.82rem;color:var(--azul);font-weight:700;margin-bottom:8px;text-transform:uppercase;letter-spacing:.5px}
 .miembro p{font-size:.88rem;color:var(--texto2)}
+
+/* GALERIA */
+#galeria{background:var(--gris)}
+.gal-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.gal-grid img{width:100%;height:260px;object-fit:cover;border-radius:18px;box-shadow:0 10px 30px rgba(15,23,42,.10);transition:transform .3s}
+.gal-grid img:hover{transform:scale(1.03)}
 
 /* FOOTER */
 footer{background:#0f172a;color:#cbd5e1;padding:60px 28px 30px}
@@ -111,10 +120,13 @@ footer a:hover{color:#fff}
 /* CHATBOT */
 #wm-btn{position:fixed;bottom:24px;right:24px;width:64px;height:64px;border-radius:50%;background:var(--grad);border:none;cursor:pointer;box-shadow:0 12px 32px rgba(59,130,246,.4);display:flex;align-items:center;justify-content:center;z-index:999;transition:transform .2s;animation:pulse 2.4s infinite}
 #wm-btn:hover{transform:scale(1.08)}
+#wm-btn.hidden{display:none}
 @keyframes pulse{0%,100%{box-shadow:0 12px 32px rgba(59,130,246,.4),0 0 0 0 rgba(236,72,153,.5)}50%{box-shadow:0 12px 32px rgba(59,130,246,.4),0 0 0 16px rgba(236,72,153,0)}}
 #wm-btn svg{width:30px;height:30px;color:#fff}
+#wm-tooltip{position:fixed;bottom:96px;right:24px;background:#0f172a;color:#fff;padding:8px 14px;border-radius:10px;font-size:.82rem;font-weight:600;z-index:998;box-shadow:0 6px 18px rgba(15,23,42,.25);pointer-events:none;opacity:0;transform:translateY(6px);transition:all .25s}
+#wm-btn:hover + #wm-tooltip{opacity:1;transform:translateY(0)}
 
-#wm-mod{position:fixed;bottom:100px;right:24px;width:380px;max-height:600px;background:#fff;border-radius:20px;box-shadow:0 28px 70px rgba(15,23,42,.28);display:none;flex-direction:column;z-index:998;overflow:hidden;border:1px solid var(--borde)}
+#wm-mod{position:fixed;bottom:100px;right:24px;width:380px;max-height:600px;background:#fff;border-radius:20px;box-shadow:0 28px 70px rgba(15,23,42,.28);display:none;flex-direction:column;z-index:1000;overflow:hidden;border:1px solid var(--borde)}
 #wm-mod.open{display:flex;animation:slide .3s ease}
 @keyframes slide{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
 .wm-head{background:var(--grad);padding:18px 20px;color:#fff;display:flex;align-items:center;gap:14px}
@@ -123,6 +135,7 @@ footer a:hover{color:#fff}
 .wm-head .st{font-size:.75rem;display:flex;align-items:center;gap:6px;opacity:.95}
 .wm-head .st::before{content:'';width:8px;height:8px;border-radius:50%;background:#4ade80}
 .wm-close{margin-left:auto;background:rgba(255,255,255,.18);border:none;color:#fff;width:30px;height:30px;border-radius:50%;cursor:pointer;font-size:1.1rem}
+.wm-close.hidden{display:none}
 .wm-body{flex:1;padding:20px;overflow-y:auto;background:var(--gris);max-height:380px;min-height:280px}
 .msg{margin-bottom:12px;display:flex;animation:in .25s ease}
 @keyframes in{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:translateY(0)}}
@@ -134,8 +147,8 @@ footer a:hover{color:#fff}
 .qbtns{display:flex;flex-direction:column;gap:8px;margin:6px 0 10px}
 .qbtn{background:#fff;border:1.5px solid var(--azul);color:var(--azul);padding:9px 14px;border-radius:14px;font-size:.85rem;font-weight:600;cursor:pointer;text-align:left;transition:all .15s;font-family:inherit}
 .qbtn:hover{background:var(--azul);color:#fff}
-.servs-list{display:grid;grid-template-columns:1fr 1fr;gap:6px;margin:6px 0 10px}
-.servs-list .qbtn{font-size:.78rem;padding:7px 10px;text-align:center}
+.qbtns-grid{display:grid;grid-template-columns:1fr 1fr;gap:6px;margin:6px 0 10px}
+.qbtns-grid .qbtn{font-size:.8rem;padding:8px 10px;text-align:center}
 .typing{display:inline-flex;gap:4px;padding:14px 16px;background:#fff;border:1px solid var(--borde);border-radius:16px;border-bottom-left-radius:4px}
 .typing span{width:7px;height:7px;background:var(--azul);border-radius:50%;animation:bnc 1.2s infinite}
 .typing span:nth-child(2){animation-delay:.2s}
@@ -147,21 +160,53 @@ footer a:hover{color:#fff}
 .wa-btn{display:flex;align-items:center;justify-content:center;gap:8px;background:#25d366;color:#fff;text-decoration:none;padding:12px 18px;border-radius:14px;font-weight:700;font-size:.9rem;margin-top:10px;transition:all .15s}
 .wa-btn:hover{background:#1da851}
 
+/* RESPONSIVE TABLET 900px */
 @media(max-width:900px){
-  .nav-links{display:none}
+  .nav-links{display:none;position:absolute;top:72px;left:0;width:100%;background:#fff;flex-direction:column;gap:0;border-bottom:1px solid var(--borde);padding:8px 0;box-shadow:0 8px 22px rgba(15,23,42,.08)}
+  .nav-links.open{display:flex}
+  .nav-links a{padding:14px 28px;border-bottom:1px solid var(--borde)}
+  .nav-links a:last-child{border-bottom:none}
+  .nav-burger{display:flex}
+  .nav-cta{display:none}
   .hero{padding:110px 22px 70px}
   .hero-inner{grid-template-columns:1fr;gap:50px}
   .hero h1{font-size:2.4rem}
+  .hero-img{height:380px}
   .stats{grid-template-columns:repeat(2,1fr);max-width:100%}
   .qui{grid-template-columns:1fr;gap:40px}
   .qui img{height:340px}
   .qui h2,.sec-head h2{font-size:2rem}
-  .equipo{grid-template-columns:1fr}
+  .serv-grid{grid-template-columns:1fr 1fr}
+  .equipo{grid-template-columns:1fr 1fr}
+  .gal-grid{grid-template-columns:1fr 1fr}
+  .gal-grid img{height:220px}
   .foot-inner{grid-template-columns:1fr;gap:30px}
   .sec{padding:70px 22px}
-  #wm-mod{right:0;left:0;bottom:0;width:100%;max-width:600px;margin:0 auto;border-radius:20px 20px 0 0;max-height:90vh}
-  .wm-body{max-height:55vh}
-  #wm-btn{bottom:18px;right:18px;width:58px;height:58px}
+}
+
+/* RESPONSIVE MOBILE 600px */
+@media(max-width:600px){
+  .nav-inner{padding:0 18px;height:64px}
+  .nav-logo span{font-size:1.1rem}
+  .hero{padding:96px 18px 60px}
+  .hero h1{font-size:1.95rem}
+  .hero p{font-size:1rem}
+  .hero-img{height:300px}
+  .hero-badge{font-size:.78rem;padding:11px 16px}
+  .stats{grid-template-columns:repeat(2,1fr);gap:14px}
+  .stat .n{font-size:1.4rem}
+  .sec{padding:60px 18px}
+  .sec-head h2,.qui h2{font-size:1.7rem}
+  .serv-grid{grid-template-columns:1fr;gap:14px}
+  .serv{padding:24px 20px}
+  .equipo{grid-template-columns:1fr}
+  .gal-grid{grid-template-columns:1fr;gap:14px}
+  .gal-grid img{height:240px}
+  footer{padding:50px 18px 24px}
+  #wm-mod{right:0;left:0;bottom:0;width:100vw;max-width:100vw;margin:0;border-radius:18px 18px 0 0;max-height:92vh}
+  .wm-body{max-height:60vh}
+  #wm-btn{bottom:16px;right:16px;width:56px;height:56px}
+  #wm-tooltip{display:none}
 }
 </style>
 </head>
@@ -173,15 +218,19 @@ footer a:hover{color:#fff}
       <span class="ico">
         <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2c-2 0-3.5 1.5-3.5 4 0 2 1 3.5 1 5.5 0 1.5-1 2.5-2 3.5-1.5 1.5-2 3-1 4.5 1 1.5 3 1 4.5 0 1-.7 2-1.5 3-1.5s2 .8 3 1.5c1.5 1 3.5 1.5 4.5 0 1-1.5 .5-3-1-4.5-1-1-2-2-2-3.5 0-2 1-3.5 1-5.5 0-2.5-1.5-4-3.5-4z"/></svg>
       </span>
-      <span>PodologIA</span>
+      <span>WhiteMoon Podología</span>
     </a>
-    <div class="nav-links">
-      <a href="#inicio">Inicio</a>
-      <a href="#servicios">Servicios</a>
-      <a href="#quienes">Quiénes somos</a>
-      <a href="#equipo">Equipo</a>
+    <div class="nav-links" id="nav-links">
+      <a href="#inicio" onclick="closeMenu()">Inicio</a>
+      <a href="#servicios" onclick="closeMenu()">Servicios</a>
+      <a href="#quienes" onclick="closeMenu()">Quiénes somos</a>
+      <a href="#equipo" onclick="closeMenu()">Equipo</a>
+      <a href="#galeria" onclick="closeMenu()">Galería</a>
     </div>
     <button class="nav-cta" onclick="openChat()">Pedir cita</button>
+    <button class="nav-burger" id="nav-burger" onclick="toggleMenu()" aria-label="Menú">
+      <span></span><span></span><span></span>
+    </button>
   </div>
 </nav>
 
@@ -190,7 +239,7 @@ footer a:hover{color:#fff}
     <div>
       <span class="tag">Centro especializado en podología</span>
       <h1>Tu salud podal, en las <em>mejores manos</em></h1>
-      <p>Especialistas en el cuidado integral del pie. Tratamientos avanzados y equipo certificado para acompañarte en cada paso.</p>
+      <p>WhiteMoon Podología, especialistas en el cuidado integral del pie. Tratamientos avanzados y equipo certificado para acompañarte en cada paso.</p>
       <div class="hero-btns">
         <button class="btn-prim" onclick="openChat()">Pedir cita ahora</button>
         <a href="#servicios" class="btn-sec">Ver servicios</a>
@@ -198,13 +247,12 @@ footer a:hover{color:#fff}
       <div class="stats">
         <div class="stat"><div class="n">+2.500</div><div class="l">Pacientes</div></div>
         <div class="stat"><div class="n">12 años</div><div class="l">Experiencia</div></div>
-        <div class="stat"><div class="n">10</div><div class="l">Tratamientos</div></div>
+        <div class="stat"><div class="n">6</div><div class="l">Tratamientos</div></div>
         <div class="stat"><div class="n">98%</div><div class="l">Satisfacción</div></div>
       </div>
     </div>
-    <div class="hero-imgs">
-      <img src="https://images.unsplash.com/photo-1519824145371-296894a0daa9?w=600&q=80" alt="Tratamiento podológico">
-      <img src="https://images.unsplash.com/photo-1544161515-4ab6ce6db874?w=600&q=80" alt="Cuidado del pie">
+    <div class="hero-img-wrap">
+      <img class="hero-img" src="https://images.unsplash.com/photo-1519823551278-64ac92734fb1?w=1400&q=80" alt="Clínica WhiteMoon Podología" loading="lazy" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1519823551278-64ac92734fb1?w=500&q=80'">
       <div class="hero-badge"><span class="dot"></span>Citas disponibles esta semana</div>
     </div>
   </div>
@@ -215,58 +263,38 @@ footer a:hover{color:#fff}
     <div class="sec-head">
       <span class="tag">Servicios</span>
       <h2>Tratamientos <em>especializados</em> para cada necesidad</h2>
-      <p>Diez áreas de trabajo para cuidar de tus pies con la última tecnología y el mayor rigor clínico.</p>
+      <p>Seis áreas de trabajo para cuidar de tus pies con la última tecnología y el mayor rigor clínico.</p>
     </div>
     <div class="serv-grid">
-      <div class="serv" onclick="askService('Reflexología Podal')">
-        <div class="ico"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><circle cx="12" cy="12" r="9"/></svg></div>
-        <h3>Reflexología Podal</h3>
-        <p>Estimulación de puntos reflejos para favorecer el equilibrio y la relajación.</p>
+      <div class="serv" onclick="askService('Quiropodía / Pedicura médica')">
+        <div class="ico"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg></div>
+        <h3>Quiropodía / Pedicura médica</h3>
+        <p>Eliminación de durezas, callos y uñas encarnadas. Higiene podológica profesional.</p>
       </div>
-      <div class="serv" onclick="askService('Espolón / Fascitis Plantar')">
-        <div class="ico"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L3 14h7l-1 8 10-12h-7z"/></svg></div>
-        <h3>Espolón / Fascitis</h3>
-        <p>Tratamientos no invasivos personalizados para el dolor de talón.</p>
+      <div class="serv" onclick="askService('Biomecánica y Plantillas')">
+        <div class="ico"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12h18M3 6h18M3 18h18"/></svg></div>
+        <h3>Biomecánica y Plantillas</h3>
+        <p>Estudio de la pisada y fabricación de plantillas ortopédicas a medida para cada patología.</p>
       </div>
-      <div class="serv" onclick="askService('Papilomas')">
-        <div class="ico"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M9 12h6M12 9v6"/></svg></div>
-        <h3>Papilomas</h3>
-        <p>Crioterapia, ácidos o láser para verrugas plantares según cada caso.</p>
-      </div>
-      <div class="serv" onclick="askService('Cura del Pie Diabético')">
-        <div class="ico"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg></div>
+      <div class="serv" onclick="askService('Pie Diabético')">
+        <div class="ico"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg></div>
         <h3>Pie Diabético</h3>
-        <p>Exploración vascular y neurológica para una atención preventiva especializada.</p>
+        <p>Tratamiento especializado para pacientes diabéticos. Prevención de úlceras y control periódico.</p>
       </div>
-      <div class="serv" onclick="askService('Reconstrucción Ungueal')">
-        <div class="ico"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L4 7v10l8 5 8-5V7z"/></svg></div>
-        <h3>Reconstrucción Ungueal</h3>
-        <p>Reparación estética y funcional de uñas dañadas con resinas avanzadas.</p>
+      <div class="serv" onclick="askService('Cirugía Ungueal')">
+        <div class="ico"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L4 7v10l8 5 8-5V7z"/><path d="M9 12l2 2 4-4"/></svg></div>
+        <h3>Cirugía Ungueal</h3>
+        <p>Tratamiento definitivo de uñas encarnadas con técnica mínimamente invasiva. Sin cicatrices.</p>
       </div>
-      <div class="serv" onclick="askService('Reeducación Ungueal')">
-        <div class="ico"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12c0-5 4-9 9-9s9 4 9 9-4 9-9 9"/><path d="M3 12h6"/></svg></div>
-        <h3>Reeducación Ungueal</h3>
-        <p>Ortoniquia para corregir uñas encarnadas evitando la cirugía.</p>
+      <div class="serv" onclick="askService('Verrugas Plantares')">
+        <div class="ico"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M9 12h6M12 9v6"/></svg></div>
+        <h3>Verrugas Plantares</h3>
+        <p>Eliminación de verrugas con láser CO2 o crioterapia. Sin dolor y sin recidivas.</p>
       </div>
-      <div class="serv" onclick="askService('Quiropodia')">
-        <div class="ico"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg></div>
-        <h3>Quiropodia</h3>
-        <p>Eliminación de durezas, callos y helomas para una mayor comodidad.</p>
-      </div>
-      <div class="serv" onclick="askService('Láser Cure')">
-        <div class="ico"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v6M12 16v6M2 12h6M16 12h6M5 5l4 4M15 15l4 4M5 19l4-4M15 9l4-4"/></svg></div>
-        <h3>Láser Cure</h3>
-        <p>Tratamiento de onicomicosis y papilomas, indoloro y sin recuperación.</p>
-      </div>
-      <div class="serv" onclick="askService('Podología Geriátrica')">
-        <div class="ico"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78L12 21.23l8.84-8.84a5.5 5.5 0 000-7.78z"/></svg></div>
-        <h3>Podología Geriátrica</h3>
-        <p>Cuidado integral del pie en personas mayores. Servicio a domicilio.</p>
-      </div>
-      <div class="serv" onclick="askService('Podología Laboral')">
-        <div class="ico"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M8 7V5a2 2 0 012-2h4a2 2 0 012 2v2"/></svg></div>
-        <h3>Podología Laboral</h3>
-        <p>Calzado ergonómico, plantillas y prevención en entornos profesionales.</p>
+      <div class="serv" onclick="askService('Podología Deportiva')">
+        <div class="ico"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L3 14h7l-1 8 10-12h-7z"/></svg></div>
+        <h3>Podología Deportiva</h3>
+        <p>Biomecánica para deportistas. Prevención de lesiones y mejora del rendimiento.</p>
       </div>
     </div>
   </div>
@@ -275,7 +303,7 @@ footer a:hover{color:#fff}
 <section id="quienes" class="sec" style="background:#fff">
   <div class="sec-inner">
     <div class="qui">
-      <img src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=600&q=80" alt="Equipo PodologIA">
+      <img src="https://images.unsplash.com/photo-1629909615184-74f495363b67?w=500&q=80" alt="Clínica WhiteMoon Podología" loading="lazy" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1519823551278-64ac92734fb1?w=500&q=80'">
       <div>
         <span class="tag">Quiénes somos</span>
         <h2>Cuidamos tus pies con <em>vocación e innovación</em></h2>
@@ -295,24 +323,36 @@ footer a:hover{color:#fff}
       </div>
       <div class="equipo">
         <div class="miembro">
-          <div class="av">AM</div>
-          <h4>Ana Martínez</h4>
-          <div class="rol">Podóloga Directora</div>
+          <img src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?w=300&q=80" alt="Podólogo" loading="lazy" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1519823551278-64ac92734fb1?w=500&q=80'">
+          <h4>Carlos López</h4>
+          <div class="rol">Podólogo Director</div>
           <p>Biomecánica y pie diabético</p>
         </div>
         <div class="miembro">
-          <div class="av">CL</div>
-          <h4>Carlos López</h4>
-          <div class="rol">Podólogo</div>
-          <p>Especialista en láser</p>
-        </div>
-        <div class="miembro">
-          <div class="av">SR</div>
-          <h4>Sofía Ruiz</h4>
+          <img src="https://images.unsplash.com/photo-1594824476967-48c8b964273f?w=300&q=80" alt="Podóloga" loading="lazy" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1519823551278-64ac92734fb1?w=500&q=80'">
+          <h4>Ana Martínez</h4>
           <div class="rol">Podóloga</div>
-          <p>Reflexología y geriatría</p>
+          <p>Cirugía ungueal y deportiva</p>
         </div>
       </div>
+    </div>
+  </div>
+</section>
+
+<section id="galeria" class="sec">
+  <div class="sec-inner">
+    <div class="sec-head">
+      <span class="tag">Galería</span>
+      <h2>Nuestra <em>clínica</em> y tratamientos</h2>
+      <p>Conoce de cerca nuestras instalaciones y el día a día en WhiteMoon Podología.</p>
+    </div>
+    <div class="gal-grid">
+      <img src="https://images.unsplash.com/photo-1519823551278-64ac92734fb1?w=500&q=80" alt="Sala de tratamiento" loading="lazy" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1519823551278-64ac92734fb1?w=500&q=80'">
+      <img src="https://images.unsplash.com/photo-1607619056574-7b8d3ee536b2?w=500&q=80" alt="Tratamiento podológico" loading="lazy" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1519823551278-64ac92734fb1?w=500&q=80'">
+      <img src="https://images.unsplash.com/photo-1629909615184-74f495363b67?w=500&q=80" alt="Sala clínica" loading="lazy" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1519823551278-64ac92734fb1?w=500&q=80'">
+      <img src="https://images.unsplash.com/photo-1595078475328-1ab05d0a6a0e?w=500&q=80" alt="Plantillas ortopédicas" loading="lazy" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1519823551278-64ac92734fb1?w=500&q=80'">
+      <img src="https://images.unsplash.com/photo-1582719471384-894fbb16e074?w=500&q=80" alt="Pie en tratamiento" loading="lazy" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1519823551278-64ac92734fb1?w=500&q=80'">
+      <img src="https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?w=500&q=80" alt="Camilla clínica" loading="lazy" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1519823551278-64ac92734fb1?w=500&q=80'">
     </div>
   </div>
 </section>
@@ -324,16 +364,16 @@ footer a:hover{color:#fff}
         <span class="ico">
           <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2c-2 0-3.5 1.5-3.5 4 0 2 1 3.5 1 5.5 0 1.5-1 2.5-2 3.5-1.5 1.5-2 3-1 4.5 1 1.5 3 1 4.5 0 1-.7 2-1.5 3-1.5s2 .8 3 1.5c1.5 1 3.5 1.5 4.5 0 1-1.5 .5-3-1-4.5-1-1-2-2-2-3.5 0-2 1-3.5 1-5.5 0-2.5-1.5-4-3.5-4z"/></svg>
         </span>
-        <span>PodologIA</span>
+        <span>WhiteMoon Podología</span>
       </div>
       <p>Tu salud podal, en las mejores manos. Cuidamos cada paso con vocación, innovación y cercanía familiar.</p>
     </div>
     <div>
       <h4>Servicios</h4>
-      <p><a href="#servicios">Reflexología Podal</a></p>
+      <p><a href="#servicios">Quiropodía</a></p>
+      <p><a href="#servicios">Biomecánica</a></p>
       <p><a href="#servicios">Pie Diabético</a></p>
-      <p><a href="#servicios">Láser Cure</a></p>
-      <p><a href="#servicios">Quiropodia</a></p>
+      <p><a href="#servicios">Podología Deportiva</a></p>
     </div>
     <div>
       <h4>Contacto</h4>
@@ -341,21 +381,22 @@ footer a:hover{color:#fff}
       <p>Atención presencial y a domicilio</p>
     </div>
   </div>
-  <div class="foot-bot">© 2026 PodologIA · Demo creada con WhiteMoon</div>
+  <div class="foot-bot">© 2026 WhiteMoon Podología · Demo creada con WhiteMoon</div>
 </footer>
 
-<button id="wm-btn" onclick="toggleChat()" aria-label="Abrir chat">
+<button id="wm-btn" onclick="toggleChat()" aria-label="Abrir chat WhiteMoon Podología">
   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
 </button>
+<div id="wm-tooltip">Chat WhiteMoon Podología</div>
 
 <div id="wm-mod">
   <div class="wm-head">
-    <div class="av">P</div>
+    <div class="av">W</div>
     <div>
-      <h5>PodologIA</h5>
+      <h5>WhiteMoon Podología</h5>
       <div class="st">En línea</div>
     </div>
-    <button class="wm-close" onclick="toggleChat()">×</button>
+    <button class="wm-close" id="wm-close" onclick="toggleChat()">×</button>
   </div>
   <div class="wm-body" id="wm-body"></div>
   <div class="wm-input">
@@ -366,10 +407,18 @@ footer a:hover{color:#fff}
 
 <script>
 var WA_PHONE = '643199580';
-var state = 0;
-var lead = {nombre:'', telefono:'', servicio:''};
+var chatStep = 0;
+var lead = {nombre:'', telefono:'', problema:'', detalle:'', urgente:false};
 var chatStarted = false;
-var SERVICES = ['Reflexología Podal','Espolón / Fascitis Plantar','Papilomas','Cura del Pie Diabético','Reconstrucción Ungueal','Reeducación Ungueal','Quiropodia','Láser Cure','Podología Geriátrica','Podología Laboral'];
+
+function toggleMenu(){
+  document.getElementById('nav-links').classList.toggle('open');
+  document.getElementById('nav-burger').classList.toggle('open');
+}
+function closeMenu(){
+  document.getElementById('nav-links').classList.remove('open');
+  document.getElementById('nav-burger').classList.remove('open');
+}
 
 function normalize(s){
   return (s||'').toLowerCase()
@@ -378,9 +427,22 @@ function normalize(s){
     .replace(/\s+/g,' ').trim();
 }
 
+function updateCaptureUI(){
+  var btn = document.getElementById('wm-btn');
+  var close = document.getElementById('wm-close');
+  if(chatStep >= 1 && chatStep < 3){
+    btn.classList.add('hidden');
+    close.classList.add('hidden');
+  } else {
+    btn.classList.remove('hidden');
+    close.classList.remove('hidden');
+  }
+}
+
 function toggleChat(){
   var m = document.getElementById('wm-mod');
   if(m.classList.contains('open')){
+    if(chatStep >= 1 && chatStep < 3) return;
     m.classList.remove('open');
   } else {
     m.classList.add('open');
@@ -393,7 +455,7 @@ function openChat(){
   if(!chatStarted){ chatStarted = true; startChat(); }
 }
 
-function addBot(text, cb){
+function addBot(text, cb, delay){
   showTyping();
   setTimeout(function(){
     hideTyping();
@@ -407,7 +469,7 @@ function addBot(text, cb){
     b.appendChild(d);
     b.scrollTop = b.scrollHeight;
     if(cb) cb();
-  }, 700);
+  }, delay || 700);
 }
 function addUser(text){
   var b = document.getElementById('wm-body');
@@ -433,10 +495,10 @@ function hideTyping(){
   var t = document.getElementById('wm-typing');
   if(t) t.remove();
 }
-function addQuickButtons(opts){
+function addQuickButtons(opts, grid){
   var b = document.getElementById('wm-body');
   var w = document.createElement('div');
-  w.className = 'qbtns';
+  w.className = grid ? 'qbtns-grid' : 'qbtns';
   for(var i=0;i<opts.length;i++){
     (function(o){
       var btn = document.createElement('button');
@@ -449,88 +511,162 @@ function addQuickButtons(opts){
   b.appendChild(w);
   b.scrollTop = b.scrollHeight;
 }
-function addServiceList(){
-  var b = document.getElementById('wm-body');
-  var w = document.createElement('div');
-  w.className = 'servs-list';
-  for(var i=0;i<SERVICES.length;i++){
-    (function(s){
-      var btn = document.createElement('button');
-      btn.className = 'qbtn';
-      btn.textContent = s;
-      btn.onclick = function(){
-        w.remove();
-        addUser(s);
-        lead.servicio = s;
-        askName();
-      };
-      w.appendChild(btn);
-    })(SERVICES[i]);
-  }
-  b.appendChild(w);
-  b.scrollTop = b.scrollHeight;
-}
 
 function startChat(){
-  state = 0;
-  addBot('¡Hola! 🦶 Bienvenido/a a PodologIA.\n¿En qué puedo ayudarte hoy?', function(){
+  chatStep = 0;
+  updateCaptureUI();
+  addBot('¡Hola! 🦶 Bienvenido/a a WhiteMoon Podología.\n¿En qué puedo ayudarte?', function(){
     addQuickButtons([
-      {label:'📅 Pedir cita', action:function(){ addUser('Pedir cita'); startBooking(); }},
-      {label:'🦶 Ver servicios', action:function(){ addUser('Ver servicios'); showServices(); }},
-      {label:'💬 Tengo una consulta', action:function(){ addUser('Tengo una consulta'); state=1; addBot('Cuéntame, ¿qué necesitas saber?'); }}
+      {label:'🦶 Pedir cita', action:function(){ addUser('Pedir cita'); askProblem(); }},
+      {label:'😣 Tengo dolor en el pie', action:function(){ addUser('Tengo dolor en el pie'); flowDolor(); }},
+      {label:'🏃 Soy deportista', action:function(){ addUser('Soy deportista'); flowDeporte(); }},
+      {label:'💉 Pie diabético', action:function(){ addUser('Pie diabético'); flowDiabetico(); }},
+      {label:'⏰ Horarios y precios', action:function(){ addUser('Horarios y precios'); flowPrecios(); }}
+    ]);
+  }, 1500);
+}
+
+function askProblem(){
+  addBot('Vamos a ayudarte con tu problema 🦶\n¿Qué te ocurre en el pie?', function(){
+    addQuickButtons([
+      {label:'😣 Dolor al caminar', action:function(){ addUser('Dolor al caminar'); lead.problema='Dolor al caminar'; flowDolor(); }},
+      {label:'🔴 Uña encarnada', action:function(){ addUser('Uña encarnada'); lead.problema='Uña encarnada'; flowUna(); }},
+      {label:'🦵 Durezas y callos', action:function(){ addUser('Durezas y callos'); lead.problema='Durezas y callos'; lead.detalle='Quiropodía'; askName(); }},
+      {label:'🔵 Verruga plantar', action:function(){ addUser('Verruga plantar'); lead.problema='Verruga plantar'; lead.detalle='Tratamiento láser/crioterapia'; askName(); }},
+      {label:'📐 Necesito plantillas', action:function(){ addUser('Necesito plantillas'); lead.problema='Plantillas'; flowPlantillas(); }},
+      {label:'💉 Soy diabético/a', action:function(){ addUser('Soy diabético/a'); lead.problema='Pie diabético'; flowDiabetico(); }},
+      {label:'🏃 Lesión deportiva', action:function(){ addUser('Lesión deportiva'); lead.problema='Lesión deportiva'; flowDeporte(); }},
+      {label:'❓ Revisión general', action:function(){ addUser('Revisión general'); lead.problema='Revisión general'; lead.detalle='Valoración completa'; askName(); }}
     ]);
   });
 }
 
-function showServices(){
-  state = 1;
-  addBot('Estos son nuestros tratamientos. Puedes preguntarme por cualquiera o pulsar uno para pedir cita:', function(){
-    var opts = [];
-    for(var i=0;i<SERVICES.length;i++){
-      (function(s){
-        opts.push({label:s, action:function(){ addUser(s); lead.servicio = s; askName(); }});
-      })(SERVICES[i]);
-    }
-    addQuickButtons(opts);
+function flowDolor(){
+  if(!lead.problema) lead.problema = 'Dolor al caminar';
+  addBot('El dolor puede tener varias causas 😟\n¿Dónde exactamente te duele?', function(){
+    addQuickButtons([
+      {label:'Talón', action:function(){ addUser('Talón'); lead.detalle='Dolor en talón'; askDuracion(); }},
+      {label:'Planta', action:function(){ addUser('Planta'); lead.detalle='Dolor en planta'; askDuracion(); }},
+      {label:'Dedos', action:function(){ addUser('Dedos'); lead.detalle='Dolor en dedos'; askDuracion(); }},
+      {label:'Toda la planta', action:function(){ addUser('Toda la planta'); lead.detalle='Dolor en toda la planta'; askDuracion(); }},
+      {label:'No sé exactamente', action:function(){ addUser('No sé exactamente'); lead.detalle='Dolor sin localizar'; askDuracion(); }}
+    ]);
+  });
+}
+function askDuracion(){
+  addBot('¿Desde hace cuánto tiempo?', function(){
+    addQuickButtons([
+      {label:'Días', action:function(){ addUser('Días'); lead.detalle += ' · días'; askName(); }},
+      {label:'Semanas', action:function(){ addUser('Semanas'); lead.detalle += ' · semanas'; askName(); }},
+      {label:'Meses', action:function(){ addUser('Meses'); lead.detalle += ' · meses'; lead.urgente=true; addBot('Llevas mucho tiempo con molestias, conviene valorarlo cuanto antes ⚠️', askName); }}
+    ]);
   });
 }
 
-function askService(name){
-  var m = document.getElementById('wm-mod');
-  if(!m.classList.contains('open')){ m.classList.add('open'); }
-  if(!chatStarted){ chatStarted = true; }
-  setTimeout(function(){
-    addUser('Quiero info sobre ' + name);
-    lead.servicio = name;
-    addBot('Genial. ' + name + ' es uno de nuestros tratamientos más solicitados. ¿Te ayudo a pedir cita?', function(){
-      addQuickButtons([
-        {label:'Sí, quiero cita', action:function(){ addUser('Sí, quiero cita'); askName(); }},
-        {label:'Tengo otra duda', action:function(){ addUser('Tengo otra duda'); state=1; addBot('Adelante, te escucho.'); }}
-      ]);
-    });
-  }, 200);
+function flowUna(){
+  lead.problema = 'Uña encarnada';
+  addBot('Las uñas encarnadas tienen solución definitiva ✅\n¿Tienes infección o está muy inflamada?', function(){
+    addQuickButtons([
+      {label:'Sí, está infectada', action:function(){
+        addUser('Sí, está infectada');
+        lead.detalle='Uña encarnada con infección';
+        lead.urgente=true;
+        addBot('Es importante verla hoy o mañana. ¿Puedo reservarte cita urgente? 🚨', askName);
+      }},
+      {label:'No, solo molesta', action:function(){
+        addUser('No, solo molesta');
+        lead.detalle='Uña encarnada sin infección';
+        askName();
+      }}
+    ]);
+  });
 }
 
-function startBooking(){
-  state = 2;
-  addBot('¡Perfecto! ¿Para qué servicio necesitas la cita?', function(){
-    addServiceList();
+function flowDiabetico(){
+  lead.problema = 'Pie diabético';
+  addBot('El pie diabético requiere revisiones periódicas especializadas 💉\n¿Eres paciente de larga evolución o has sido diagnosticado recientemente?', function(){
+    addQuickButtons([
+      {label:'Larga evolución', action:function(){ addUser('Larga evolución'); lead.detalle='Diabético larga evolución'; askHerida(); }},
+      {label:'Reciente diagnóstico', action:function(){ addUser('Reciente diagnóstico'); lead.detalle='Diabético reciente'; askHerida(); }}
+    ]);
   });
+}
+function askHerida(){
+  addBot('¿Tienes alguna herida o úlcera activa?', function(){
+    addQuickButtons([
+      {label:'Sí', action:function(){
+        addUser('Sí');
+        lead.detalle += ' · herida activa';
+        lead.urgente=true;
+        addBot('Necesitas valoración hoy mismo. Reservamos cita urgente 🚨', askName);
+      }},
+      {label:'No', action:function(){
+        addUser('No');
+        lead.detalle += ' · sin heridas';
+        askName();
+      }}
+    ]);
+  });
+}
+
+function flowPlantillas(){
+  lead.problema = 'Plantillas / Estudio biomecánico';
+  addBot('El estudio de la pisada nos permite fabricar plantillas exactas para ti 📐\n¿Es por dolor, deporte o prevención?', function(){
+    addQuickButtons([
+      {label:'Dolor', action:function(){ addUser('Dolor'); lead.detalle='Plantillas por dolor'; askName(); }},
+      {label:'Deporte', action:function(){ addUser('Deporte'); lead.detalle='Plantillas deportivas'; askName(); }},
+      {label:'Prevención', action:function(){ addUser('Prevención'); lead.detalle='Plantillas preventivas'; askName(); }}
+    ]);
+  });
+}
+
+function flowDeporte(){
+  lead.problema = 'Podología deportiva';
+  addBot('Tratamos las lesiones más frecuentes en deportistas 🏃\n→ Fascitis plantar\n→ Tendinitis de Aquiles\n→ Espolón calcáneo\n→ Neuroma de Morton\n→ Uñas subungueales\n¿Qué lesión tienes?', function(){
+    addQuickButtons([
+      {label:'Fascitis plantar', action:function(){ addUser('Fascitis plantar'); lead.detalle='Fascitis plantar'; askName(); }},
+      {label:'Tendinitis Aquiles', action:function(){ addUser('Tendinitis Aquiles'); lead.detalle='Tendinitis de Aquiles'; askName(); }},
+      {label:'Espolón calcáneo', action:function(){ addUser('Espolón calcáneo'); lead.detalle='Espolón calcáneo'; askName(); }},
+      {label:'Neuroma de Morton', action:function(){ addUser('Neuroma de Morton'); lead.detalle='Neuroma de Morton'; askName(); }},
+      {label:'Uñas subungueales', action:function(){ addUser('Uñas subungueales'); lead.detalle='Uñas subungueales'; askName(); }},
+      {label:'Otra lesión', action:function(){ addUser('Otra lesión'); lead.detalle='Lesión deportiva'; askName(); }}
+    ]);
+  });
+}
+
+function flowPrecios(){
+  addBot('Nuestras tarifas orientativas 💰\n🦶 Quiropodía desde 25€\n📐 Estudio biomecánica desde 60€\n🔵 Eliminación verrugas desde 40€\n💉 Revisión pie diabético desde 30€\nPrimera visita con valoración incluida.\n¿Reservamos tu cita?', function(){
+    addQuickButtons([
+      {label:'Sí, pedir cita', action:function(){ addUser('Sí, pedir cita'); askProblem(); }},
+      {label:'Tengo otra duda', action:function(){ addUser('Tengo otra duda'); chatStep=0; updateCaptureUI(); addBot('Adelante, te escucho.'); }}
+    ]);
+  });
+}
+
+function flowUrgente(){
+  lead.urgente = true;
+  if(!lead.problema) lead.problema = 'Urgencia';
+  if(!lead.detalle) lead.detalle = 'Atención urgente';
+  addBot('Entendemos la urgencia 🚨\nAtendemos casos urgentes el mismo día.\n¿Me facilita su teléfono para llamarle ahora mismo?', askName);
 }
 
 function askName(){
-  state = 3;
-  addBot('¿Me dices tu nombre?');
+  chatStep = 1;
+  updateCaptureUI();
+  addBot('Para reservar tu cita necesito un par de datos 📅\n¿Me dices tu nombre?');
 }
 function askPhone(){
-  state = 4;
-  addBot('Perfecto ' + lead.nombre + '. ¿Tu teléfono de contacto?');
+  chatStep = 2;
+  updateCaptureUI();
+  addBot('Perfecto ' + lead.nombre + '. ¿Me facilitas tu teléfono de contacto?');
 }
 function finishBooking(){
-  state = 5;
-  addBot('Perfecto ' + lead.nombre + '. He anotado tu solicitud para ' + lead.servicio + '. Nuestro equipo te llamará para confirmar la cita. ¡Hasta pronto! 🦶', function(){
+  chatStep = 3;
+  updateCaptureUI();
+  var urgentTxt = lead.urgente ? '\n\n⚠️ Caso marcado como urgente. Te contactaremos en cuanto antes.' : '';
+  addBot('¡Perfecto ' + lead.nombre + '! 🦶\nHe registrado tu solicitud:\n\n🔍 ' + (lead.problema||'Cita') + '\n📝 ' + (lead.detalle||'-') + '\n📞 +34' + lead.telefono + urgentTxt + '\n\nEnvíame el resumen por WhatsApp y te confirmamos cita en breve.', function(){
     var b = document.getElementById('wm-body');
-    var msg = '🦶 *NUEVA CITA PODOLOGÍA*\n\n👤 *Paciente:* ' + lead.nombre + '\n📞 *Tel:* +34' + lead.telefono + '\n🦶 *Servicio:* ' + lead.servicio + '\n\n_Vía chatbot WhiteMoon_';
+    var msg = '🦶 *CITA — WhiteMoon Podología*\n\n👤 *Nombre:* ' + lead.nombre + '\n📞 *Tel:* +34' + lead.telefono + '\n🔍 *Problema:* ' + (lead.problema||'-') + '\n📝 *Detalle:* ' + (lead.detalle||'-') + (lead.urgente?'\n🚨 *URGENTE*':'') + '\n\n_Vía chatbot WhiteMoon · whitemoon.es_';
     var url = 'https://wa.me/34' + WA_PHONE + '?text=' + encodeURIComponent(msg);
     var a = document.createElement('a');
     a.href = url;
@@ -543,36 +679,69 @@ function finishBooking(){
   });
 }
 
-function intentBooking(t){
-  var n = normalize(t);
-  var triggers = ['cita','reserva','reservar','llamar','contacto','quiero','necesito','agendar','pedir cita'];
-  for(var i=0;i<triggers.length;i++){
-    if(n.indexOf(triggers[i]) !== -1) return true;
-  }
-  return false;
+function askService(name){
+  var m = document.getElementById('wm-mod');
+  if(!m.classList.contains('open')){ m.classList.add('open'); }
+  if(!chatStarted){ chatStarted = true; chatStep=0; updateCaptureUI(); }
+  setTimeout(function(){
+    addUser('Quiero info sobre ' + name);
+    lead.problema = name;
+    addBot('Genial. ' + name + ' es uno de nuestros tratamientos más solicitados. ¿Te ayudo a pedir cita?', function(){
+      addQuickButtons([
+        {label:'Sí, quiero cita', action:function(){ addUser('Sí, quiero cita'); askName(); }},
+        {label:'Tengo otra duda', action:function(){ addUser('Tengo otra duda'); addBot('Adelante, te escucho.'); }}
+      ]);
+    });
+  }, 200);
 }
 
 function matchKeyword(t){
   var n = normalize(t);
-  var rules = [
-    {kw:['reflexologia'], r:'La Reflexología Podal trabaja puntos reflejos del pie para favorecer el equilibrio y la relajación del cuerpo. ¿Te gustaría pedir una cita?'},
-    {kw:['espolon','fascitis','talon'], r:'El Espolón Calcáneo y la Fascitis Plantar causan dolor en el talón. Lo tratamos con técnicas no invasivas personalizadas. ¿Quieres que valoremos tu caso?'},
-    {kw:['papiloma','verruga','vph'], r:'Los papilomas plantares los tratamos con crioterapia, ácidos o láser según tu caso clínico. ¿Te gustaría una valoración?'},
-    {kw:['diabetico','diabetes','pie diabetico'], r:'El pie diabético requiere atención especializada. Realizamos exploración vascular y neurológica periódica. ¿Quieres concertar una visita?'},
-    {kw:['una encarnada','unas encarnadas','encarnada','ortoniquia','reconstruccion','una','unas'], r:'Corregimos uñas encarnadas mediante ortoniquia evitando la cirugía en la mayoría de casos. También realizamos reconstrucción ungueal completa. ¿Te ayudamos?'},
-    {kw:['dureza','callo','quiropodia','heloma'], r:'La Quiropodia incluye eliminación de durezas, callos y helomas para mayor comodidad. ¿Quieres una cita?'},
-    {kw:['laser','hongo','onicomicosis'], r:'El Láser Cure trata onicomicosis y papilomas. Tratamiento indoloro y sin tiempo de recuperación. ¿Te interesa?'},
-    {kw:['mayor','geriatria','geriatrica','domicilio','anciano'], r:'La Podología Geriátrica cuida los pies de nuestros mayores. Disponemos de servicio a domicilio. ¿Necesitas más información?'},
-    {kw:['trabajo','laboral','plantilla','ergonomica','calzado'], r:'La Podología Laboral evalúa patologías del trabajo: bipedestación prolongada, calzado de seguridad y plantillas ergonómicas. ¿Te ayudamos?'},
-    {kw:['precio','coste','cuanto','tarifa','vale','cuesta'], r:'Los precios varían según el tratamiento y la evaluación inicial. Consúltanos sin compromiso y te informamos.'},
-    {kw:['horario','cuando'], r:'Puedes pedir cita ahora mismo y te llamamos para confirmar el horario que mejor te venga.'}
-  ];
-  for(var i=0;i<rules.length;i++){
-    for(var j=0;j<rules[i].kw.length;j++){
-      if(n.indexOf(rules[i].kw[j]) !== -1) return rules[i].r;
-    }
+  var hit = function(arr){ for(var i=0;i<arr.length;i++) if(n.indexOf(arr[i])!==-1) return true; return false; };
+
+  if(hit(['urgente','urgencia','hoy','dolor fuerte','infeccion','infectada','infectado','sangra','sangrado'])){
+    return {fn:flowUrgente};
+  }
+  if(hit(['precio','cuanto','cuesta','tarifa','vale','coste','tarifas'])){
+    return {fn:flowPrecios};
+  }
+  if(hit(['fascitis','espolon','talon','aquiles'])){
+    return {text:'La fascitis plantar y el espolón son muy tratables 💪\nCon ortesis plantar a medida y tratamiento podológico se resuelven en 4-8 semanas en la mayoría de casos.\n¿Quieres que te valoremos?', after:askName};
+  }
+  if(hit(['deportista','correr','running','futbol','deporte','lesion','tendinitis'])){
+    return {fn:flowDeporte};
+  }
+  if(hit(['diabetic','diabetes','pie diabetico','diabetico','diabetica'])){
+    return {fn:flowDiabetico};
+  }
+  if(hit(['una encarnada','unas encarnadas','encarnada','encarnado','ortoniquia','una','unas'])){
+    return {fn:flowUna};
+  }
+  if(hit(['plantilla','biomecanic','pisada','ortopedica'])){
+    return {fn:flowPlantillas};
+  }
+  if(hit(['verruga','papiloma','vph'])){
+    lead.problema='Verruga plantar'; lead.detalle='Tratamiento láser/crioterapia';
+    return {text:'Las verrugas plantares las eliminamos con láser CO2 o crioterapia 🔵\nSin dolor y sin recidivas. ¿Reservamos cita?', after:askName};
+  }
+  if(hit(['callo','dureza','heloma','quiropodia','pedicura'])){
+    lead.problema='Quiropodía'; lead.detalle='Eliminación durezas/callos';
+    return {text:'La Quiropodía elimina durezas, callos y helomas 🦶\nHigiene podológica profesional. ¿Reservamos cita?', after:askName};
+  }
+  if(hit(['horario','cuando','abierto','abren'])){
+    return {text:'Atendemos en cita previa de lunes a viernes. Pedir cita es muy rápido — ¿lo hacemos ahora?', after:askProblem};
+  }
+  if(hit(['dolor','duele','molestia'])){
+    return {fn:flowDolor};
   }
   return null;
+}
+
+function intentBooking(t){
+  var n = normalize(t);
+  var triggers = ['cita','reservar','reserva','agendar','quiero','necesito','problema','pedir cita','cuidar','consulta'];
+  for(var i=0;i<triggers.length;i++) if(n.indexOf(triggers[i])!==-1) return true;
+  return false;
 }
 
 function sendUser(){
@@ -585,31 +754,34 @@ function sendUser(){
 }
 
 function handleUser(t){
-  if(state === 3){
+  if(chatStep === 1){
     var name = t.replace(/[^A-Za-zÀ-ÿ\s]/g,'').trim();
     if(name.length < 2){ addBot('¿Me dices tu nombre, por favor?'); return; }
     lead.nombre = name;
     askPhone();
     return;
   }
-  if(state === 4){
+  if(chatStep === 2){
     var d = (t.match(/\d/g) || []).join('');
     if(d.length < 9){ addBot('Necesito un teléfono válido de 9 dígitos. ¿Puedes repetirlo?'); return; }
     lead.telefono = d.slice(-9);
     finishBooking();
     return;
   }
-  if(intentBooking(t) && state !== 5){
-    if(!lead.servicio){ startBooking(); return; }
-    askName(); return;
+  var m = matchKeyword(t);
+  if(m){
+    if(m.fn){ m.fn(); return; }
+    if(m.text){ addBot(m.text, m.after); return; }
   }
-  var r = matchKeyword(t);
-  if(r){ state = 1; addBot(r); return; }
-  state = 1;
-  addBot('Puedo ayudarte a pedir cita o informarte sobre nuestros servicios. ¿Qué necesitas?', function(){
+  if(intentBooking(t)){
+    askProblem();
+    return;
+  }
+  addBot('Puedo ayudarte con información sobre tratamientos o reservar tu cita 🦶\n¿Qué necesitas?', function(){
     addQuickButtons([
-      {label:'📅 Pedir cita', action:function(){ addUser('Pedir cita'); startBooking(); }},
-      {label:'🦶 Ver servicios', action:function(){ addUser('Ver servicios'); showServices(); }}
+      {label:'🦶 Pedir cita', action:function(){ addUser('Pedir cita'); askProblem(); }},
+      {label:'😣 Tengo dolor', action:function(){ addUser('Tengo dolor'); flowDolor(); }},
+      {label:'⏰ Horarios y precios', action:function(){ addUser('Horarios y precios'); flowPrecios(); }}
     ]);
   });
 }
