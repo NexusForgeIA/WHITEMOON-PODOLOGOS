@@ -3,229 +3,355 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>WhiteMoon Podología — Tu salud podal, en las mejores manos</title>
-<meta name="description" content="WhiteMoon Podología, especialistas en el cuidado integral del pie. Quiropodía, biomecánica, pie diabético, cirugía ungueal, verrugas plantares y podología deportiva.">
+<title>WhiteMoon Podología | Clínica Podológica · Quiropodía, Plantillas y Pie Diabético</title>
+<meta name="description" content="Clínica podológica especializada. Quiropodía, biomecánica, plantillas ortopédicas, pie diabético y podología deportiva. Pide cita online.">
+<meta name="keywords" content="podología, podólogo, quiropodía, plantillas ortopédicas, pie diabético, podología deportiva, cirugía ungueal, verrugas plantares, biomecánica">
+<meta name="robots" content="index,follow">
+<meta name="theme-color" content="#0ea5e9">
+<meta property="og:type" content="website">
+<meta property="og:title" content="WhiteMoon Podología | Clínica Podológica Especializada">
+<meta property="og:description" content="Quiropodía, biomecánica, plantillas ortopédicas, pie diabético y podología deportiva. Pide cita online.">
+<meta property="og:image" content="https://images.unsplash.com/photo-1519823551278-64ac92734fb1?w=1200&q=80">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://images.unsplash.com">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": ["MedicalBusiness", "LocalBusiness"],
+  "name": "WhiteMoon Podología",
+  "description": "Clínica podológica especializada en quiropodía, biomecánica, pie diabético, cirugía ungueal y podología deportiva.",
+  "image": "https://images.unsplash.com/photo-1519823551278-64ac92734fb1?w=1200&q=80",
+  "medicalSpecialty": "Podiatric",
+  "priceRange": "€€",
+  "telephone": "+34643199580",
+  "address": {
+    "@type": "PostalAddress",
+    "addressCountry": "ES"
+  },
+  "openingHoursSpecification": [
+    {"@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"], "opens": "09:00", "closes": "14:00"},
+    {"@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"], "opens": "16:00", "closes": "20:00"},
+    {"@type": "OpeningHoursSpecification", "dayOfWeek": "Saturday", "opens": "09:00", "closes": "13:00"}
+  ],
+  "aggregateRating": {"@type": "AggregateRating", "ratingValue": "4.9", "reviewCount": "187"}
+}
+</script>
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
 :root{
-  --azul:#3b82f6;
-  --azul2:#2563eb;
-  --rosa:#ec4899;
-  --rosa2:#f472b6;
-  --grad:linear-gradient(135deg,#3b82f6,#ec4899);
-  --texto:#0f172a;
-  --texto2:#475569;
-  --texto3:#94a3b8;
-  --gris:#f8fafc;
-  --gris2:#f1f5f9;
-  --borde:#e2e8f0;
-  --blanco:#ffffff;
+  --primary:#0ea5e9;
+  --primary-dark:#0284c7;
+  --primary-light:#e0f2fe;
+  --accent:#10b981;
+  --accent-dark:#059669;
+  --dark:#0f172a;
+  --dark-2:#1e293b;
+  --dark-3:#0c2340;
+  --text:#334155;
+  --text2:#64748b;
+  --text3:#94a3b8;
+  --white:#ffffff;
+  --bg:#f8fafc;
+  --bg2:#f1f5f9;
+  --border:#e2e8f0;
+  --glass:rgba(14,165,233,0.06);
+  --glass-border:rgba(14,165,233,0.15);
+  --grad:linear-gradient(135deg,#0ea5e9 0%,#10b981 100%);
+  --grad-dark:linear-gradient(135deg,#0f172a 0%,#0c2340 50%,#0f172a 100%);
 }
 html{scroll-behavior:smooth}
-body{font-family:system-ui,-apple-system,Segoe UI,Roboto,sans-serif;background:#fff;color:var(--texto);line-height:1.6;-webkit-font-smoothing:antialiased}
+body{font-family:system-ui,-apple-system,Segoe UI,Roboto,sans-serif;background:#fff;color:var(--text);line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
 
-/* NAV */
-nav{position:fixed;top:0;left:0;width:100%;background:rgba(255,255,255,.95);backdrop-filter:blur(14px);border-bottom:1px solid var(--borde);z-index:100}
-.nav-inner{max-width:1180px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:72px;padding:0 28px}
-.nav-logo{display:flex;align-items:center;gap:10px;text-decoration:none}
-.nav-logo .ico{width:38px;height:38px;border-radius:11px;background:var(--grad);display:flex;align-items:center;justify-content:center;color:#fff}
-.nav-logo span{font-size:1.25rem;font-weight:800;background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent;letter-spacing:-.5px}
-.nav-links{display:flex;gap:34px}
-.nav-links a{color:var(--texto2);text-decoration:none;font-size:.92rem;font-weight:600;transition:color .2s}
-.nav-links a:hover{color:var(--azul)}
-.nav-cta{background:var(--grad);color:#fff;padding:11px 24px;border-radius:30px;font-size:.88rem;font-weight:700;border:none;cursor:pointer;transition:all .2s;font-family:inherit;box-shadow:0 4px 14px rgba(59,130,246,.25)}
-.nav-cta:hover{transform:translateY(-2px);box-shadow:0 8px 22px rgba(236,72,153,.35)}
+/* REVEAL */
+.reveal{opacity:0;transform:translateY(28px);transition:opacity .8s ease,transform .8s ease}
+.reveal.in{opacity:1;transform:translateY(0)}
+
+/* NAV — glassmorphism */
+nav{position:fixed;top:0;left:0;width:100%;background:rgba(15,23,42,0.55);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);border-bottom:1px solid rgba(14,165,233,0.12);z-index:100;transition:all .3s ease}
+nav.scrolled{background:rgba(15,23,42,0.92);border-bottom:1px solid rgba(14,165,233,0.25);box-shadow:0 4px 30px rgba(0,0,0,.3)}
+.nav-inner{max-width:1200px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:74px;padding:0 28px}
+.nav-logo{display:flex;align-items:center;gap:11px;text-decoration:none}
+.nav-logo .ico{width:40px;height:40px;border-radius:12px;background:var(--grad);display:flex;align-items:center;justify-content:center;color:#fff;box-shadow:0 8px 22px rgba(14,165,233,.4)}
+.nav-logo span{font-size:1.22rem;font-weight:800;color:#fff;letter-spacing:-.5px}
+.nav-logo span em{font-style:normal;background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.nav-links{display:flex;gap:32px}
+.nav-links a{color:#cbd5e1;text-decoration:none;font-size:.92rem;font-weight:600;transition:color .2s;position:relative}
+.nav-links a:hover{color:#fff}
+.nav-links a::after{content:'';position:absolute;left:0;bottom:-6px;width:0;height:2px;background:var(--grad);transition:width .25s}
+.nav-links a:hover::after{width:100%}
+.nav-cta{background:var(--grad);color:#fff;padding:11px 24px;border-radius:30px;font-size:.88rem;font-weight:700;border:none;cursor:pointer;transition:all .2s;font-family:inherit;box-shadow:0 6px 18px rgba(14,165,233,.4)}
+.nav-cta:hover{transform:translateY(-2px);box-shadow:0 10px 26px rgba(14,165,233,.55)}
 .nav-burger{display:none;background:none;border:none;cursor:pointer;width:40px;height:40px;flex-direction:column;justify-content:center;align-items:center;gap:5px;padding:0}
-.nav-burger span{width:22px;height:2px;background:var(--texto);border-radius:2px;transition:all .25s}
+.nav-burger span{width:22px;height:2px;background:#fff;border-radius:2px;transition:all .25s}
 .nav-burger.open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
 .nav-burger.open span:nth-child(2){opacity:0}
 .nav-burger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
 
-/* HERO */
-.hero{padding:140px 28px 90px;background:linear-gradient(165deg,#eff6ff 0%,#fff 45%,#fdf2f8 100%);position:relative;overflow:hidden}
-.hero::before{content:'';position:absolute;top:-120px;right:-120px;width:520px;height:520px;background:radial-gradient(circle,rgba(236,72,153,.10),transparent 70%);border-radius:50%}
-.hero::after{content:'';position:absolute;bottom:-140px;left:-100px;width:480px;height:480px;background:radial-gradient(circle,rgba(59,130,246,.10),transparent 70%);border-radius:50%}
-.hero-inner{max-width:1180px;margin:0 auto;display:grid;grid-template-columns:1.05fr 1fr;gap:70px;align-items:center;position:relative;z-index:1}
-.tag{display:inline-flex;align-items:center;gap:8px;background:rgba(59,130,246,.10);border:1px solid rgba(59,130,246,.22);border-radius:30px;padding:7px 18px;font-size:.78rem;font-weight:700;color:var(--azul);margin-bottom:22px;text-transform:uppercase;letter-spacing:1px}
-.hero h1{font-size:3.4rem;font-weight:800;line-height:1.1;margin-bottom:22px;letter-spacing:-1.5px}
-.hero h1 em{font-style:normal;background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
-.hero p{font-size:1.12rem;color:var(--texto2);margin-bottom:34px;max-width:520px}
-.hero-btns{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:46px}
-.btn-prim{background:var(--grad);color:#fff;padding:14px 30px;border-radius:32px;font-weight:700;border:none;cursor:pointer;font-size:.95rem;font-family:inherit;box-shadow:0 6px 18px rgba(59,130,246,.3);transition:all .2s}
-.btn-prim:hover{transform:translateY(-2px);box-shadow:0 10px 26px rgba(236,72,153,.38)}
-.btn-sec{background:#fff;color:var(--texto);padding:14px 30px;border-radius:32px;font-weight:700;border:1.5px solid var(--borde);cursor:pointer;font-size:.95rem;font-family:inherit;transition:all .2s;text-decoration:none;display:inline-block}
-.btn-sec:hover{border-color:var(--azul);color:var(--azul)}
-.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;max-width:560px}
-.stat .n{font-size:1.7rem;font-weight:800;background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent;letter-spacing:-.5px}
-.stat .l{font-size:.78rem;color:var(--texto2);font-weight:600;margin-top:2px}
+/* HERO — dark con gradiente */
+.hero{padding:160px 28px 110px;background:var(--grad-dark);position:relative;overflow:hidden;color:#fff}
+.hero::before{content:'';position:absolute;top:-160px;right:-100px;width:600px;height:600px;background:radial-gradient(circle,rgba(14,165,233,.28),transparent 70%);border-radius:50%;animation:float 9s ease-in-out infinite}
+.hero::after{content:'';position:absolute;bottom:-180px;left:-120px;width:560px;height:560px;background:radial-gradient(circle,rgba(16,185,129,.22),transparent 70%);border-radius:50%;animation:float 11s ease-in-out infinite reverse}
+.hero-orb{position:absolute;top:40%;left:50%;width:380px;height:380px;background:radial-gradient(circle,rgba(14,165,233,.18),transparent 65%);border-radius:50%;animation:float 7s ease-in-out infinite;pointer-events:none}
+@keyframes float{0%,100%{transform:translate(0,0) scale(1)}50%{transform:translate(30px,-25px) scale(1.06)}}
+.hero-inner{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1.05fr 1fr;gap:70px;align-items:center;position:relative;z-index:1}
+.tag{display:inline-flex;align-items:center;gap:8px;background:rgba(14,165,233,.14);border:1px solid rgba(14,165,233,.32);border-radius:30px;padding:7px 18px;font-size:.78rem;font-weight:700;color:#7dd3fc;margin-bottom:22px;text-transform:uppercase;letter-spacing:1.2px}
+.tag .dotg{width:8px;height:8px;border-radius:50%;background:var(--accent);box-shadow:0 0 0 4px rgba(16,185,129,.25);animation:p2 2s infinite}
+@keyframes p2{0%,100%{box-shadow:0 0 0 0 rgba(16,185,129,.6)}50%{box-shadow:0 0 0 6px rgba(16,185,129,0)}}
+.hero h1{font-size:3.6rem;font-weight:800;line-height:1.08;margin-bottom:24px;letter-spacing:-1.8px;color:#fff}
+.hero h1 em{font-style:normal;background:linear-gradient(135deg,#38bdf8 0%,#34d399 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.hero p{font-size:1.14rem;color:#cbd5e1;margin-bottom:36px;max-width:540px}
+.hero-btns{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:50px}
+.btn-prim{background:var(--grad);color:#fff;padding:15px 32px;border-radius:32px;font-weight:700;border:none;cursor:pointer;font-size:.95rem;font-family:inherit;box-shadow:0 10px 26px rgba(14,165,233,.45);transition:all .25s;display:inline-flex;align-items:center;gap:8px;text-decoration:none}
+.btn-prim:hover{transform:translateY(-3px);box-shadow:0 14px 32px rgba(16,185,129,.5)}
+.btn-sec{background:rgba(255,255,255,.06);color:#fff;padding:15px 32px;border-radius:32px;font-weight:700;border:1.5px solid rgba(255,255,255,.18);cursor:pointer;font-size:.95rem;font-family:inherit;transition:all .2s;text-decoration:none;display:inline-flex;align-items:center;gap:8px;backdrop-filter:blur(10px)}
+.btn-sec:hover{border-color:#38bdf8;background:rgba(14,165,233,.12);color:#7dd3fc}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;max-width:580px}
+.stat .n{font-size:1.9rem;font-weight:800;background:linear-gradient(135deg,#38bdf8,#34d399);-webkit-background-clip:text;-webkit-text-fill-color:transparent;letter-spacing:-.5px}
+.stat .l{font-size:.78rem;color:#94a3b8;font-weight:600;margin-top:2px;text-transform:uppercase;letter-spacing:.5px}
 .hero-img-wrap{position:relative}
-.hero-img{width:100%;border-radius:24px;box-shadow:0 18px 50px rgba(15,23,42,.12);object-fit:cover;height:480px}
-.hero-badge{position:absolute;bottom:-18px;left:50%;transform:translateX(-50%);background:#fff;padding:14px 22px;border-radius:18px;box-shadow:0 12px 36px rgba(15,23,42,.12);display:flex;align-items:center;gap:12px;font-size:.85rem;font-weight:700;white-space:nowrap}
-.hero-badge .dot{width:10px;height:10px;border-radius:50%;background:#22c55e;box-shadow:0 0 0 4px rgba(34,197,94,.18)}
+.hero-img{width:100%;border-radius:24px;box-shadow:0 25px 60px rgba(0,0,0,.45);object-fit:cover;height:520px;border:1px solid rgba(14,165,233,.2)}
+.hero-badge{position:absolute;bottom:-22px;left:50%;transform:translateX(-50%);background:rgba(15,23,42,.92);backdrop-filter:blur(14px);padding:14px 22px;border-radius:18px;box-shadow:0 12px 36px rgba(0,0,0,.4);display:flex;align-items:center;gap:12px;font-size:.85rem;font-weight:700;white-space:nowrap;color:#fff;border:1px solid rgba(14,165,233,.3)}
+.hero-badge .dot{width:10px;height:10px;border-radius:50%;background:#22c55e;box-shadow:0 0 0 4px rgba(34,197,94,.22);animation:p2 2s infinite}
 
-/* SECTION */
-.sec{padding:100px 28px}
-.sec-inner{max-width:1180px;margin:0 auto}
-.sec-head{text-align:center;max-width:680px;margin:0 auto 60px}
-.sec-head .tag{margin-bottom:18px}
-.sec-head h2{font-size:2.6rem;font-weight:800;letter-spacing:-1px;margin-bottom:14px;line-height:1.15}
+/* SECTIONS */
+.sec{padding:110px 28px;position:relative}
+.sec-inner{max-width:1200px;margin:0 auto}
+.sec-head{text-align:center;max-width:720px;margin:0 auto 64px}
+.sec-head .tag{margin-bottom:18px;background:rgba(14,165,233,.10);color:var(--primary-dark);border-color:rgba(14,165,233,.22)}
+.sec-head h2{font-size:2.7rem;font-weight:800;letter-spacing:-1.2px;margin-bottom:14px;line-height:1.12;color:var(--dark)}
 .sec-head h2 em{font-style:normal;background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
-.sec-head p{color:var(--texto2);font-size:1.05rem}
+.sec-head p{color:var(--text2);font-size:1.05rem}
 
 /* SERVICIOS */
-#servicios{background:var(--gris)}
-.serv-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
-.serv{background:#fff;border:1px solid var(--borde);border-radius:20px;padding:32px 28px;transition:all .25s;cursor:pointer;position:relative;overflow:hidden}
-.serv::before{content:'';position:absolute;top:0;left:0;width:100%;height:3px;background:var(--grad);transform:scaleX(0);transform-origin:left;transition:transform .3s}
-.serv:hover{transform:translateY(-6px);box-shadow:0 18px 40px rgba(15,23,42,.10);border-color:transparent}
-.serv:hover::before{transform:scaleX(1)}
-.serv .ico{width:56px;height:56px;border-radius:14px;background:linear-gradient(135deg,rgba(59,130,246,.12),rgba(236,72,153,.12));display:flex;align-items:center;justify-content:center;margin-bottom:20px;color:var(--azul)}
-.serv h3{font-size:1.15rem;font-weight:700;margin-bottom:10px;color:var(--texto)}
-.serv p{font-size:.92rem;color:var(--texto2);line-height:1.6}
+#servicios{background:linear-gradient(180deg,#f8fafc 0%,#fff 100%)}
+.serv-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:26px}
+.serv{background:rgba(255,255,255,.7);backdrop-filter:blur(12px);border:1px solid var(--glass-border);border-radius:22px;padding:34px 30px;transition:all .35s cubic-bezier(.4,0,.2,1);cursor:pointer;position:relative;overflow:hidden}
+.serv::before{content:'';position:absolute;inset:0;background:var(--grad);opacity:0;transition:opacity .35s;z-index:0}
+.serv::after{content:'';position:absolute;top:0;left:0;width:100%;height:3px;background:var(--grad);transform:scaleX(0);transform-origin:left;transition:transform .35s}
+.serv:hover{transform:translateY(-8px);box-shadow:0 22px 48px rgba(14,165,233,.18);border-color:transparent}
+.serv:hover::after{transform:scaleX(1)}
+.serv > *{position:relative;z-index:1}
+.serv .ico{width:60px;height:60px;border-radius:16px;background:linear-gradient(135deg,rgba(14,165,233,.14),rgba(16,185,129,.14));display:flex;align-items:center;justify-content:center;margin-bottom:22px;color:var(--primary);transition:all .3s}
+.serv:hover .ico{background:var(--grad);color:#fff;transform:scale(1.08)}
+.serv h3{font-size:1.18rem;font-weight:700;margin-bottom:10px;color:var(--dark)}
+.serv p{font-size:.93rem;color:var(--text2);line-height:1.65;margin-bottom:16px}
+.serv .more{font-size:.88rem;font-weight:700;color:var(--primary);display:inline-flex;align-items:center;gap:6px;transition:gap .2s}
+.serv:hover .more{gap:10px;color:var(--primary-dark)}
 
 /* QUIENES */
-.qui{display:grid;grid-template-columns:1fr 1fr;gap:70px;align-items:center;margin-bottom:80px}
-.qui img{width:100%;border-radius:24px;height:480px;object-fit:cover;box-shadow:0 16px 44px rgba(15,23,42,.12)}
-.qui h2{font-size:2.4rem;font-weight:800;letter-spacing:-1px;margin-bottom:18px;line-height:1.15}
+#quienes{background:#fff}
+.qui{display:grid;grid-template-columns:1fr 1.05fr;gap:80px;align-items:center}
+.qui-img-wrap{position:relative}
+.qui-img-wrap::before{content:'';position:absolute;top:-20px;left:-20px;width:100%;height:100%;border:2px solid var(--primary);border-radius:24px;z-index:0}
+.qui img{width:100%;border-radius:24px;height:500px;object-fit:cover;box-shadow:0 20px 50px rgba(15,23,42,.15);position:relative;z-index:1}
+.qui h2{font-size:2.5rem;font-weight:800;letter-spacing:-1.2px;margin-bottom:20px;line-height:1.12;color:var(--dark)}
 .qui h2 em{font-style:normal;background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
-.qui p{color:var(--texto2);font-size:1.02rem;margin-bottom:18px}
-.valores{display:flex;gap:14px;margin-top:28px;flex-wrap:wrap}
-.val{background:linear-gradient(135deg,rgba(59,130,246,.08),rgba(236,72,153,.08));border:1px solid rgba(59,130,246,.18);padding:10px 20px;border-radius:30px;font-size:.85rem;font-weight:700;color:var(--azul2)}
+.qui p{color:var(--text2);font-size:1.02rem;margin-bottom:18px}
+.badges{display:flex;gap:12px;margin-top:30px;flex-wrap:wrap}
+.badge{display:inline-flex;align-items:center;gap:8px;background:rgba(16,185,129,.08);border:1px solid rgba(16,185,129,.25);padding:10px 18px;border-radius:30px;font-size:.85rem;font-weight:700;color:var(--accent-dark)}
+.badge svg{width:16px;height:16px;color:var(--accent)}
 
-.equipo{display:grid;grid-template-columns:repeat(2,1fr);gap:24px}
-.miembro{background:#fff;border:1px solid var(--borde);border-radius:20px;padding:30px 24px;text-align:center;transition:all .25s}
-.miembro:hover{transform:translateY(-4px);box-shadow:0 14px 36px rgba(15,23,42,.08)}
-.miembro img{width:120px;height:120px;border-radius:50%;object-fit:cover;margin:0 auto 16px;display:block;box-shadow:0 8px 22px rgba(15,23,42,.12)}
-.miembro h4{font-size:1.08rem;font-weight:700;margin-bottom:4px}
-.miembro .rol{font-size:.82rem;color:var(--azul);font-weight:700;margin-bottom:8px;text-transform:uppercase;letter-spacing:.5px}
-.miembro p{font-size:.88rem;color:var(--texto2)}
+/* EQUIPO */
+#equipo-section{background:linear-gradient(180deg,#fff 0%,#f8fafc 100%);padding:110px 28px}
+.equipo{display:grid;grid-template-columns:repeat(2,1fr);gap:28px;max-width:900px;margin:0 auto}
+.miembro{background:#fff;border:1px solid var(--border);border-radius:22px;padding:36px 28px;text-align:center;transition:all .3s;position:relative;overflow:hidden}
+.miembro:hover{transform:translateY(-6px);box-shadow:0 20px 44px rgba(14,165,233,.15);border-color:var(--primary)}
+.miembro-img-wrap{position:relative;width:130px;height:130px;margin:0 auto 18px;border-radius:50%;overflow:hidden;box-shadow:0 10px 26px rgba(15,23,42,.15)}
+.miembro img{width:100%;height:100%;object-fit:cover;transition:transform .35s}
+.miembro:hover img{transform:scale(1.08)}
+.miembro-overlay{position:absolute;inset:0;background:rgba(14,165,233,.85);display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700;font-size:.85rem;opacity:0;transition:opacity .3s;border-radius:50%}
+.miembro:hover .miembro-overlay{opacity:1}
+.miembro h4{font-size:1.15rem;font-weight:700;margin-bottom:4px;color:var(--dark)}
+.miembro .rol{font-size:.8rem;color:var(--primary);font-weight:700;margin-bottom:10px;text-transform:uppercase;letter-spacing:.8px}
+.miembro p{font-size:.9rem;color:var(--text2)}
 
-/* GALERIA */
-#galeria{background:var(--gris)}
-.gal-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
-.gal-grid img{width:100%;height:260px;object-fit:cover;border-radius:18px;box-shadow:0 10px 30px rgba(15,23,42,.10);transition:transform .3s}
-.gal-grid img:hover{transform:scale(1.03)}
+/* GALERIA — masonry */
+#galeria{background:linear-gradient(180deg,#f8fafc 0%,#fff 100%)}
+.gal-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;grid-auto-rows:min-content}
+.gal-item{position:relative;border-radius:18px;overflow:hidden;box-shadow:0 10px 30px rgba(15,23,42,.10);cursor:pointer;height:280px}
+.gal-item:nth-child(2){height:360px}
+.gal-item:nth-child(5){height:360px}
+.gal-item img{width:100%;height:100%;object-fit:cover;transition:transform .5s}
+.gal-item:hover img{transform:scale(1.08)}
+.gal-overlay{position:absolute;inset:0;background:linear-gradient(180deg,transparent 50%,rgba(14,165,233,.85) 100%);display:flex;align-items:flex-end;justify-content:center;padding:24px;opacity:0;transition:opacity .3s}
+.gal-item:hover .gal-overlay{opacity:1}
+.gal-overlay svg{width:36px;height:36px;color:#fff}
+
+/* LIGHTBOX */
+.lightbox{position:fixed;inset:0;background:rgba(15,23,42,.94);z-index:2000;display:none;align-items:center;justify-content:center;padding:30px;backdrop-filter:blur(8px)}
+.lightbox.open{display:flex}
+.lightbox img{max-width:90%;max-height:90vh;border-radius:18px;box-shadow:0 30px 80px rgba(0,0,0,.6)}
+.lightbox-close{position:absolute;top:24px;right:30px;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.2);color:#fff;width:48px;height:48px;border-radius:50%;cursor:pointer;font-size:1.5rem;display:flex;align-items:center;justify-content:center}
+.lightbox-close:hover{background:rgba(255,255,255,.2)}
+
+/* RESERVAS — 3 pasos */
+#reservas{background:var(--grad-dark);color:#fff;position:relative;overflow:hidden}
+#reservas::before{content:'';position:absolute;top:-100px;right:-100px;width:400px;height:400px;background:radial-gradient(circle,rgba(14,165,233,.2),transparent 70%);border-radius:50%}
+#reservas .sec-head h2{color:#fff}
+#reservas .sec-head p{color:#cbd5e1}
+#reservas .tag{background:rgba(14,165,233,.14);border-color:rgba(14,165,233,.32);color:#7dd3fc}
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:30px;margin-bottom:60px;position:relative;z-index:1}
+.step{background:rgba(255,255,255,.05);backdrop-filter:blur(12px);border:1px solid rgba(14,165,233,.2);border-radius:22px;padding:38px 30px;text-align:center;position:relative;transition:all .3s}
+.step:hover{transform:translateY(-6px);border-color:var(--primary);box-shadow:0 18px 40px rgba(14,165,233,.25)}
+.step-num{width:60px;height:60px;border-radius:50%;background:var(--grad);display:flex;align-items:center;justify-content:center;margin:0 auto 22px;font-size:1.5rem;font-weight:800;color:#fff;box-shadow:0 10px 26px rgba(14,165,233,.5)}
+.step h3{font-size:1.25rem;font-weight:700;margin-bottom:10px;color:#fff}
+.step p{color:#94a3b8;font-size:.95rem}
+.step-cta{text-align:center;position:relative;z-index:1}
+.btn-big{background:var(--grad);color:#fff;padding:18px 44px;border-radius:36px;font-weight:800;border:none;cursor:pointer;font-size:1.05rem;font-family:inherit;box-shadow:0 14px 36px rgba(14,165,233,.5);transition:all .25s;display:inline-flex;align-items:center;gap:10px}
+.btn-big:hover{transform:translateY(-3px);box-shadow:0 18px 44px rgba(16,185,129,.55)}
+
+/* TESTIMONIOS */
+#testimonios{background:#fff}
+.tests{display:grid;grid-template-columns:repeat(3,1fr);gap:26px}
+.test{background:#fff;border:1px solid var(--border);border-radius:22px;padding:32px 28px;transition:all .3s;position:relative}
+.test:hover{transform:translateY(-6px);box-shadow:0 20px 40px rgba(14,165,233,.12);border-color:var(--primary-light)}
+.test-stars{color:#fbbf24;margin-bottom:14px;font-size:1.1rem}
+.test-text{color:var(--text);font-size:.95rem;font-style:italic;margin-bottom:22px;line-height:1.7}
+.test-user{display:flex;align-items:center;gap:12px}
+.test-user img{width:50px;height:50px;border-radius:50%;object-fit:cover}
+.test-name{font-size:.95rem;font-weight:700;color:var(--dark)}
+.test-tx{font-size:.8rem;color:var(--primary);font-weight:600}
 
 /* FOOTER */
-footer{background:#0f172a;color:#cbd5e1;padding:60px 28px 30px}
-.foot-inner{max-width:1180px;margin:0 auto;display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:50px;margin-bottom:40px}
-footer h4{color:#fff;font-size:.95rem;font-weight:700;margin-bottom:18px;text-transform:uppercase;letter-spacing:1px}
-footer p,footer a{color:#94a3b8;font-size:.92rem;text-decoration:none;line-height:1.9}
-footer a:hover{color:#fff}
-.foot-logo{display:flex;align-items:center;gap:10px;margin-bottom:14px}
-.foot-logo .ico{width:38px;height:38px;border-radius:11px;background:var(--grad);display:flex;align-items:center;justify-content:center}
+footer{background:var(--grad-dark);color:#cbd5e1;padding:80px 28px 30px;position:relative;overflow:hidden}
+footer::before{content:'';position:absolute;top:-150px;right:-150px;width:400px;height:400px;background:radial-gradient(circle,rgba(14,165,233,.15),transparent 70%);border-radius:50%}
+.foot-inner{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:50px;margin-bottom:50px;position:relative;z-index:1}
+footer h4{color:#fff;font-size:.95rem;font-weight:700;margin-bottom:20px;text-transform:uppercase;letter-spacing:1.2px}
+footer p,footer a{color:#94a3b8;font-size:.92rem;text-decoration:none;line-height:1.9;transition:color .2s}
+footer a:hover{color:#7dd3fc}
+.foot-logo{display:flex;align-items:center;gap:11px;margin-bottom:18px}
+.foot-logo .ico{width:42px;height:42px;border-radius:12px;background:var(--grad);display:flex;align-items:center;justify-content:center;box-shadow:0 8px 22px rgba(14,165,233,.4)}
 .foot-logo span{font-size:1.25rem;font-weight:800;color:#fff;letter-spacing:-.5px}
-.foot-bot{border-top:1px solid #1e293b;padding-top:24px;text-align:center;font-size:.82rem;color:#64748b}
+.foot-soc{display:flex;gap:12px;margin-top:18px}
+.foot-soc a{width:40px;height:40px;border-radius:50%;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);display:flex;align-items:center;justify-content:center;transition:all .25s}
+.foot-soc a:hover{background:var(--grad);border-color:transparent;transform:translateY(-2px)}
+.foot-soc svg{width:18px;height:18px;color:#cbd5e1;transition:color .2s}
+.foot-soc a:hover svg{color:#fff}
+.foot-bot{border-top:1px solid rgba(255,255,255,.08);padding-top:24px;text-align:center;font-size:.82rem;color:#64748b;position:relative;z-index:1}
+.foot-bot strong{color:#7dd3fc;font-weight:700}
 
 /* CHATBOT */
-#wm-btn{position:fixed;bottom:24px;right:24px;width:64px;height:64px;border-radius:50%;background:var(--grad);border:none;cursor:pointer;box-shadow:0 12px 32px rgba(59,130,246,.4);display:flex;align-items:center;justify-content:center;z-index:999;transition:transform .2s;animation:pulse 2.4s infinite}
+#wm-btn{position:fixed;bottom:24px;right:24px;width:66px;height:66px;border-radius:50%;background:var(--grad);border:none;cursor:pointer;box-shadow:0 14px 34px rgba(14,165,233,.5);display:flex;align-items:center;justify-content:center;z-index:999;transition:transform .2s;animation:pulse 2.6s infinite}
 #wm-btn:hover{transform:scale(1.08)}
 #wm-btn.hidden{display:none}
-@keyframes pulse{0%,100%{box-shadow:0 12px 32px rgba(59,130,246,.4),0 0 0 0 rgba(236,72,153,.5)}50%{box-shadow:0 12px 32px rgba(59,130,246,.4),0 0 0 16px rgba(236,72,153,0)}}
+@keyframes pulse{0%,100%{box-shadow:0 14px 34px rgba(14,165,233,.5),0 0 0 0 rgba(16,185,129,.55)}50%{box-shadow:0 14px 34px rgba(14,165,233,.5),0 0 0 18px rgba(16,185,129,0)}}
 #wm-btn svg{width:30px;height:30px;color:#fff}
-#wm-tooltip{position:fixed;bottom:96px;right:24px;background:#0f172a;color:#fff;padding:8px 14px;border-radius:10px;font-size:.82rem;font-weight:600;z-index:998;box-shadow:0 6px 18px rgba(15,23,42,.25);pointer-events:none;opacity:0;transform:translateY(6px);transition:all .25s}
+#wm-tooltip{position:fixed;bottom:98px;right:24px;background:#0f172a;color:#fff;padding:9px 16px;border-radius:10px;font-size:.82rem;font-weight:600;z-index:998;box-shadow:0 8px 22px rgba(15,23,42,.3);pointer-events:none;opacity:0;transform:translateY(6px);transition:all .25s}
 #wm-btn:hover + #wm-tooltip{opacity:1;transform:translateY(0)}
 
-#wm-mod{position:fixed;bottom:100px;right:24px;width:380px;max-height:600px;background:#fff;border-radius:20px;box-shadow:0 28px 70px rgba(15,23,42,.28);display:none;flex-direction:column;z-index:1000;overflow:hidden;border:1px solid var(--borde)}
+#wm-mod{position:fixed;bottom:100px;right:24px;width:380px;max-height:620px;background:#fff;border-radius:22px;box-shadow:0 30px 70px rgba(15,23,42,.32);display:none;flex-direction:column;z-index:1000;overflow:hidden;border:1px solid var(--border)}
 #wm-mod.open{display:flex;animation:slide .3s ease}
 @keyframes slide{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
-.wm-head{background:var(--grad);padding:18px 20px;color:#fff;display:flex;align-items:center;gap:14px}
-.wm-head .av{width:42px;height:42px;border-radius:50%;background:rgba(255,255,255,.25);display:flex;align-items:center;justify-content:center;font-weight:800;margin:0;font-size:1rem}
-.wm-head h5{font-size:1rem;font-weight:700;margin-bottom:2px}
+.wm-head{background:linear-gradient(135deg,#0ea5e9 0%,#0284c7 100%);padding:20px 22px;color:#fff;display:flex;align-items:center;gap:14px}
+.wm-head .av{width:44px;height:44px;border-radius:50%;background:rgba(255,255,255,.22);display:flex;align-items:center;justify-content:center;font-weight:800;margin:0;font-size:1.1rem;border:2px solid rgba(255,255,255,.3)}
+.wm-head h5{font-size:1.02rem;font-weight:700;margin-bottom:2px}
 .wm-head .st{font-size:.75rem;display:flex;align-items:center;gap:6px;opacity:.95}
-.wm-head .st::before{content:'';width:8px;height:8px;border-radius:50%;background:#4ade80}
-.wm-close{margin-left:auto;background:rgba(255,255,255,.18);border:none;color:#fff;width:30px;height:30px;border-radius:50%;cursor:pointer;font-size:1.1rem}
+.wm-head .st::before{content:'';width:8px;height:8px;border-radius:50%;background:#4ade80;box-shadow:0 0 0 3px rgba(74,222,128,.3)}
+.wm-close{margin-left:auto;background:rgba(255,255,255,.18);border:none;color:#fff;width:32px;height:32px;border-radius:50%;cursor:pointer;font-size:1.2rem;transition:background .2s}
+.wm-close:hover{background:rgba(255,255,255,.3)}
 .wm-close.hidden{display:none}
-.wm-body{flex:1;padding:20px;overflow-y:auto;background:var(--gris);max-height:380px;min-height:280px}
+.wm-body{flex:1;padding:22px;overflow-y:auto;background:var(--bg);max-height:400px;min-height:300px}
 .msg{margin-bottom:12px;display:flex;animation:in .25s ease}
 @keyframes in{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:translateY(0)}}
 .msg.bot{justify-content:flex-start}
 .msg.usr{justify-content:flex-end}
-.msg .b{max-width:78%;padding:11px 15px;border-radius:16px;font-size:.9rem;line-height:1.5;white-space:pre-wrap;word-wrap:break-word}
-.msg.bot .b{background:#fff;color:var(--texto);border:1px solid var(--borde);border-bottom-left-radius:4px}
-.msg.usr .b{background:var(--grad);color:#fff;border-bottom-right-radius:4px}
+.msg .b{max-width:80%;padding:12px 16px;border-radius:16px;font-size:.9rem;line-height:1.5;white-space:pre-wrap;word-wrap:break-word}
+.msg.bot .b{background:#fff;color:var(--text);border:1px solid var(--border);border-bottom-left-radius:4px;box-shadow:0 2px 8px rgba(14,165,233,.06)}
+.msg.usr .b{background:var(--grad);color:#fff;border-bottom-right-radius:4px;box-shadow:0 4px 12px rgba(14,165,233,.25)}
 .qbtns{display:flex;flex-direction:column;gap:8px;margin:6px 0 10px}
-.qbtn{background:#fff;border:1.5px solid var(--azul);color:var(--azul);padding:9px 14px;border-radius:14px;font-size:.85rem;font-weight:600;cursor:pointer;text-align:left;transition:all .15s;font-family:inherit}
-.qbtn:hover{background:var(--azul);color:#fff}
+.qbtn{background:#fff;border:1.5px solid var(--primary);color:var(--primary);padding:10px 14px;border-radius:14px;font-size:.85rem;font-weight:600;cursor:pointer;text-align:left;transition:all .15s;font-family:inherit}
+.qbtn:hover{background:var(--primary);color:#fff;transform:translateX(2px)}
 .qbtns-grid{display:grid;grid-template-columns:1fr 1fr;gap:6px;margin:6px 0 10px}
-.qbtns-grid .qbtn{font-size:.8rem;padding:8px 10px;text-align:center}
-.typing{display:inline-flex;gap:4px;padding:14px 16px;background:#fff;border:1px solid var(--borde);border-radius:16px;border-bottom-left-radius:4px}
-.typing span{width:7px;height:7px;background:var(--azul);border-radius:50%;animation:bnc 1.2s infinite}
+.qbtns-grid .qbtn{font-size:.8rem;padding:9px 10px;text-align:center}
+.typing{display:inline-flex;gap:4px;padding:14px 16px;background:#fff;border:1px solid var(--border);border-radius:16px;border-bottom-left-radius:4px}
+.typing span{width:7px;height:7px;background:var(--primary);border-radius:50%;animation:bnc 1.2s infinite}
 .typing span:nth-child(2){animation-delay:.2s}
 .typing span:nth-child(3){animation-delay:.4s}
 @keyframes bnc{0%,60%,100%{opacity:.3;transform:translateY(0)}30%{opacity:1;transform:translateY(-5px)}}
-.wm-input{display:flex;border-top:1px solid var(--borde);background:#fff}
-.wm-input input{flex:1;border:none;padding:14px 16px;font-size:.9rem;outline:none;font-family:inherit}
-.wm-input button{background:var(--grad);border:none;color:#fff;padding:0 20px;cursor:pointer;font-weight:700}
-.wa-btn{display:flex;align-items:center;justify-content:center;gap:8px;background:#25d366;color:#fff;text-decoration:none;padding:12px 18px;border-radius:14px;font-weight:700;font-size:.9rem;margin-top:10px;transition:all .15s}
-.wa-btn:hover{background:#1da851}
+.wm-input{display:flex;border-top:1px solid var(--border);background:#fff}
+.wm-input input{flex:1;border:none;padding:14px 16px;font-size:.9rem;outline:none;font-family:inherit;color:var(--text)}
+.wm-input input:disabled{background:#f1f5f9;color:#94a3b8}
+.wm-input button{background:var(--grad);border:none;color:#fff;padding:0 22px;cursor:pointer;font-weight:700;transition:opacity .2s}
+.wm-input button:disabled{opacity:.5;cursor:not-allowed}
+.wa-btn{display:flex;align-items:center;justify-content:center;gap:8px;background:#25d366;color:#fff;text-decoration:none;padding:13px 18px;border-radius:14px;font-weight:700;font-size:.9rem;margin-top:10px;transition:all .15s;box-shadow:0 6px 16px rgba(37,211,102,.35)}
+.wa-btn:hover{background:#1da851;transform:translateY(-2px)}
+.reset-btn{background:var(--grad);border:none;color:#fff;padding:11px 18px;border-radius:14px;font-weight:700;font-size:.85rem;margin-top:10px;cursor:pointer;font-family:inherit;width:100%}
 
 /* RESPONSIVE TABLET 900px */
 @media(max-width:900px){
-  .nav-links{display:none;position:absolute;top:72px;left:0;width:100%;background:#fff;flex-direction:column;gap:0;border-bottom:1px solid var(--borde);padding:8px 0;box-shadow:0 8px 22px rgba(15,23,42,.08)}
+  .nav-links{display:none;position:absolute;top:74px;left:0;width:100%;background:rgba(15,23,42,.96);backdrop-filter:blur(20px);flex-direction:column;gap:0;border-bottom:1px solid rgba(14,165,233,.2);padding:8px 0}
   .nav-links.open{display:flex}
-  .nav-links a{padding:14px 28px;border-bottom:1px solid var(--borde)}
+  .nav-links a{padding:14px 28px;border-bottom:1px solid rgba(255,255,255,.06);color:#cbd5e1}
   .nav-links a:last-child{border-bottom:none}
   .nav-burger{display:flex}
   .nav-cta{display:none}
-  .hero{padding:110px 22px 70px}
+  .hero{padding:130px 22px 90px}
   .hero-inner{grid-template-columns:1fr;gap:50px}
-  .hero h1{font-size:2.4rem}
-  .hero-img{height:380px}
+  .hero h1{font-size:2.5rem}
+  .hero-img{height:400px}
   .stats{grid-template-columns:repeat(2,1fr);max-width:100%}
-  .qui{grid-template-columns:1fr;gap:40px}
-  .qui img{height:340px}
-  .qui h2,.sec-head h2{font-size:2rem}
+  .qui{grid-template-columns:1fr;gap:50px}
+  .qui img{height:360px}
+  .qui h2,.sec-head h2{font-size:2.05rem}
   .serv-grid{grid-template-columns:1fr 1fr}
   .equipo{grid-template-columns:1fr 1fr}
   .gal-grid{grid-template-columns:1fr 1fr}
-  .gal-grid img{height:220px}
-  .foot-inner{grid-template-columns:1fr;gap:30px}
-  .sec{padding:70px 22px}
+  .gal-item{height:240px}
+  .gal-item:nth-child(2),.gal-item:nth-child(5){height:240px}
+  .steps{grid-template-columns:1fr;gap:20px}
+  .tests{grid-template-columns:1fr;overflow-x:auto;scroll-snap-type:x mandatory}
+  .test{scroll-snap-align:start}
+  .foot-inner{grid-template-columns:1fr 1fr;gap:32px}
+  .sec{padding:80px 22px}
+  #equipo-section{padding:80px 22px}
 }
 
 /* RESPONSIVE MOBILE 600px */
 @media(max-width:600px){
-  .nav-inner{padding:0 18px;height:64px}
-  .nav-logo span{font-size:1.1rem}
-  .hero{padding:96px 18px 60px}
-  .hero h1{font-size:1.95rem}
+  .nav-inner{padding:0 18px;height:66px}
+  .nav-logo span{font-size:1.08rem}
+  .hero{padding:110px 18px 70px}
+  .hero h1{font-size:2rem;letter-spacing:-1px}
   .hero p{font-size:1rem}
   .hero-img{height:300px}
   .hero-badge{font-size:.78rem;padding:11px 16px}
   .stats{grid-template-columns:repeat(2,1fr);gap:14px}
-  .stat .n{font-size:1.4rem}
+  .stat .n{font-size:1.5rem}
   .sec{padding:60px 18px}
-  .sec-head h2,.qui h2{font-size:1.7rem}
+  #equipo-section{padding:60px 18px}
+  .sec-head h2,.qui h2{font-size:1.75rem}
   .serv-grid{grid-template-columns:1fr;gap:14px}
-  .serv{padding:24px 20px}
+  .serv{padding:26px 22px}
   .equipo{grid-template-columns:1fr}
   .gal-grid{grid-template-columns:1fr;gap:14px}
-  .gal-grid img{height:240px}
-  footer{padding:50px 18px 24px}
+  .gal-item,.gal-item:nth-child(2),.gal-item:nth-child(5){height:260px}
+  .foot-inner{grid-template-columns:1fr;gap:30px}
+  footer{padding:60px 18px 24px}
   #wm-mod{right:0;left:0;bottom:0;width:100vw;max-width:100vw;margin:0;border-radius:18px 18px 0 0;max-height:92vh}
   .wm-body{max-height:60vh}
-  #wm-btn{bottom:16px;right:16px;width:56px;height:56px}
+  #wm-btn{bottom:16px;right:16px;width:58px;height:58px}
   #wm-tooltip{display:none}
+  .btn-big{padding:15px 32px;font-size:1rem}
 }
 </style>
 </head>
 <body>
 
-<nav>
+<nav id="nav">
   <div class="nav-inner">
     <a href="#" class="nav-logo">
       <span class="ico">
         <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2c-2 0-3.5 1.5-3.5 4 0 2 1 3.5 1 5.5 0 1.5-1 2.5-2 3.5-1.5 1.5-2 3-1 4.5 1 1.5 3 1 4.5 0 1-.7 2-1.5 3-1.5s2 .8 3 1.5c1.5 1 3.5 1.5 4.5 0 1-1.5 .5-3-1-4.5-1-1-2-2-2-3.5 0-2 1-3.5 1-5.5 0-2.5-1.5-4-3.5-4z"/></svg>
       </span>
-      <span>WhiteMoon Podología</span>
+      <span>White<em>Moon</em> Podología</span>
     </a>
     <div class="nav-links" id="nav-links">
       <a href="#inicio" onclick="closeMenu()">Inicio</a>
       <a href="#servicios" onclick="closeMenu()">Servicios</a>
       <a href="#quienes" onclick="closeMenu()">Quiénes somos</a>
-      <a href="#equipo" onclick="closeMenu()">Equipo</a>
+      <a href="#equipo-section" onclick="closeMenu()">Equipo</a>
       <a href="#galeria" onclick="closeMenu()">Galería</a>
+      <a href="#testimonios" onclick="closeMenu()">Opiniones</a>
     </div>
     <button class="nav-cta" onclick="openChat()">Pedir cita</button>
     <button class="nav-burger" id="nav-burger" onclick="toggleMenu()" aria-label="Menú">
@@ -235,24 +361,31 @@ footer a:hover{color:#fff}
 </nav>
 
 <section id="inicio" class="hero">
+  <div class="hero-orb"></div>
   <div class="hero-inner">
-    <div>
-      <span class="tag">Centro especializado en podología</span>
+    <div class="reveal">
+      <span class="tag"><span class="dotg"></span>Centro especializado en podología</span>
       <h1>Tu salud podal, en las <em>mejores manos</em></h1>
-      <p>WhiteMoon Podología, especialistas en el cuidado integral del pie. Tratamientos avanzados y equipo certificado para acompañarte en cada paso.</p>
+      <p>Clínica podológica con más de 12 años cuidando tus pies. Quiropodía, biomecánica, pie diabético y podología deportiva con la última tecnología.</p>
       <div class="hero-btns">
-        <button class="btn-prim" onclick="openChat()">Pedir cita ahora</button>
-        <a href="#servicios" class="btn-sec">Ver servicios</a>
+        <button class="btn-prim" onclick="openChat()">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
+          Pedir cita ahora
+        </button>
+        <a href="#servicios" class="btn-sec">
+          Ver servicios
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+        </a>
       </div>
       <div class="stats">
-        <div class="stat"><div class="n">+2.500</div><div class="l">Pacientes</div></div>
-        <div class="stat"><div class="n">12 años</div><div class="l">Experiencia</div></div>
-        <div class="stat"><div class="n">6</div><div class="l">Tratamientos</div></div>
-        <div class="stat"><div class="n">98%</div><div class="l">Satisfacción</div></div>
+        <div class="stat"><div class="n" data-count="2500" data-suffix="+">0</div><div class="l">Pacientes</div></div>
+        <div class="stat"><div class="n" data-count="12" data-suffix=" años">0</div><div class="l">Experiencia</div></div>
+        <div class="stat"><div class="n" data-count="6">0</div><div class="l">Tratamientos</div></div>
+        <div class="stat"><div class="n" data-count="98" data-suffix="%">0</div><div class="l">Satisfacción</div></div>
       </div>
     </div>
-    <div class="hero-img-wrap">
-      <img class="hero-img" src="https://images.unsplash.com/photo-1519823551278-64ac92734fb1?w=1400&q=80" alt="Clínica WhiteMoon Podología" loading="lazy" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1519823551278-64ac92734fb1?w=500&q=80'">
+    <div class="hero-img-wrap reveal">
+      <img class="hero-img" src="https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?w=1400&q=80" alt="Clínica WhiteMoon Podología" loading="lazy" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1519823551278-64ac92734fb1?w=900&q=80'">
       <div class="hero-badge"><span class="dot"></span>Citas disponibles esta semana</div>
     </div>
   </div>
@@ -260,80 +393,98 @@ footer a:hover{color:#fff}
 
 <section id="servicios" class="sec">
   <div class="sec-inner">
-    <div class="sec-head">
+    <div class="sec-head reveal">
       <span class="tag">Servicios</span>
       <h2>Tratamientos <em>especializados</em> para cada necesidad</h2>
       <p>Seis áreas de trabajo para cuidar de tus pies con la última tecnología y el mayor rigor clínico.</p>
     </div>
     <div class="serv-grid">
-      <div class="serv" onclick="askService('Quiropodía / Pedicura médica')">
-        <div class="ico"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg></div>
-        <h3>Quiropodía / Pedicura médica</h3>
-        <p>Eliminación de durezas, callos y uñas encarnadas. Higiene podológica profesional.</p>
+      <div class="serv reveal" onclick="askService('Quiropodía / Pedicura médica')">
+        <div class="ico"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2c-2 0-3.5 1.5-3.5 4 0 2 1 3.5 1 5.5 0 1.5-1 2.5-2 3.5-1.5 1.5-2 3-1 4.5 1 1.5 3 1 4.5 0 1-.7 2-1.5 3-1.5s2 .8 3 1.5c1.5 1 3.5 1.5 4.5 0 1-1.5 .5-3-1-4.5-1-1-2-2-2-3.5 0-2 1-3.5 1-5.5 0-2.5-1.5-4-3.5-4z"/></svg></div>
+        <h3>Quiropodía</h3>
+        <p>Eliminación de durezas, callos y uñas encarnadas. Higiene podológica profesional con técnica indolora.</p>
+        <span class="more">Ver más <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg></span>
       </div>
-      <div class="serv" onclick="askService('Biomecánica y Plantillas')">
-        <div class="ico"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12h18M3 6h18M3 18h18"/></svg></div>
+      <div class="serv reveal" onclick="askService('Biomecánica y Plantillas')">
+        <div class="ico"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="M7 17l4-8 4 4 5-10"/></svg></div>
         <h3>Biomecánica y Plantillas</h3>
         <p>Estudio de la pisada y fabricación de plantillas ortopédicas a medida para cada patología.</p>
+        <span class="more">Ver más <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg></span>
       </div>
-      <div class="serv" onclick="askService('Pie Diabético')">
-        <div class="ico"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg></div>
+      <div class="serv reveal" onclick="askService('Pie Diabético')">
+        <div class="ico"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg></div>
         <h3>Pie Diabético</h3>
         <p>Tratamiento especializado para pacientes diabéticos. Prevención de úlceras y control periódico.</p>
+        <span class="more">Ver más <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg></span>
       </div>
-      <div class="serv" onclick="askService('Cirugía Ungueal')">
-        <div class="ico"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L4 7v10l8 5 8-5V7z"/><path d="M9 12l2 2 4-4"/></svg></div>
+      <div class="serv reveal" onclick="askService('Podología Deportiva')">
+        <div class="ico"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L3 14h7l-1 8 10-12h-7z"/></svg></div>
+        <h3>Podología Deportiva</h3>
+        <p>Biomecánica para deportistas. Prevención de lesiones y mejora del rendimiento atlético.</p>
+        <span class="more">Ver más <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg></span>
+      </div>
+      <div class="serv reveal" onclick="askService('Cirugía Ungueal')">
+        <div class="ico"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L4 7v10l8 5 8-5V7z"/><path d="M9 12l2 2 4-4"/></svg></div>
         <h3>Cirugía Ungueal</h3>
         <p>Tratamiento definitivo de uñas encarnadas con técnica mínimamente invasiva. Sin cicatrices.</p>
+        <span class="more">Ver más <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg></span>
       </div>
-      <div class="serv" onclick="askService('Verrugas Plantares')">
-        <div class="ico"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M9 12h6M12 9v6"/></svg></div>
+      <div class="serv reveal" onclick="askService('Verrugas Plantares')">
+        <div class="ico"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg></div>
         <h3>Verrugas Plantares</h3>
         <p>Eliminación de verrugas con láser CO2 o crioterapia. Sin dolor y sin recidivas.</p>
-      </div>
-      <div class="serv" onclick="askService('Podología Deportiva')">
-        <div class="ico"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L3 14h7l-1 8 10-12h-7z"/></svg></div>
-        <h3>Podología Deportiva</h3>
-        <p>Biomecánica para deportistas. Prevención de lesiones y mejora del rendimiento.</p>
+        <span class="more">Ver más <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg></span>
       </div>
     </div>
   </div>
 </section>
 
-<section id="quienes" class="sec" style="background:#fff">
+<section id="quienes" class="sec">
   <div class="sec-inner">
     <div class="qui">
-      <img src="https://images.unsplash.com/photo-1607619056574-7b8d3ee536b2?w=500&q=80" alt="Podólogo tratando pie en camilla" loading="lazy" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1519823551278-64ac92734fb1?w=500&q=80'">
-      <div>
+      <div class="qui-img-wrap reveal">
+        <img src="https://images.unsplash.com/photo-1607619056574-7b8d3ee536b2?w=900&q=80" alt="Podólogo tratando pie en camilla" loading="lazy" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1519823551278-64ac92734fb1?w=900&q=80'">
+      </div>
+      <div class="reveal">
         <span class="tag">Quiénes somos</span>
         <h2>Cuidamos tus pies con <em>vocación e innovación</em></h2>
         <p>Somos una clínica con más de una década dedicada a la salud del pie. Apostamos por la atención humana, la formación continua y la última tecnología para ofrecerte siempre el mejor diagnóstico.</p>
         <p>Cada paciente es único: por eso diseñamos planes personalizados y acompañamos a las familias en cada etapa de la vida.</p>
-        <div class="valores">
-          <span class="val">Vocación</span>
-          <span class="val">Innovación</span>
-          <span class="val">Familia</span>
+        <div class="badges">
+          <span class="badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Colegiados</span>
+          <span class="badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Seguro RC</span>
+          <span class="badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>12 años</span>
         </div>
       </div>
     </div>
-    <div id="equipo">
-      <div class="sec-head">
-        <span class="tag">Nuestro equipo</span>
-        <h2>Profesionales que <em>cuidan de ti</em></h2>
+  </div>
+</section>
+
+<section id="equipo-section">
+  <div class="sec-inner">
+    <div class="sec-head reveal">
+      <span class="tag">Nuestro equipo</span>
+      <h2>Profesionales que <em>cuidan de ti</em></h2>
+      <p>Un equipo certificado con formación continua para ofrecerte siempre la mejor atención.</p>
+    </div>
+    <div class="equipo">
+      <div class="miembro reveal">
+        <div class="miembro-img-wrap">
+          <img src="https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?w=400&q=80" alt="Podólogo director" loading="lazy" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1519823551278-64ac92734fb1?w=400&q=80'">
+          <div class="miembro-overlay">Ver perfil</div>
+        </div>
+        <h4>Carlos López</h4>
+        <div class="rol">Podólogo Director</div>
+        <p>Biomecánica y pie diabético</p>
       </div>
-      <div class="equipo">
-        <div class="miembro">
-          <img src="https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?w=300&q=80" alt="Podólogo con paciente" loading="lazy" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1519823551278-64ac92734fb1?w=500&q=80'">
-          <h4>Carlos López</h4>
-          <div class="rol">Podólogo Director</div>
-          <p>Biomecánica y pie diabético</p>
+      <div class="miembro reveal">
+        <div class="miembro-img-wrap">
+          <img src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?w=400&q=80" alt="Podóloga profesional" loading="lazy" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1519823551278-64ac92734fb1?w=400&q=80'">
+          <div class="miembro-overlay">Ver perfil</div>
         </div>
-        <div class="miembro">
-          <img src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?w=300&q=80" alt="Podóloga profesional" loading="lazy" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1519823551278-64ac92734fb1?w=500&q=80'">
-          <h4>Ana Martínez</h4>
-          <div class="rol">Podóloga</div>
-          <p>Cirugía ungueal y deportiva</p>
-        </div>
+        <h4>Ana Martínez</h4>
+        <div class="rol">Podóloga</div>
+        <p>Cirugía ungueal y deportiva</p>
       </div>
     </div>
   </div>
@@ -341,18 +492,96 @@ footer a:hover{color:#fff}
 
 <section id="galeria" class="sec">
   <div class="sec-inner">
-    <div class="sec-head">
+    <div class="sec-head reveal">
       <span class="tag">Galería</span>
       <h2>Nuestra <em>clínica</em> y tratamientos</h2>
       <p>Conoce de cerca nuestras instalaciones y el día a día en WhiteMoon Podología.</p>
     </div>
     <div class="gal-grid">
-      <img src="https://images.unsplash.com/photo-1582719471384-894fbb16e074?w=500&q=80" alt="Quiropodía y uñas" loading="lazy" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1519823551278-64ac92734fb1?w=500&q=80'">
-      <img src="https://images.unsplash.com/photo-1595078475328-1ab05d0a6a0e?w=500&q=80" alt="Plantilla ortopédica" loading="lazy" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1519823551278-64ac92734fb1?w=500&q=80'">
-      <img src="https://images.unsplash.com/photo-1512290923902-8a9f81dc236c?w=500&q=80" alt="Pie siendo examinado" loading="lazy" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1519823551278-64ac92734fb1?w=500&q=80'">
-      <img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=500&q=80" alt="Estudio biomecánica de la pisada" loading="lazy" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1519823551278-64ac92734fb1?w=500&q=80'">
-      <img src="https://images.unsplash.com/photo-1559757175-5700dde675bc?w=500&q=80" alt="Tratamiento pie diabético" loading="lazy" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1519823551278-64ac92734fb1?w=500&q=80'">
-      <img src="https://images.unsplash.com/photo-1519823551278-64ac92734fb1?w=500&q=80" alt="WhiteMoon Podología" loading="lazy" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1519823551278-64ac92734fb1?w=500&q=80'">
+      <div class="gal-item reveal" onclick="openLightbox(this)"><img src="https://images.unsplash.com/photo-1582719471384-894fbb16e074?w=900&q=80" alt="Quiropodía y uñas" loading="lazy" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1519823551278-64ac92734fb1?w=900&q=80'"><div class="gal-overlay"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35M11 8v6M8 11h6"/></svg></div></div>
+      <div class="gal-item reveal" onclick="openLightbox(this)"><img src="https://images.unsplash.com/photo-1595078475328-1ab05d0a6a0e?w=900&q=80" alt="Plantilla ortopédica" loading="lazy" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1519823551278-64ac92734fb1?w=900&q=80'"><div class="gal-overlay"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35M11 8v6M8 11h6"/></svg></div></div>
+      <div class="gal-item reveal" onclick="openLightbox(this)"><img src="https://images.unsplash.com/photo-1512290923902-8a9f81dc236c?w=900&q=80" alt="Pie siendo examinado" loading="lazy" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1519823551278-64ac92734fb1?w=900&q=80'"><div class="gal-overlay"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35M11 8v6M8 11h6"/></svg></div></div>
+      <div class="gal-item reveal" onclick="openLightbox(this)"><img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=900&q=80" alt="Estudio biomecánica" loading="lazy" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1519823551278-64ac92734fb1?w=900&q=80'"><div class="gal-overlay"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35M11 8v6M8 11h6"/></svg></div></div>
+      <div class="gal-item reveal" onclick="openLightbox(this)"><img src="https://images.unsplash.com/photo-1559757175-5700dde675bc?w=900&q=80" alt="Tratamiento pie diabético" loading="lazy" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1519823551278-64ac92734fb1?w=900&q=80'"><div class="gal-overlay"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35M11 8v6M8 11h6"/></svg></div></div>
+      <div class="gal-item reveal" onclick="openLightbox(this)"><img src="https://images.unsplash.com/photo-1519823551278-64ac92734fb1?w=900&q=80" alt="Clínica podológica" loading="lazy"><div class="gal-overlay"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35M11 8v6M8 11h6"/></svg></div></div>
+    </div>
+  </div>
+</section>
+
+<section id="reservas" class="sec">
+  <div class="sec-inner">
+    <div class="sec-head reveal">
+      <span class="tag">Reservas</span>
+      <h2>Pide cita en <em>3 sencillos pasos</em></h2>
+      <p>Reservar tu consulta nunca fue tan fácil. Confirmamos por WhatsApp en menos de una hora.</p>
+    </div>
+    <div class="steps">
+      <div class="step reveal">
+        <div class="step-num">1</div>
+        <h3>Elige servicio</h3>
+        <p>Selecciona el tratamiento que necesitas entre nuestras 6 especialidades.</p>
+      </div>
+      <div class="step reveal">
+        <div class="step-num">2</div>
+        <h3>Elige fecha</h3>
+        <p>Cuéntanos tu disponibilidad horaria, mañana o tarde, y buscamos el mejor hueco.</p>
+      </div>
+      <div class="step reveal">
+        <div class="step-num">3</div>
+        <h3>Confirma por WhatsApp</h3>
+        <p>Recibe la confirmación al instante por WhatsApp con día y hora exacta.</p>
+      </div>
+    </div>
+    <div class="step-cta reveal">
+      <button class="btn-big" onclick="openChat()">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
+        Reservar cita ahora
+      </button>
+    </div>
+  </div>
+</section>
+
+<section id="testimonios" class="sec">
+  <div class="sec-inner">
+    <div class="sec-head reveal">
+      <span class="tag">Opiniones</span>
+      <h2>Lo que dicen <em>nuestros pacientes</em></h2>
+      <p>Más de 2.500 pacientes han confiado en nosotros. Estas son algunas de sus opiniones.</p>
+    </div>
+    <div class="tests">
+      <div class="test reveal">
+        <div class="test-stars">★★★★★</div>
+        <p class="test-text">"Llevaba años con una uña encarnada que me hacía la vida imposible. En una sola consulta me la solucionaron y nunca más he tenido problemas. ¡Profesionales 10!"</p>
+        <div class="test-user">
+          <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=200&q=80" alt="María García" loading="lazy" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1519823551278-64ac92734fb1?w=200&q=80'">
+          <div>
+            <div class="test-name">María García</div>
+            <div class="test-tx">Cirugía ungueal</div>
+          </div>
+        </div>
+      </div>
+      <div class="test reveal">
+        <div class="test-stars">★★★★★</div>
+        <p class="test-text">"Soy corredor amateur y tenía fascitis plantar. Las plantillas hechas a medida me cambiaron la vida. Ya he vuelto a correr maratones sin dolor."</p>
+        <div class="test-user">
+          <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=200&q=80" alt="Javier Ruiz" loading="lazy" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1519823551278-64ac92734fb1?w=200&q=80'">
+          <div>
+            <div class="test-name">Javier Ruiz</div>
+            <div class="test-tx">Podología deportiva</div>
+          </div>
+        </div>
+      </div>
+      <div class="test reveal">
+        <div class="test-stars">★★★★★</div>
+        <p class="test-text">"Mi madre tiene diabetes y aquí nos cuidan con un mimo increíble. Revisiones puntuales y mucha cercanía. Recomiendo 100% WhiteMoon."</p>
+        <div class="test-user">
+          <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=200&q=80" alt="Laura Sánchez" loading="lazy" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1519823551278-64ac92734fb1?w=200&q=80'">
+          <div>
+            <div class="test-name">Laura Sánchez</div>
+            <div class="test-tx">Pie diabético</div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </section>
@@ -367,6 +596,11 @@ footer a:hover{color:#fff}
         <span>WhiteMoon Podología</span>
       </div>
       <p>Tu salud podal, en las mejores manos. Cuidamos cada paso con vocación, innovación y cercanía familiar.</p>
+      <div class="foot-soc">
+        <a href="#" aria-label="Facebook"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M22 12c0-5.52-4.48-10-10-10S2 6.48 2 12c0 4.84 3.44 8.87 8 9.8V15H8v-3h2V9.5C10 7.57 11.57 6 13.5 6H16v3h-2c-.55 0-1 .45-1 1v2h3v3h-3v6.95c5.05-.5 9-4.76 9-9.95z"/></svg></a>
+        <a href="#" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg></a>
+        <a href="#" aria-label="WhatsApp"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.5 14.4c-.3-.1-1.7-.8-2-.9-.3-.1-.5-.1-.7.1-.2.3-.8.9-.9 1.1-.2.2-.3.2-.6.1-.3-.1-1.2-.5-2.3-1.4-.9-.8-1.4-1.7-1.6-2-.2-.3 0-.4.1-.6.1-.1.3-.3.4-.5.1-.2.2-.3.3-.5.1-.2 0-.4 0-.5 0-.1-.7-1.7-1-2.3-.3-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.5s1 2.9 1.2 3.1c.1.2 2 3 4.8 4.2.7.3 1.2.5 1.6.6.7.2 1.3.2 1.8.1.5-.1 1.7-.7 2-1.4.2-.7.2-1.3.2-1.4-.1-.1-.3-.2-.6-.3z"/><path d="M12 2C6.5 2 2 6.5 2 12c0 1.8.5 3.5 1.3 5L2 22l5.1-1.3c1.4.8 3.1 1.3 4.9 1.3 5.5 0 10-4.5 10-10S17.5 2 12 2zm0 18c-1.6 0-3.1-.4-4.4-1.2l-.3-.2-3.2.8.9-3.1-.2-.3C3.9 14.7 3.5 13.4 3.5 12c0-4.7 3.8-8.5 8.5-8.5s8.5 3.8 8.5 8.5-3.8 8.5-8.5 8.5z"/></svg></a>
+      </div>
     </div>
     <div>
       <h4>Servicios</h4>
@@ -374,20 +608,35 @@ footer a:hover{color:#fff}
       <p><a href="#servicios">Biomecánica</a></p>
       <p><a href="#servicios">Pie Diabético</a></p>
       <p><a href="#servicios">Podología Deportiva</a></p>
+      <p><a href="#servicios">Cirugía Ungueal</a></p>
+      <p><a href="#servicios">Verrugas Plantares</a></p>
+    </div>
+    <div>
+      <h4>Horario</h4>
+      <p>Lun - Vie: 9:00 - 14:00</p>
+      <p>Lun - Vie: 16:00 - 20:00</p>
+      <p>Sábado: 9:00 - 13:00</p>
+      <p>Domingo: cerrado</p>
     </div>
     <div>
       <h4>Contacto</h4>
+      <p><a href="tel:+34643199580">643 199 580</a></p>
       <p><a href="javascript:openChat()">Pedir cita por chat</a></p>
       <p>Atención presencial y a domicilio</p>
     </div>
   </div>
-  <div class="foot-bot">© 2026 WhiteMoon Podología · Demo creada con WhiteMoon</div>
+  <div class="foot-bot">© 2026 WhiteMoon Podología · Demo creada con <strong>WhiteMoon</strong></div>
 </footer>
+
+<div class="lightbox" id="lightbox" onclick="closeLightbox(event)">
+  <button class="lightbox-close" onclick="closeLightbox(event,true)">×</button>
+  <img id="lightbox-img" src="" alt="">
+</div>
 
 <button id="wm-btn" onclick="toggleChat()" aria-label="Abrir chat WhiteMoon Podología">
   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
 </button>
-<div id="wm-tooltip">Chat WhiteMoon Podología</div>
+<div id="wm-tooltip">¿Te ayudo a pedir cita?</div>
 
 <div id="wm-mod">
   <div class="wm-head">
@@ -401,16 +650,22 @@ footer a:hover{color:#fff}
   <div class="wm-body" id="wm-body"></div>
   <div class="wm-input">
     <input id="wm-in" type="text" placeholder="Escribe tu mensaje..." onkeydown="if(event.key==='Enter')sendUser()">
-    <button onclick="sendUser()">Enviar</button>
+    <button id="wm-send" onclick="sendUser()">Enviar</button>
   </div>
 </div>
 
 <script>
-var WA_PHONE = '643199580';
-var chatStep = 0;
-var lead = {nombre:'', telefono:'', problema:'', detalle:'', urgente:false};
-var chatStarted = false;
+// ===== CONFIG =====
+var WA_NUMBER = '34643199580';
+var PHONE_DISPLAY = '643 199 580';
+var HORARIO = 'L-V 9-14h y 16-20h · S 9-13h';
 
+// ===== STATE =====
+var chatStep = 0;          // 0 idle · 1 askName · 2 askPhone · 3 done · 9 ended
+var chatStarted = false;
+var lead = {nombre:'', telefono:'', servicio:'', horario:'', urgente:false, sintoma:''};
+
+// ===== NAV =====
 function toggleMenu(){
   document.getElementById('nav-links').classList.toggle('open');
   document.getElementById('nav-burger').classList.toggle('open');
@@ -419,17 +674,70 @@ function closeMenu(){
   document.getElementById('nav-links').classList.remove('open');
   document.getElementById('nav-burger').classList.remove('open');
 }
+window.addEventListener('scroll', function(){
+  var n = document.getElementById('nav');
+  if(window.scrollY > 30) n.classList.add('scrolled');
+  else n.classList.remove('scrolled');
+});
 
+// ===== REVEAL ON SCROLL =====
+var io = new IntersectionObserver(function(entries){
+  entries.forEach(function(e,i){
+    if(e.isIntersecting){
+      setTimeout(function(){ e.target.classList.add('in'); }, i*60);
+      io.unobserve(e.target);
+    }
+  });
+},{threshold:0.12, rootMargin:'0px 0px -40px 0px'});
+document.querySelectorAll('.reveal').forEach(function(el){ io.observe(el); });
+
+// ===== COUNTER ANIMATION =====
+function animateCount(el){
+  var target = parseInt(el.dataset.count, 10);
+  var suffix = el.dataset.suffix || '';
+  var dur = 1600, start = performance.now();
+  function tick(now){
+    var p = Math.min((now-start)/dur, 1);
+    var eased = 1 - Math.pow(1-p, 3);
+    el.textContent = Math.floor(target*eased) + suffix;
+    if(p < 1) requestAnimationFrame(tick);
+    else el.textContent = target + suffix;
+  }
+  requestAnimationFrame(tick);
+}
+var ioCount = new IntersectionObserver(function(entries){
+  entries.forEach(function(e){
+    if(e.isIntersecting){ animateCount(e.target); ioCount.unobserve(e.target); }
+  });
+},{threshold:0.4});
+document.querySelectorAll('[data-count]').forEach(function(el){ ioCount.observe(el); });
+
+// ===== LIGHTBOX =====
+function openLightbox(el){
+  var img = el.querySelector('img');
+  document.getElementById('lightbox-img').src = img.src;
+  document.getElementById('lightbox').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+function closeLightbox(e, force){
+  if(force || e.target.id === 'lightbox' || e.target.classList.contains('lightbox-close')){
+    document.getElementById('lightbox').classList.remove('open');
+    document.body.style.overflow = '';
+  }
+}
+
+// ===== CHATBOT HELPERS =====
 function normalize(s){
   return (s||'').toLowerCase()
     .normalize('NFD').replace(/[̀-ͯ]/g,'')
     .replace(/[^a-z0-9 ]/g,' ')
     .replace(/\s+/g,' ').trim();
 }
-
 function updateCaptureUI(){
   var btn = document.getElementById('wm-btn');
   var close = document.getElementById('wm-close');
+  var input = document.getElementById('wm-in');
+  var send = document.getElementById('wm-send');
   if(chatStep >= 1 && chatStep < 3){
     btn.classList.add('hidden');
     close.classList.add('hidden');
@@ -437,8 +745,16 @@ function updateCaptureUI(){
     btn.classList.remove('hidden');
     close.classList.remove('hidden');
   }
+  if(chatStep === 9){
+    input.disabled = true;
+    send.disabled = true;
+    input.placeholder = 'Conversación cerrada';
+  } else {
+    input.disabled = false;
+    send.disabled = false;
+    input.placeholder = 'Escribe tu mensaje...';
+  }
 }
-
 function toggleChat(){
   var m = document.getElementById('wm-mod');
   if(m.classList.contains('open')){
@@ -454,7 +770,6 @@ function openChat(){
   if(!m.classList.contains('open')){ m.classList.add('open'); }
   if(!chatStarted){ chatStarted = true; startChat(); }
 }
-
 function addBot(text, cb, delay){
   showTyping();
   setTimeout(function(){
@@ -469,7 +784,7 @@ function addBot(text, cb, delay){
     b.appendChild(d);
     b.scrollTop = b.scrollHeight;
     if(cb) cb();
-  }, delay || 700);
+  }, delay || 750);
 }
 function addUser(text){
   var b = document.getElementById('wm-body');
@@ -512,239 +827,181 @@ function addQuickButtons(opts, grid){
   b.scrollTop = b.scrollHeight;
 }
 
+// ===== FLOWS =====
 function startChat(){
   chatStep = 0;
   updateCaptureUI();
   addBot('¡Hola! 🦶 Bienvenido/a a WhiteMoon Podología.\n¿En qué puedo ayudarte?', function(){
     addQuickButtons([
-      {label:'🦶 Pedir cita', action:function(){ addUser('Pedir cita'); askProblem(); }},
-      {label:'😣 Tengo dolor en el pie', action:function(){ addUser('Tengo dolor en el pie'); flowDolor(); }},
-      {label:'🏃 Soy deportista', action:function(){ addUser('Soy deportista'); flowDeporte(); }},
-      {label:'💉 Pie diabético', action:function(){ addUser('Pie diabético'); flowDiabetico(); }},
-      {label:'⏰ Horarios y precios', action:function(){ addUser('Horarios y precios'); flowPrecios(); }}
+      {label:'📅 Pedir cita', action:function(){ addUser('Pedir cita'); flowCita(); }},
+      {label:'💰 Ver precios', action:function(){ addUser('Ver precios'); flowPrecios(); }},
+      {label:'⏰ Horario y dirección', action:function(){ addUser('Horario'); flowHorario(); }},
+      {label:'🩺 Servicios', action:function(){ addUser('Servicios'); flowServicios(); }},
+      {label:'🚨 Tengo una urgencia', action:function(){ addUser('Urgencia'); flowUrgencia(); }}
     ]);
-  }, 1500);
+  }, 1400);
 }
 
-function askProblem(){
-  addBot('Vamos a ayudarte con tu problema 🦶\n¿Qué te ocurre en el pie?', function(){
+function flowCita(){
+  addBot('Estupendo 😊 ¿Para qué tratamiento quieres pedir cita?', function(){
     addQuickButtons([
-      {label:'😣 Dolor al caminar', action:function(){ addUser('Dolor al caminar'); lead.problema='Dolor al caminar'; flowDolor(); }},
-      {label:'🔴 Uña encarnada', action:function(){ addUser('Uña encarnada'); lead.problema='Uña encarnada'; flowUna(); }},
-      {label:'🦵 Durezas y callos', action:function(){ addUser('Durezas y callos'); lead.problema='Durezas y callos'; lead.detalle='Quiropodía'; askName(); }},
-      {label:'🔵 Verruga plantar', action:function(){ addUser('Verruga plantar'); lead.problema='Verruga plantar'; lead.detalle='Tratamiento láser/crioterapia'; askName(); }},
-      {label:'📐 Necesito plantillas', action:function(){ addUser('Necesito plantillas'); lead.problema='Plantillas'; flowPlantillas(); }},
-      {label:'💉 Soy diabético/a', action:function(){ addUser('Soy diabético/a'); lead.problema='Pie diabético'; flowDiabetico(); }},
-      {label:'🏃 Lesión deportiva', action:function(){ addUser('Lesión deportiva'); lead.problema='Lesión deportiva'; flowDeporte(); }},
-      {label:'❓ Revisión general', action:function(){ addUser('Revisión general'); lead.problema='Revisión general'; lead.detalle='Valoración completa'; askName(); }}
-    ]);
+      {label:'🦶 Quiropodía', action:function(){ addUser('Quiropodía'); lead.servicio='Quiropodía'; askHorario(); }},
+      {label:'👟 Plantillas', action:function(){ addUser('Plantillas'); lead.servicio='Plantillas / Biomecánica'; askHorario(); }},
+      {label:'🩺 Pie Diabético', action:function(){ addUser('Pie diabético'); lead.servicio='Pie Diabético'; askHorario(); }},
+      {label:'⚽ Deportiva', action:function(){ addUser('Deportiva'); lead.servicio='Podología Deportiva'; askHorario(); }},
+      {label:'💊 Cirugía Ungueal', action:function(){ addUser('Cirugía ungueal'); lead.servicio='Cirugía Ungueal'; askHorario(); }},
+      {label:'🔬 Verrugas', action:function(){ addUser('Verrugas'); lead.servicio='Verrugas Plantares'; askHorario(); }}
+    ], true);
   });
 }
-
-function flowDolor(){
-  if(!lead.problema) lead.problema = 'Dolor al caminar';
-  addBot('El dolor puede tener varias causas 😟\n¿Dónde exactamente te duele?', function(){
+function askHorario(){
+  addBot('¿Tienes alguna preferencia de horario?', function(){
     addQuickButtons([
-      {label:'Talón', action:function(){ addUser('Talón'); lead.detalle='Dolor en talón'; askDuracion(); }},
-      {label:'Planta', action:function(){ addUser('Planta'); lead.detalle='Dolor en planta'; askDuracion(); }},
-      {label:'Dedos', action:function(){ addUser('Dedos'); lead.detalle='Dolor en dedos'; askDuracion(); }},
-      {label:'Toda la planta', action:function(){ addUser('Toda la planta'); lead.detalle='Dolor en toda la planta'; askDuracion(); }},
-      {label:'No sé exactamente', action:function(){ addUser('No sé exactamente'); lead.detalle='Dolor sin localizar'; askDuracion(); }}
-    ]);
-  });
-}
-function askDuracion(){
-  addBot('¿Desde hace cuánto tiempo?', function(){
-    addQuickButtons([
-      {label:'Días', action:function(){ addUser('Días'); lead.detalle += ' · días'; askName(); }},
-      {label:'Semanas', action:function(){ addUser('Semanas'); lead.detalle += ' · semanas'; askName(); }},
-      {label:'Meses', action:function(){ addUser('Meses'); lead.detalle += ' · meses'; lead.urgente=true; addBot('Llevas mucho tiempo con molestias, conviene valorarlo cuanto antes ⚠️', askName); }}
-    ]);
-  });
-}
-
-function flowUna(){
-  lead.problema = 'Uña encarnada';
-  addBot('Las uñas encarnadas tienen solución definitiva ✅\n¿Tienes infección o está muy inflamada?', function(){
-    addQuickButtons([
-      {label:'Sí, está infectada', action:function(){
-        addUser('Sí, está infectada');
-        lead.detalle='Uña encarnada con infección';
-        lead.urgente=true;
-        addBot('Es importante verla hoy o mañana. ¿Puedo reservarte cita urgente? 🚨', askName);
-      }},
-      {label:'No, solo molesta', action:function(){
-        addUser('No, solo molesta');
-        lead.detalle='Uña encarnada sin infección';
-        askName();
-      }}
-    ]);
-  });
-}
-
-function flowDiabetico(){
-  lead.problema = 'Pie diabético';
-  addBot('El pie diabético requiere revisiones periódicas especializadas 💉\n¿Eres paciente de larga evolución o has sido diagnosticado recientemente?', function(){
-    addQuickButtons([
-      {label:'Larga evolución', action:function(){ addUser('Larga evolución'); lead.detalle='Diabético larga evolución'; askHerida(); }},
-      {label:'Reciente diagnóstico', action:function(){ addUser('Reciente diagnóstico'); lead.detalle='Diabético reciente'; askHerida(); }}
-    ]);
-  });
-}
-function askHerida(){
-  addBot('¿Tienes alguna herida o úlcera activa?', function(){
-    addQuickButtons([
-      {label:'Sí', action:function(){
-        addUser('Sí');
-        lead.detalle += ' · herida activa';
-        lead.urgente=true;
-        addBot('Necesitas valoración hoy mismo. Reservamos cita urgente 🚨', askName);
-      }},
-      {label:'No', action:function(){
-        addUser('No');
-        lead.detalle += ' · sin heridas';
-        askName();
-      }}
-    ]);
-  });
-}
-
-function flowPlantillas(){
-  lead.problema = 'Plantillas / Estudio biomecánico';
-  addBot('El estudio de la pisada nos permite fabricar plantillas exactas para ti 📐\n¿Es por dolor, deporte o prevención?', function(){
-    addQuickButtons([
-      {label:'Dolor', action:function(){ addUser('Dolor'); lead.detalle='Plantillas por dolor'; askName(); }},
-      {label:'Deporte', action:function(){ addUser('Deporte'); lead.detalle='Plantillas deportivas'; askName(); }},
-      {label:'Prevención', action:function(){ addUser('Prevención'); lead.detalle='Plantillas preventivas'; askName(); }}
-    ]);
-  });
-}
-
-function flowDeporte(){
-  lead.problema = 'Podología deportiva';
-  addBot('Tratamos las lesiones más frecuentes en deportistas 🏃\n→ Fascitis plantar\n→ Tendinitis de Aquiles\n→ Espolón calcáneo\n→ Neuroma de Morton\n→ Uñas subungueales\n¿Qué lesión tienes?', function(){
-    addQuickButtons([
-      {label:'Fascitis plantar', action:function(){ addUser('Fascitis plantar'); lead.detalle='Fascitis plantar'; askName(); }},
-      {label:'Tendinitis Aquiles', action:function(){ addUser('Tendinitis Aquiles'); lead.detalle='Tendinitis de Aquiles'; askName(); }},
-      {label:'Espolón calcáneo', action:function(){ addUser('Espolón calcáneo'); lead.detalle='Espolón calcáneo'; askName(); }},
-      {label:'Neuroma de Morton', action:function(){ addUser('Neuroma de Morton'); lead.detalle='Neuroma de Morton'; askName(); }},
-      {label:'Uñas subungueales', action:function(){ addUser('Uñas subungueales'); lead.detalle='Uñas subungueales'; askName(); }},
-      {label:'Otra lesión', action:function(){ addUser('Otra lesión'); lead.detalle='Lesión deportiva'; askName(); }}
+      {label:'🌅 Mañana (9-14h)', action:function(){ addUser('Mañana'); lead.horario='Mañana (9-14h)'; askName(); }},
+      {label:'🌆 Tarde (16-20h)', action:function(){ addUser('Tarde'); lead.horario='Tarde (16-20h)'; askName(); }},
+      {label:'🤷 Me da igual', action:function(){ addUser('Me da igual'); lead.horario='Indiferente'; askName(); }}
     ]);
   });
 }
 
 function flowPrecios(){
-  addBot('Nuestras tarifas orientativas 💰\n🦶 Quiropodía desde 25€\n📐 Estudio biomecánica desde 60€\n🔵 Eliminación verrugas desde 40€\n💉 Revisión pie diabético desde 30€\nPrimera visita con valoración incluida.\n¿Reservamos tu cita?', function(){
+  addBot('Nuestros precios orientativos:\n🦶 Quiropodía / Pedicura médica: desde 35€\n👟 Estudio biomecánico + plantillas: desde 120€\n🩺 Revisión pie diabético: desde 40€\n⚽ Podología deportiva: desde 45€\n💊 Cirugía ungueal: desde 80€\n🔬 Eliminación verrugas: desde 60€\n\n💳 Aceptamos todas las tarjetas.\n📋 Mutuas: Adeslas, Asisa, Mapfre y más.\n¿Quieres pedir cita para algún tratamiento?', function(){
     addQuickButtons([
-      {label:'Sí, pedir cita', action:function(){ addUser('Sí, pedir cita'); askProblem(); }},
-      {label:'Tengo otra duda', action:function(){ addUser('Tengo otra duda'); chatStep=0; updateCaptureUI(); addBot('Adelante, te escucho.'); }}
+      {label:'✅ Pedir cita', action:function(){ addUser('Pedir cita'); flowCita(); }},
+      {label:'❓ Más info', action:function(){ addUser('Más info'); flowServicios(); }}
     ]);
   });
 }
 
-function flowUrgente(){
-  lead.urgente = true;
-  if(!lead.problema) lead.problema = 'Urgencia';
-  if(!lead.detalle) lead.detalle = 'Atención urgente';
-  addBot('Entendemos la urgencia 🚨\nAtendemos casos urgentes el mismo día.\n¿Me facilita su teléfono para llamarle ahora mismo?', askName);
+function flowHorario(){
+  addBot('Nuestro horario de atención:\n📅 Lunes a Viernes: 9:00 - 14:00\n                    16:00 - 20:00\n📅 Sábados: 9:00 - 13:00\n🚫 Domingos: cerrado\n\n📍 C/ Principal 25, Madrid\n📞 ' + PHONE_DISPLAY + '\n\n¿Quieres reservar cita?', function(){
+    addQuickButtons([
+      {label:'✅ Reservar', action:function(){ addUser('Reservar'); flowCita(); }},
+      {label:'📞 Llamar ahora', action:function(){ addUser('Llamar'); window.location.href='tel:+'+WA_NUMBER; }}
+    ]);
+  });
 }
 
+function flowUrgencia(){
+  lead.urgente = true;
+  addBot('Entiendo que tienes molestias 🤝\n¿Qué síntoma describes mejor?', function(){
+    addQuickButtons([
+      {label:'😣 Dolor agudo', action:function(){ addUser('Dolor agudo'); lead.sintoma='Dolor agudo'; lead.servicio='Urgencia - Dolor agudo'; urgenciaConfirm(); }},
+      {label:'🔴 Uña encarnada', action:function(){ addUser('Uña encarnada'); lead.sintoma='Uña encarnada'; lead.servicio='Urgencia - Uña encarnada'; urgenciaConfirm(); }},
+      {label:'🦠 Verruga/hongo', action:function(){ addUser('Verruga/hongo'); lead.sintoma='Verruga/hongo'; lead.servicio='Urgencia - Verruga/hongo'; urgenciaConfirm(); }},
+      {label:'💢 Otro', action:function(){ addUser('Otro'); lead.sintoma='Otro síntoma'; lead.servicio='Urgencia - Otro'; urgenciaConfirm(); }}
+    ], true);
+  });
+}
+function urgenciaConfirm(){
+  addBot('Te reservamos cita urgente.\nDime tu nombre y teléfono y te llamamos en menos de 1 hora.', askName);
+}
+
+function flowServicios(){
+  addBot('Ofrecemos 6 tratamientos especializados:\n🦶 Quiropodía — durezas, callos, uñas\n👟 Biomecánica — estudio pisada y plantillas\n🩺 Pie Diabético — prevención y control\n⚽ Podología Deportiva — lesiones y rendimiento\n💊 Cirugía Ungueal — uñas encarnadas definitivo\n🔬 Verrugas — láser CO2 y crioterapia\n\n¿Cuál te interesa?', function(){
+    addQuickButtons([
+      {label:'🦶 Quiropodía', action:function(){ addUser('Quiropodía'); lead.servicio='Quiropodía'; askHorario(); }},
+      {label:'👟 Plantillas', action:function(){ addUser('Plantillas'); lead.servicio='Plantillas / Biomecánica'; askHorario(); }},
+      {label:'🩺 Pie Diabético', action:function(){ addUser('Pie diabético'); lead.servicio='Pie Diabético'; askHorario(); }},
+      {label:'⚽ Deportiva', action:function(){ addUser('Deportiva'); lead.servicio='Podología Deportiva'; askHorario(); }},
+      {label:'💊 Cirugía Ungueal', action:function(){ addUser('Cirugía ungueal'); lead.servicio='Cirugía Ungueal'; askHorario(); }},
+      {label:'🔬 Verrugas', action:function(){ addUser('Verrugas'); lead.servicio='Verrugas Plantares'; askHorario(); }}
+    ], true);
+  });
+}
+
+function flowDespedida(){
+  addBot('¡Gracias por contactar con WhiteMoon Podología! 🙏\nEstaremos encantados de atenderte.\n📞 ' + PHONE_DISPLAY + ' · 🌐 whitemoon.es\n¡Que tengas un buen día! 🌟', function(){
+    chatStep = 9;
+    updateCaptureUI();
+    var b = document.getElementById('wm-body');
+    var btn = document.createElement('button');
+    btn.className = 'reset-btn';
+    btn.textContent = '🔄 Nueva consulta';
+    btn.onclick = function(){
+      document.getElementById('wm-body').innerHTML = '';
+      lead = {nombre:'', telefono:'', servicio:'', horario:'', urgente:false, sintoma:''};
+      chatStep = 0;
+      updateCaptureUI();
+      startChat();
+    };
+    b.appendChild(btn);
+    b.scrollTop = b.scrollHeight;
+  });
+}
+
+// ===== LEAD CAPTURE =====
 function askName(){
   chatStep = 1;
   updateCaptureUI();
-  addBot('Para reservar tu cita necesito un par de datos 📅\n¿Me dices tu nombre?');
+  addBot('Para reservarte la cita necesito tu nombre y teléfono 📱\n¿Me dices tu nombre?');
 }
 function askPhone(){
   chatStep = 2;
   updateCaptureUI();
   addBot('Perfecto ' + lead.nombre + '. ¿Me facilitas tu teléfono de contacto?');
 }
-function finishBooking(){
+function finishCapture(){
   chatStep = 3;
   updateCaptureUI();
-  var urgentTxt = lead.urgente ? '\n\n⚠️ Caso marcado como urgente. Te contactaremos en cuanto antes.' : '';
-  addBot('¡Perfecto ' + lead.nombre + '! 🦶\nHe registrado tu solicitud:\n\n🔍 ' + (lead.problema||'Cita') + '\n📝 ' + (lead.detalle||'-') + '\n📞 +34' + lead.telefono + urgentTxt + '\n\nEnvíame el resumen por WhatsApp y te confirmamos cita en breve.', function(){
+  var urgentTxt = lead.urgente ? '\n\n🚨 Caso marcado como urgente. Te llamamos en menos de 1 hora.' : '';
+  var msg = '✅ ¡Cita solicitada, ' + lead.nombre + '!\nTe llamamos en breve para confirmar día y hora exacta.\n📞 También puedes llamarnos al ' + PHONE_DISPLAY + ' en horario de consulta.' + urgentTxt;
+  addBot(msg, function(){
     var b = document.getElementById('wm-body');
-    var msg = '🦶 *CITA — WhiteMoon Podología*\n\n👤 *Nombre:* ' + lead.nombre + '\n📞 *Tel:* +34' + lead.telefono + '\n🔍 *Problema:* ' + (lead.problema||'-') + '\n📝 *Detalle:* ' + (lead.detalle||'-') + (lead.urgente?'\n🚨 *URGENTE*':'') + '\n\n_Vía chatbot WhiteMoon · whitemoon.es_';
-    var url = 'https://wa.me/34' + WA_PHONE + '?text=' + encodeURIComponent(msg);
+    var waPrefix = lead.urgente ? '🚨 URGENTE: ' : '';
+    var waMsg = waPrefix + '🦶 *NUEVA CITA PODOLOGÍA*\n\n👤 ' + lead.nombre + '\n📱 +34' + lead.telefono + '\n🏥 Tratamiento: ' + (lead.servicio || '-') + '\n🕐 Preferencia: ' + (lead.horario || '-') + (lead.sintoma ? '\n💢 Síntoma: ' + lead.sintoma : '') + '\n📍 WhiteMoon Podología Demo\n\n_Vía chatbot whitemoon.es_';
+    var url = 'https://wa.me/' + WA_NUMBER + '?text=' + encodeURIComponent(waMsg);
     var a = document.createElement('a');
     a.href = url;
     a.target = '_blank';
     a.rel = 'noopener';
     a.className = 'wa-btn';
-    a.innerHTML = '<svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M17.5 14.4c-.3-.1-1.7-.8-2-.9-.3-.1-.5-.1-.7.1-.2.3-.8.9-.9 1.1-.2.2-.3.2-.6.1-.3-.1-1.2-.5-2.3-1.4-.9-.8-1.4-1.7-1.6-2-.2-.3 0-.4.1-.6.1-.1.3-.3.4-.5.1-.2.2-.3.3-.5.1-.2 0-.4 0-.5 0-.1-.7-1.7-1-2.3-.3-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.5s1 2.9 1.2 3.1c.1.2 2 3 4.8 4.2.7.3 1.2.5 1.6.6.7.2 1.3.2 1.8.1.5-.1 1.7-.7 2-1.4.2-.7.2-1.3.2-1.4-.1-.1-.3-.2-.6-.3z"/><path d="M12 2C6.5 2 2 6.5 2 12c0 1.8.5 3.5 1.3 5L2 22l5.1-1.3c1.4.8 3.1 1.3 4.9 1.3 5.5 0 10-4.5 10-10S17.5 2 12 2zm0 18c-1.6 0-3.1-.4-4.4-1.2l-.3-.2-3.2.8.9-3.1-.2-.3C3.9 14.7 3.5 13.4 3.5 12c0-4.7 3.8-8.5 8.5-8.5s8.5 3.8 8.5 8.5-3.8 8.5-8.5 8.5z"/></svg> Enviar por WhatsApp';
+    a.innerHTML = '<svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M17.5 14.4c-.3-.1-1.7-.8-2-.9-.3-.1-.5-.1-.7.1-.2.3-.8.9-.9 1.1-.2.2-.3.2-.6.1-.3-.1-1.2-.5-2.3-1.4-.9-.8-1.4-1.7-1.6-2-.2-.3 0-.4.1-.6.1-.1.3-.3.4-.5.1-.2.2-.3.3-.5.1-.2 0-.4 0-.5 0-.1-.7-1.7-1-2.3-.3-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.5s1 2.9 1.2 3.1c.1.2 2 3 4.8 4.2.7.3 1.2.5 1.6.6.7.2 1.3.2 1.8.1.5-.1 1.7-.7 2-1.4.2-.7.2-1.3.2-1.4-.1-.1-.3-.2-.6-.3z"/><path d="M12 2C6.5 2 2 6.5 2 12c0 1.8.5 3.5 1.3 5L2 22l5.1-1.3c1.4.8 3.1 1.3 4.9 1.3 5.5 0 10-4.5 10-10S17.5 2 12 2zm0 18c-1.6 0-3.1-.4-4.4-1.2l-.3-.2-3.2.8.9-3.1-.2-.3C3.9 14.7 3.5 13.4 3.5 12c0-4.7 3.8-8.5 8.5-8.5s8.5 3.8 8.5 8.5-3.8 8.5-8.5 8.5z"/></svg> Enviar resumen por WhatsApp';
     b.appendChild(a);
     b.scrollTop = b.scrollHeight;
   });
 }
 
+// ===== SERVICE CTA FROM PAGE =====
 function askService(name){
   var m = document.getElementById('wm-mod');
   if(!m.classList.contains('open')){ m.classList.add('open'); }
   if(!chatStarted){ chatStarted = true; chatStep=0; updateCaptureUI(); }
   setTimeout(function(){
     addUser('Quiero info sobre ' + name);
-    lead.problema = name;
+    lead.servicio = name;
     addBot('Genial. ' + name + ' es uno de nuestros tratamientos más solicitados. ¿Te ayudo a pedir cita?', function(){
       addQuickButtons([
-        {label:'Sí, quiero cita', action:function(){ addUser('Sí, quiero cita'); askName(); }},
-        {label:'Tengo otra duda', action:function(){ addUser('Tengo otra duda'); addBot('Adelante, te escucho.'); }}
+        {label:'✅ Sí, quiero cita', action:function(){ addUser('Sí, quiero cita'); askHorario(); }},
+        {label:'💰 Ver precios', action:function(){ addUser('Ver precios'); flowPrecios(); }},
+        {label:'❓ Tengo otra duda', action:function(){ addUser('Tengo otra duda'); addBot('Adelante, te escucho.'); }}
       ]);
     });
   }, 200);
 }
 
+// ===== KEYWORD MATCH =====
 function matchKeyword(t){
   var n = normalize(t);
   var hit = function(arr){ for(var i=0;i<arr.length;i++) if(n.indexOf(arr[i])!==-1) return true; return false; };
-
-  if(hit(['urgente','urgencia','hoy','dolor fuerte','infeccion','infectada','infectado','sangra','sangrado'])){
-    return {fn:flowUrgente};
-  }
-  if(hit(['precio','cuanto','cuesta','tarifa','vale','coste','tarifas'])){
-    return {fn:flowPrecios};
-  }
-  if(hit(['fascitis','espolon','talon','aquiles'])){
-    return {text:'La fascitis plantar y el espolón son muy tratables 💪\nCon ortesis plantar a medida y tratamiento podológico se resuelven en 4-8 semanas en la mayoría de casos.\n¿Quieres que te valoremos?', after:askName};
-  }
-  if(hit(['deportista','correr','running','futbol','deporte','lesion','tendinitis'])){
-    return {fn:flowDeporte};
-  }
-  if(hit(['diabetic','diabetes','pie diabetico','diabetico','diabetica'])){
-    return {fn:flowDiabetico};
-  }
-  if(hit(['una encarnada','unas encarnadas','encarnada','encarnado','ortoniquia','una','unas'])){
-    return {fn:flowUna};
-  }
-  if(hit(['plantilla','biomecanic','pisada','ortopedica'])){
-    return {fn:flowPlantillas};
-  }
-  if(hit(['verruga','papiloma','vph'])){
-    lead.problema='Verruga plantar'; lead.detalle='Tratamiento láser/crioterapia';
-    return {text:'Las verrugas plantares las eliminamos con láser CO2 o crioterapia 🔵\nSin dolor y sin recidivas. ¿Reservamos cita?', after:askName};
-  }
-  if(hit(['callo','dureza','heloma','quiropodia','pedicura'])){
-    lead.problema='Quiropodía'; lead.detalle='Eliminación durezas/callos';
-    return {text:'La Quiropodía elimina durezas, callos y helomas 🦶\nHigiene podológica profesional. ¿Reservamos cita?', after:askName};
-  }
-  if(hit(['horario','cuando','abierto','abren'])){
-    return {text:'Atendemos en cita previa de lunes a viernes. Pedir cita es muy rápido — ¿lo hacemos ahora?', after:askProblem};
-  }
-  if(hit(['dolor','duele','molestia'])){
-    return {fn:flowDolor};
-  }
+  if(hit(['gracias','adios','chao','hasta luego','nada mas','nada más'])) return {fn:flowDespedida};
+  if(hit(['urgente','urgencia','dolor fuerte','infeccion','infectada','sangra','me duele mucho'])) return {fn:flowUrgencia};
+  if(hit(['cita','reservar','reserva','agendar','quiero cita','pedir cita'])) return {fn:flowCita};
+  if(hit(['precio','cuanto','cuesta','tarifa','vale','coste'])) return {fn:flowPrecios};
+  if(hit(['horario','cuando','abierto','abren','direccion','donde'])) return {fn:flowHorario};
+  if(hit(['servicio','tratamiento','tratamientos','servicios'])) return {fn:flowServicios};
+  if(hit(['dolor','duele','molestia'])) return {fn:flowUrgencia};
   return null;
 }
-
 function intentBooking(t){
   var n = normalize(t);
-  var triggers = ['cita','reservar','reserva','agendar','quiero','necesito','problema','pedir cita','cuidar','consulta'];
+  var triggers = ['cita','reservar','quiero','necesito','agendar','consulta'];
   for(var i=0;i<triggers.length;i++) if(n.indexOf(triggers[i])!==-1) return true;
   return false;
 }
 
 function sendUser(){
+  if(chatStep === 9) return;
   var inp = document.getElementById('wm-in');
   var v = (inp.value || '').trim();
   if(!v) return;
@@ -752,7 +1009,6 @@ function sendUser(){
   addUser(v);
   handleUser(v);
 }
-
 function handleUser(t){
   if(chatStep === 1){
     var name = t.replace(/[^A-Za-zÀ-ÿ\s]/g,'').trim();
@@ -765,7 +1021,7 @@ function handleUser(t){
     var d = (t.match(/\d/g) || []).join('');
     if(d.length < 9){ addBot('Necesito un teléfono válido de 9 dígitos. ¿Puedes repetirlo?'); return; }
     lead.telefono = d.slice(-9);
-    finishBooking();
+    finishCapture();
     return;
   }
   var m = matchKeyword(t);
@@ -773,15 +1029,12 @@ function handleUser(t){
     if(m.fn){ m.fn(); return; }
     if(m.text){ addBot(m.text, m.after); return; }
   }
-  if(intentBooking(t)){
-    askProblem();
-    return;
-  }
+  if(intentBooking(t)){ flowCita(); return; }
   addBot('Puedo ayudarte con información sobre tratamientos o reservar tu cita 🦶\n¿Qué necesitas?', function(){
     addQuickButtons([
-      {label:'🦶 Pedir cita', action:function(){ addUser('Pedir cita'); askProblem(); }},
-      {label:'😣 Tengo dolor', action:function(){ addUser('Tengo dolor'); flowDolor(); }},
-      {label:'⏰ Horarios y precios', action:function(){ addUser('Horarios y precios'); flowPrecios(); }}
+      {label:'📅 Pedir cita', action:function(){ addUser('Pedir cita'); flowCita(); }},
+      {label:'💰 Ver precios', action:function(){ addUser('Ver precios'); flowPrecios(); }},
+      {label:'⏰ Horario', action:function(){ addUser('Horario'); flowHorario(); }}
     ]);
   });
 }
