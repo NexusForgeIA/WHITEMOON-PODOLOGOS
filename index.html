@@ -87,31 +87,61 @@ nav.scrolled{background:rgba(15,23,42,0.92);border-bottom:1px solid rgba(14,165,
 .nav-burger.open span:nth-child(2){opacity:0}
 .nav-burger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
 
-/* HERO — dark con gradiente */
-.hero{padding:160px 28px 110px;background:var(--grad-dark);position:relative;overflow:hidden;color:#fff}
-.hero::before{content:'';position:absolute;top:-160px;right:-100px;width:600px;height:600px;background:radial-gradient(circle,rgba(14,165,233,.28),transparent 70%);border-radius:50%;animation:float 9s ease-in-out infinite}
-.hero::after{content:'';position:absolute;bottom:-180px;left:-120px;width:560px;height:560px;background:radial-gradient(circle,rgba(16,185,129,.22),transparent 70%);border-radius:50%;animation:float 11s ease-in-out infinite reverse}
-.hero-orb{position:absolute;top:40%;left:50%;width:380px;height:380px;background:radial-gradient(circle,rgba(14,165,233,.18),transparent 65%);border-radius:50%;animation:float 7s ease-in-out infinite;pointer-events:none}
-@keyframes float{0%,100%{transform:translate(0,0) scale(1)}50%{transform:translate(30px,-25px) scale(1.06)}}
-.hero-inner{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1.05fr 1fr;gap:70px;align-items:center;position:relative;z-index:1}
-.tag{display:inline-flex;align-items:center;gap:8px;background:rgba(14,165,233,.14);border:1px solid rgba(14,165,233,.32);border-radius:30px;padding:7px 18px;font-size:.78rem;font-weight:700;color:#7dd3fc;margin-bottom:22px;text-transform:uppercase;letter-spacing:1.2px}
+/* HERO — DarkProjectHero (vídeo de fondo + palabra rotatoria) */
+.hero{position:relative;min-height:100vh;display:flex;align-items:center;overflow:hidden;color:#fff;isolation:isolate;padding:120px 28px 0}
+.hero-media{position:absolute;inset:0;z-index:0}
+.hero-media video,.hero-media img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center}
+.hero-video{z-index:1}
+.hero-fallback{z-index:0;filter:brightness(.7) saturate(1.05)}
+.hero-media::after{content:'';position:absolute;inset:0;z-index:2;background:
+  linear-gradient(105deg,rgba(0,0,0,.86) 0%,rgba(0,0,0,.72) 40%,rgba(15,23,42,.55) 74%,rgba(12,35,64,.82) 100%),
+  radial-gradient(ellipse 90% 80% at 72% 18%,transparent 0%,rgba(0,0,0,.5) 100%),
+  linear-gradient(0deg,rgba(15,23,42,.94) 0%,rgba(15,23,42,0) 42%)}
+.hero-glow{position:absolute;z-index:1;right:-8%;top:0;width:52vw;height:52vw;max-width:760px;max-height:760px;
+  background:radial-gradient(circle,rgba(14,165,233,.34),rgba(14,165,233,0) 62%);filter:blur(18px);pointer-events:none;animation:heroGlow 7s ease-in-out infinite}
+.hero-grid-tex{position:absolute;inset:0;z-index:1;pointer-events:none;opacity:.5;
+  background-image:linear-gradient(rgba(125,211,252,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(125,211,252,.05) 1px,transparent 1px);
+  background-size:62px 62px;-webkit-mask-image:radial-gradient(ellipse 80% 70% at 70% 30%,#000,transparent 75%);mask-image:radial-gradient(ellipse 80% 70% at 70% 30%,#000,transparent 75%)}
+.hero-inner{position:relative;z-index:3;max-width:1200px;margin:0 auto;width:100%;padding-block:clamp(40px,7vh,90px)}
+.hero-copy{max-width:780px}
+.tag{display:inline-flex;align-items:center;gap:9px;background:rgba(15,23,42,.55);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);border:1px solid rgba(14,165,233,.32);border-radius:30px;padding:8px 18px;font-size:.78rem;font-weight:700;color:#7dd3fc;margin-bottom:22px;text-transform:uppercase;letter-spacing:1.2px}
 .tag .dotg{width:8px;height:8px;border-radius:50%;background:var(--accent);box-shadow:0 0 0 4px rgba(16,185,129,.25);animation:p2 2s infinite}
 @keyframes p2{0%,100%{box-shadow:0 0 0 0 rgba(16,185,129,.6)}50%{box-shadow:0 0 0 6px rgba(16,185,129,0)}}
-.hero h1{font-size:3.6rem;font-weight:800;line-height:1.08;margin-bottom:24px;letter-spacing:-1.8px;color:#fff}
-.hero h1 em{font-style:normal;background:linear-gradient(135deg,#38bdf8 0%,#34d399 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
-.hero p{font-size:1.14rem;color:#cbd5e1;margin-bottom:36px;max-width:540px}
-.hero-btns{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:50px}
-.btn-prim{background:var(--grad);color:#fff;padding:15px 32px;border-radius:32px;font-weight:700;border:none;cursor:pointer;font-size:.95rem;font-family:inherit;box-shadow:0 10px 26px rgba(14,165,233,.45);transition:all .25s;display:inline-flex;align-items:center;gap:8px;text-decoration:none}
-.btn-prim:hover{transform:translateY(-3px);box-shadow:0 14px 32px rgba(16,185,129,.5)}
-.btn-sec{background:rgba(255,255,255,.06);color:#fff;padding:15px 32px;border-radius:32px;font-weight:700;border:1.5px solid rgba(255,255,255,.18);cursor:pointer;font-size:.95rem;font-family:inherit;transition:all .2s;text-decoration:none;display:inline-flex;align-items:center;gap:8px;backdrop-filter:blur(10px)}
-.btn-sec:hover{border-color:#38bdf8;background:rgba(14,165,233,.12);color:#7dd3fc}
-.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;max-width:580px}
-.stat .n{font-size:1.9rem;font-weight:800;background:linear-gradient(135deg,#38bdf8,#34d399);-webkit-background-clip:text;-webkit-text-fill-color:transparent;letter-spacing:-.5px}
-.stat .l{font-size:.78rem;color:#94a3b8;font-weight:600;margin-top:2px;text-transform:uppercase;letter-spacing:.5px}
-.hero-img-wrap{position:relative}
-.hero-img{width:100%;border-radius:24px;box-shadow:0 25px 60px rgba(0,0,0,.45);object-fit:cover;height:520px;border:1px solid rgba(14,165,233,.2)}
-.hero-badge{position:absolute;bottom:-22px;left:50%;transform:translateX(-50%);background:rgba(15,23,42,.92);backdrop-filter:blur(14px);padding:14px 22px;border-radius:18px;box-shadow:0 12px 36px rgba(0,0,0,.4);display:flex;align-items:center;gap:12px;font-size:.85rem;font-weight:700;white-space:nowrap;color:#fff;border:1px solid rgba(14,165,233,.3)}
-.hero-badge .dot{width:10px;height:10px;border-radius:50%;background:#22c55e;box-shadow:0 0 0 4px rgba(34,197,94,.22);animation:p2 2s infinite}
+.hero h1{font-size:clamp(2.4rem,6vw,5rem);font-weight:800;line-height:1.03;margin-bottom:24px;letter-spacing:-2px;color:#fff;text-wrap:balance}
+.hero h1 em{font-style:normal;background:linear-gradient(135deg,#38bdf8 0%,#34d399 100%);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;display:inline-block}
+/* palabra rotatoria */
+.rot{display:inline-block;position:relative;vertical-align:bottom}
+.rot em{transition:opacity .42s cubic-bezier(.16,1,.3,1),transform .42s cubic-bezier(.16,1,.3,1)}
+.rot.is-out em{opacity:0;transform:translateY(-.18em)}
+.rot.is-in em{opacity:0;transform:translateY(.22em)}
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+.hero p{font-size:clamp(1rem,1.5vw,1.18rem);color:#cbd5e1;margin-bottom:34px;max-width:560px}
+.hero-btns{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:46px}
+.btn-prim{background:var(--grad);color:#fff;padding:15px 32px;border-radius:32px;font-weight:700;border:none;cursor:pointer;font-size:.95rem;font-family:inherit;box-shadow:0 10px 30px rgba(14,165,233,.5);transition:all .25s;display:inline-flex;align-items:center;gap:8px;text-decoration:none}
+.btn-prim:hover{transform:translateY(-3px);box-shadow:0 14px 36px rgba(16,185,129,.55)}
+.btn-sec{background:rgba(255,255,255,.06);color:#fff;padding:15px 32px;border-radius:32px;font-weight:700;border:1.5px solid rgba(255,255,255,.2);cursor:pointer;font-size:.95rem;font-family:inherit;transition:all .2s;text-decoration:none;display:inline-flex;align-items:center;gap:8px;backdrop-filter:blur(10px)}
+.btn-sec:hover{border-color:#38bdf8;background:rgba(14,165,233,.14);color:#7dd3fc}
+/* stats bar glassmorphism */
+.hero-statsbar{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:rgba(14,165,233,.18);border:1px solid rgba(14,165,233,.25);border-radius:18px;overflow:hidden;max-width:880px;box-shadow:0 24px 60px -28px rgba(0,0,0,.8)}
+.hero-statcell{background:rgba(15,23,42,.6);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);padding:20px 22px;transition:background .25s}
+.hero-statcell:hover{background:rgba(15,23,42,.82)}
+.hero-statcell b{display:block;font-size:clamp(1.5rem,2.6vw,2.1rem);font-weight:800;letter-spacing:-.5px;line-height:1;background:linear-gradient(135deg,#38bdf8,#34d399);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+.hero-statcell span{display:block;margin-top:8px;font-size:.76rem;color:#94a3b8;font-weight:600;text-transform:uppercase;letter-spacing:.5px}
+/* scroll cue */
+.hero-cue{position:absolute;left:50%;bottom:20px;transform:translateX(-50%);z-index:3;display:flex;flex-direction:column;align-items:center;gap:7px;font-size:.66rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:#94a3b8;text-decoration:none}
+.hero-cue svg{width:18px;height:18px;color:#38bdf8;animation:heroBounce 1.8s ease-in-out infinite}
+/* entrada escalonada */
+.hero-up{opacity:0;transform:translateY(22px);animation:heroUp .8s cubic-bezier(.16,1,.3,1) forwards}
+.hero-up.d1{animation-delay:.05s}.hero-up.d2{animation-delay:.15s}.hero-up.d3{animation-delay:.25s}.hero-up.d4{animation-delay:.35s}.hero-up.d5{animation-delay:.45s}
+@keyframes heroUp{to{opacity:1;transform:none}}
+@keyframes heroGlow{0%,100%{opacity:.85;transform:scale(1)}50%{opacity:1;transform:scale(1.08)}}
+@keyframes heroBounce{0%,100%{transform:translateY(0)}50%{transform:translateY(5px)}}
+@media(prefers-reduced-motion:reduce){
+  .hero-video{display:none}
+  .hero-glow,.hero-cue svg,.tag .dotg{animation:none}
+  .hero-up{opacity:1;transform:none;animation:none}
+  .rot em{transition:none}
+}
 
 /* SECTIONS */
 .sec{padding:110px 28px;position:relative}
@@ -285,11 +315,8 @@ footer a:hover{color:#7dd3fc}
   .nav-links a:last-child{border-bottom:none}
   .nav-burger{display:flex}
   .nav-cta{display:none}
-  .hero{padding:130px 22px 90px}
-  .hero-inner{grid-template-columns:1fr;gap:50px}
-  .hero h1{font-size:2.5rem}
-  .hero-img{height:400px}
-  .stats{grid-template-columns:repeat(2,1fr);max-width:100%}
+  .hero{padding:110px 22px 0;min-height:auto}
+  .hero-statsbar{grid-template-columns:repeat(2,1fr);max-width:560px}
   .qui{grid-template-columns:1fr;gap:50px}
   .qui img{height:360px}
   .qui h2,.sec-head h2{font-size:2.05rem}
@@ -310,13 +337,11 @@ footer a:hover{color:#7dd3fc}
 @media(max-width:600px){
   .nav-inner{padding:0 18px;height:66px}
   .nav-logo span{font-size:1.08rem}
-  .hero{padding:110px 18px 70px}
-  .hero h1{font-size:2rem;letter-spacing:-1px}
-  .hero p{font-size:1rem}
-  .hero-img{height:300px}
-  .hero-badge{font-size:.78rem;padding:11px 16px}
-  .stats{grid-template-columns:repeat(2,1fr);gap:14px}
-  .stat .n{font-size:1.5rem}
+  .hero{padding:100px 18px 60px;min-height:auto}
+  .hero h1{letter-spacing:-1px}
+  .hero-cue{display:none}
+  .hero-statsbar{grid-template-columns:repeat(2,1fr)}
+  .hero-statcell{padding:16px 14px}
   .sec{padding:60px 18px}
   #equipo-section{padding:60px 18px}
   .sec-head h2,.qui h2{font-size:1.75rem}
@@ -361,34 +386,44 @@ footer a:hover{color:#7dd3fc}
 </nav>
 
 <section id="inicio" class="hero">
-  <div class="hero-orb"></div>
+  <div class="hero-media">
+    <video class="hero-video" autoplay muted loop playsinline preload="auto"
+           poster="https://images.unsplash.com/photo-1519823551278-64ac92734fb1?w=1600&q=80"
+           aria-hidden="true" tabindex="-1">
+      <source src="assets/video/hero-clinica.mp4" type="video/mp4">
+    </video>
+    <img class="hero-fallback" src="https://images.unsplash.com/photo-1519823551278-64ac92734fb1?w=1600&q=80"
+         alt="Clínica WhiteMoon Podología" loading="eager">
+  </div>
+  <div class="hero-grid-tex" aria-hidden="true"></div>
+  <div class="hero-glow" aria-hidden="true"></div>
   <div class="hero-inner">
-    <div class="reveal">
-      <span class="tag"><span class="dotg"></span>Centro especializado en podología</span>
-      <h1>Tu salud podal, en las <em>mejores manos</em></h1>
-      <p>Clínica podológica con más de 12 años cuidando tus pies. Quiropodía, biomecánica, pie diabético y podología deportiva con la última tecnología.</p>
-      <div class="hero-btns">
-        <button class="btn-prim" onclick="openChat()">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
-          Pedir cita ahora
-        </button>
+    <div class="hero-copy">
+      <span class="tag hero-up d1"><span class="dotg"></span>Podólogos colegiados · Majadahonda · Desde 2010</span>
+      <h1 class="hero-up d2">Cuida tus <span class="rot" id="heroRot" aria-hidden="true"><em>pies</em></span><br><span class="sr-only">pies, uñas, plantillas y juanetes </span>con expertos.</h1>
+      <p class="hero-up d3">Clínica podológica colegiada en Majadahonda. Quiropodía, biomecánica y plantillas a medida, pie diabético y cirugía ungueal, con tecnología de última generación y un trato cercano y familiar.</p>
+      <div class="hero-btns hero-up d4">
+        <a class="btn-prim" href="tel:+34643199580">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          643 199 580
+        </a>
         <a href="#servicios" class="btn-sec">
           Ver servicios
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
         </a>
       </div>
-      <div class="stats">
-        <div class="stat"><div class="n" data-count="2500" data-suffix="+">0</div><div class="l">Pacientes</div></div>
-        <div class="stat"><div class="n" data-count="12" data-suffix=" años">0</div><div class="l">Experiencia</div></div>
-        <div class="stat"><div class="n" data-count="6">0</div><div class="l">Tratamientos</div></div>
-        <div class="stat"><div class="n" data-count="98" data-suffix="%">0</div><div class="l">Satisfacción</div></div>
+      <div class="hero-statsbar hero-up d5">
+        <div class="hero-statcell"><b>2010</b><span>Clínica fundada</span></div>
+        <div class="hero-statcell"><b>+500</b><span>Pacientes/año</span></div>
+        <div class="hero-statcell"><b>30 min</b><span>Primera visita</span></div>
+        <div class="hero-statcell"><b>100%</b><span>Colegiados</span></div>
       </div>
     </div>
-    <div class="hero-img-wrap reveal">
-      <img class="hero-img" src="https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?w=1400&q=80" alt="Clínica WhiteMoon Podología" loading="lazy" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1519823551278-64ac92734fb1?w=900&q=80'">
-      <div class="hero-badge"><span class="dot"></span>Citas disponibles esta semana</div>
-    </div>
   </div>
+  <a class="hero-cue" href="#servicios" aria-label="Ver servicios">
+    Servicios
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M19 12l-7 7-7-7"/></svg>
+  </a>
 </section>
 
 <section id="servicios" class="sec">
@@ -711,6 +746,23 @@ var ioCount = new IntersectionObserver(function(entries){
   });
 },{threshold:0.4});
 document.querySelectorAll('[data-count]').forEach(function(el){ ioCount.observe(el); });
+
+// ===== HERO · PALABRA ROTATORIA =====
+(function(){
+  var rot = document.getElementById('heroRot');
+  if(!rot || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  var words = ['pies','uñas','plantillas','juanetes'], i = 0, em = rot.querySelector('em');
+  setInterval(function(){
+    if(document.hidden) return;
+    i = (i+1) % words.length;
+    rot.classList.add('is-out');
+    setTimeout(function(){
+      em.textContent = words[i];
+      rot.classList.remove('is-out'); rot.classList.add('is-in');
+      requestAnimationFrame(function(){ requestAnimationFrame(function(){ rot.classList.remove('is-in'); }); });
+    }, 420);
+  }, 2000);
+})();
 
 // ===== LIGHTBOX =====
 function openLightbox(el){
