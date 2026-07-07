@@ -14,6 +14,9 @@
 <meta property="og:image" content="https://images.unsplash.com/photo-1519823551278-64ac92734fb1?w=1200&q=80">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="preconnect" href="https://images.unsplash.com">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -260,52 +263,52 @@ footer a:hover{color:#7dd3fc}
 .foot-bot{border-top:1px solid rgba(255,255,255,.08);padding-top:24px;text-align:center;font-size:.82rem;color:#64748b;position:relative;z-index:1}
 .foot-bot strong{color:#7dd3fc;font-weight:700}
 
-/* CHATBOT */
+/* CHATBOT · ANA (recepcionista virtual · dark premium) */
+#wm-mod,#wm-tooltip,#wm-btn{font-family:'Sora',system-ui,-apple-system,Segoe UI,Roboto,sans-serif}
 #wm-btn{position:fixed;bottom:24px;right:24px;width:66px;height:66px;border-radius:50%;background:var(--grad);border:none;cursor:pointer;box-shadow:0 14px 34px rgba(14,165,233,.5);display:flex;align-items:center;justify-content:center;z-index:999;transition:transform .2s;animation:pulse 2.6s infinite}
 #wm-btn:hover{transform:scale(1.08)}
 #wm-btn.hidden{display:none}
 @keyframes pulse{0%,100%{box-shadow:0 14px 34px rgba(14,165,233,.5),0 0 0 0 rgba(16,185,129,.55)}50%{box-shadow:0 14px 34px rgba(14,165,233,.5),0 0 0 18px rgba(16,185,129,0)}}
 #wm-btn svg{width:30px;height:30px;color:#fff}
-#wm-tooltip{position:fixed;bottom:98px;right:24px;background:#0f172a;color:#fff;padding:9px 16px;border-radius:10px;font-size:.82rem;font-weight:600;z-index:998;box-shadow:0 8px 22px rgba(15,23,42,.3);pointer-events:none;opacity:0;transform:translateY(6px);transition:all .25s}
+#wm-tooltip{position:fixed;bottom:98px;right:24px;background:#0b1220;color:#e2e8f0;padding:9px 16px;border-radius:10px;font-size:.82rem;font-weight:600;z-index:998;box-shadow:0 8px 22px rgba(0,0,0,.45);border:1px solid rgba(14,165,233,.28);pointer-events:none;opacity:0;transform:translateY(6px);transition:all .25s}
 #wm-btn:hover + #wm-tooltip{opacity:1;transform:translateY(0)}
 
-#wm-mod{position:fixed;bottom:100px;right:24px;width:380px;max-height:620px;background:#fff;border-radius:22px;box-shadow:0 30px 70px rgba(15,23,42,.32);display:none;flex-direction:column;z-index:1000;overflow:hidden;border:1px solid var(--border)}
+#wm-mod{position:fixed;bottom:100px;right:24px;width:384px;max-height:640px;background:#0b1220;border-radius:22px;box-shadow:0 30px 70px rgba(0,0,0,.55);display:none;flex-direction:column;z-index:1000;overflow:hidden;border:1px solid rgba(14,165,233,.22)}
 #wm-mod.open{display:flex;animation:slide .3s ease}
 @keyframes slide{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
-.wm-head{background:linear-gradient(135deg,#0ea5e9 0%,#0284c7 100%);padding:20px 22px;color:#fff;display:flex;align-items:center;gap:14px}
-.wm-head .av{width:44px;height:44px;border-radius:50%;background:rgba(255,255,255,.22);display:flex;align-items:center;justify-content:center;font-weight:800;margin:0;font-size:1.1rem;border:2px solid rgba(255,255,255,.3)}
-.wm-head h5{font-size:1.02rem;font-weight:700;margin-bottom:2px}
-.wm-head .st{font-size:.75rem;display:flex;align-items:center;gap:6px;opacity:.95}
+.wm-head{background:linear-gradient(135deg,#0ea5e9 0%,#0284c7 100%);padding:18px 20px;color:#fff;display:flex;align-items:center;gap:13px}
+.wm-head .av{width:44px;height:44px;border-radius:50%;background:rgba(255,255,255,.18);display:flex;align-items:center;justify-content:center;font-weight:800;margin:0;font-size:1.15rem;border:2px solid rgba(255,255,255,.35)}
+.wm-head h5{font-size:1.02rem;font-weight:700;margin-bottom:2px;letter-spacing:-.2px}
+.wm-head .st{font-size:.74rem;display:flex;align-items:center;gap:6px;opacity:.95}
 .wm-head .st::before{content:'';width:8px;height:8px;border-radius:50%;background:#4ade80;box-shadow:0 0 0 3px rgba(74,222,128,.3)}
-.wm-close{margin-left:auto;background:rgba(255,255,255,.18);border:none;color:#fff;width:32px;height:32px;border-radius:50%;cursor:pointer;font-size:1.2rem;transition:background .2s}
-.wm-close:hover{background:rgba(255,255,255,.3)}
+.wm-close{margin-left:auto;background:rgba(255,255,255,.18);border:none;color:#fff;width:32px;height:32px;border-radius:50%;cursor:pointer;font-size:1.2rem;line-height:1;transition:background .2s}
+.wm-close:hover{background:rgba(255,255,255,.32)}
 .wm-close.hidden{display:none}
-.wm-body{flex:1;padding:22px;overflow-y:auto;background:var(--bg);max-height:400px;min-height:300px}
+.wm-body{flex:1;padding:20px;overflow-y:auto;background:#0b1220;max-height:420px;min-height:320px}
+.wm-body::-webkit-scrollbar{width:6px}
+.wm-body::-webkit-scrollbar-thumb{background:rgba(14,165,233,.3);border-radius:3px}
 .msg{margin-bottom:12px;display:flex;animation:in .25s ease}
 @keyframes in{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:translateY(0)}}
 .msg.bot{justify-content:flex-start}
 .msg.usr{justify-content:flex-end}
-.msg .b{max-width:80%;padding:12px 16px;border-radius:16px;font-size:.9rem;line-height:1.5;white-space:pre-wrap;word-wrap:break-word}
-.msg.bot .b{background:#fff;color:var(--text);border:1px solid var(--border);border-bottom-left-radius:4px;box-shadow:0 2px 8px rgba(14,165,233,.06)}
-.msg.usr .b{background:var(--grad);color:#fff;border-bottom-right-radius:4px;box-shadow:0 4px 12px rgba(14,165,233,.25)}
-.qbtns{display:flex;flex-direction:column;gap:8px;margin:6px 0 10px}
-.qbtn{background:#fff;border:1.5px solid var(--primary);color:var(--primary);padding:10px 14px;border-radius:14px;font-size:.85rem;font-weight:600;cursor:pointer;text-align:left;transition:all .15s;font-family:inherit}
-.qbtn:hover{background:var(--primary);color:#fff;transform:translateX(2px)}
-.qbtns-grid{display:grid;grid-template-columns:1fr 1fr;gap:6px;margin:6px 0 10px}
-.qbtns-grid .qbtn{font-size:.8rem;padding:9px 10px;text-align:center}
-.typing{display:inline-flex;gap:4px;padding:14px 16px;background:#fff;border:1px solid var(--border);border-radius:16px;border-bottom-left-radius:4px}
-.typing span{width:7px;height:7px;background:var(--primary);border-radius:50%;animation:bnc 1.2s infinite}
+.msg .b{max-width:82%;padding:12px 15px;border-radius:16px;font-size:.9rem;line-height:1.5;white-space:pre-wrap;word-wrap:break-word}
+.msg.bot .b{background:#132033;color:#e2e8f0;border:1px solid rgba(148,163,184,.14);border-bottom-left-radius:4px}
+.msg.usr .b{background:var(--grad);color:#fff;border-bottom-right-radius:4px;box-shadow:0 4px 12px rgba(14,165,233,.3)}
+.wm-chips{display:flex;flex-wrap:wrap;gap:8px;margin:2px 0 12px}
+.wm-chip{background:rgba(14,165,233,.10);border:1px solid rgba(14,165,233,.4);color:#7dd3fc;padding:10px 14px;border-radius:12px;font-size:.85rem;font-weight:600;cursor:pointer;text-align:left;transition:all .15s;font-family:inherit}
+.wm-chip:hover{background:#0ea5e9;color:#fff;border-color:#0ea5e9;transform:translateY(-1px)}
+.wm-date{background:#132033;border:1px solid rgba(14,165,233,.4);color:#e2e8f0;padding:10px 14px;border-radius:12px;font-size:.85rem;font-family:inherit;cursor:pointer;color-scheme:dark}
+.typing{display:inline-flex;gap:4px;padding:14px 16px;background:#132033;border:1px solid rgba(148,163,184,.14);border-radius:16px;border-bottom-left-radius:4px}
+.typing span{width:7px;height:7px;background:#0ea5e9;border-radius:50%;animation:bnc 1.2s infinite}
 .typing span:nth-child(2){animation-delay:.2s}
 .typing span:nth-child(3){animation-delay:.4s}
 @keyframes bnc{0%,60%,100%{opacity:.3;transform:translateY(0)}30%{opacity:1;transform:translateY(-5px)}}
-.wm-input{display:flex;border-top:1px solid var(--border);background:#fff}
-.wm-input input{flex:1;border:none;padding:14px 16px;font-size:.9rem;outline:none;font-family:inherit;color:var(--text)}
-.wm-input input:disabled{background:#f1f5f9;color:#94a3b8}
-.wm-input button{background:var(--grad);border:none;color:#fff;padding:0 22px;cursor:pointer;font-weight:700;transition:opacity .2s}
-.wm-input button:disabled{opacity:.5;cursor:not-allowed}
-.wa-btn{display:flex;align-items:center;justify-content:center;gap:8px;background:#25d366;color:#fff;text-decoration:none;padding:13px 18px;border-radius:14px;font-weight:700;font-size:.9rem;margin-top:10px;transition:all .15s;box-shadow:0 6px 16px rgba(37,211,102,.35)}
-.wa-btn:hover{background:#1da851;transform:translateY(-2px)}
-.reset-btn{background:var(--grad);border:none;color:#fff;padding:11px 18px;border-radius:14px;font-weight:700;font-size:.85rem;margin-top:10px;cursor:pointer;font-family:inherit;width:100%}
+.wm-reset{background:var(--grad);border:none;color:#fff;padding:11px 18px;border-radius:14px;font-weight:700;font-size:.85rem;margin-top:6px;cursor:pointer;font-family:inherit;width:100%}
+.wm-input{display:flex;border-top:1px solid rgba(148,163,184,.12);background:#0b1220}
+.wm-input input{flex:1;border:none;padding:14px 16px;font-size:.9rem;outline:none;font-family:inherit;color:#e2e8f0;background:transparent}
+.wm-input input::placeholder{color:#64748b}
+.wm-input button{background:var(--grad);border:none;color:#fff;padding:0 22px;cursor:pointer;font-weight:700;font-family:inherit;transition:opacity .2s}
+.wm-input button:hover{opacity:.9}
 
 /* RESPONSIVE TABLET 900px */
 @media(max-width:900px){
@@ -668,37 +671,55 @@ footer a:hover{color:#7dd3fc}
   <img id="lightbox-img" src="" alt="">
 </div>
 
-<button id="wm-btn" onclick="toggleChat()" aria-label="Abrir chat WhiteMoon Podología">
+<button id="wm-btn" onclick="toggleChat()" aria-label="Hablar con ANA, recepcionista de WhiteMoon Podología">
   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
 </button>
-<div id="wm-tooltip">¿Te ayudo a pedir cita?</div>
+<div id="wm-tooltip">Soy ANA 🌙 ¿Reservamos tu cita?</div>
 
-<div id="wm-mod">
+<div id="wm-mod" role="dialog" aria-label="Chat con ANA">
   <div class="wm-head">
-    <div class="av">W</div>
+    <div class="av">A</div>
     <div>
-      <h5>WhiteMoon Podología</h5>
-      <div class="st">En línea</div>
+      <h5>ANA · Recepcionista</h5>
+      <div class="st">En línea · WhiteMoon Podología</div>
     </div>
-    <button class="wm-close" id="wm-close" onclick="toggleChat()">×</button>
+    <button class="wm-close" id="wm-close" onclick="toggleChat()" aria-label="Cerrar chat">×</button>
   </div>
   <div class="wm-body" id="wm-body"></div>
   <div class="wm-input">
-    <input id="wm-in" type="text" placeholder="Escribe tu mensaje..." onkeydown="if(event.key==='Enter')sendUser()">
+    <input id="wm-in" type="text" placeholder="Escribe a ANA..." onkeydown="if(event.key==='Enter')sendUser()">
     <button id="wm-send" onclick="sendUser()">Enviar</button>
   </div>
 </div>
 
 <script>
-// ===== CONFIG =====
-var WA_NUMBER = '34643199580';
+// ===== CONFIG · ANA =====
+var EDGE_URL = 'https://mlaqtniujnvfxcvcourm.supabase.co/functions/v1/podo-cita';
 var PHONE_DISPLAY = '643 199 580';
-var HORARIO = 'L-V 9-14h y 16-20h · S 9-13h';
+var TRATAMIENTOS = [
+  {n:'Quiropodia', d:30},
+  {n:'Uña encarnada', d:30},
+  {n:'Estudio de la pisada', d:60},
+  {n:'Plantillas (revisión/entrega)', d:30},
+  {n:'Papiloma', d:30},
+  {n:'Pie diabético', d:45},
+  {n:'Primera visita', d:45}
+];
+// mapeo tarjeta de servicio de la web -> tratamiento de la agenda
+var SERV_MAP = {
+  'Quiropodía / Pedicura médica':'Quiropodia',
+  'Biomecánica y Plantillas':'Estudio de la pisada',
+  'Pie Diabético':'Pie diabético',
+  'Cirugía Ungueal':'Uña encarnada',
+  'Verrugas Plantares':'Papiloma'
+};
+var DOW = ['Dom','Lun','Mar','Mié','Jue','Vie','Sáb'];
+var MES = ['ene','feb','mar','abr','may','jun','jul','ago','sep','oct','nov','dic'];
 
 // ===== STATE =====
-var chatStep = 0;          // 0 idle · 1 askName · 2 askPhone · 3 done · 9 ended
 var chatStarted = false;
-var lead = {nombre:'', telefono:'', servicio:'', horario:'', urgente:false, sintoma:''};
+var capture = 0; // 0 ninguno · 1 nombre · 2 teléfono
+var ana = {tratamiento:'', duracion:0, dia:'', diaLabel:'', cita_at:'', nombre:'', telefono:''};
 
 // ===== NAV =====
 function toggleMenu(){
@@ -778,317 +799,244 @@ function closeLightbox(e, force){
   }
 }
 
-// ===== CHATBOT HELPERS =====
+// ===== ANA · RECEPCIONISTA VIRTUAL =====
 function normalize(s){
-  return (s||'').toLowerCase()
-    .normalize('NFD').replace(/[̀-ͯ]/g,'')
-    .replace(/[^a-z0-9 ]/g,' ')
-    .replace(/\s+/g,' ').trim();
+  return (s||'').toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g,'');
 }
-function updateCaptureUI(){
-  var btn = document.getElementById('wm-btn');
-  var close = document.getElementById('wm-close');
-  var input = document.getElementById('wm-in');
-  var send = document.getElementById('wm-send');
-  if(chatStep >= 1 && chatStep < 3){
-    btn.classList.add('hidden');
-    close.classList.add('hidden');
-  } else {
-    btn.classList.remove('hidden');
-    close.classList.remove('hidden');
-  }
-  if(chatStep === 9){
-    input.disabled = true;
-    send.disabled = true;
-    input.placeholder = 'Conversación cerrada';
-  } else {
-    input.disabled = false;
-    send.disabled = false;
-    input.placeholder = 'Escribe tu mensaje...';
-  }
+
+// --- fechas (civiles, ancladas a Europe/Madrid) ---
+function pad(n){ return (n<10?'0':'')+n; }
+function madridToday(){
+  var s = new Intl.DateTimeFormat('en-CA',{timeZone:'Europe/Madrid',year:'numeric',month:'2-digit',day:'2-digit'}).format(new Date());
+  var p = s.split('-');
+  return {y:+p[0], m:+p[1], d:+p[2]};
 }
+function civilToUTC(c){ return Date.UTC(c.y, c.m-1, c.d); }
+function fromUTC(ms){ var d=new Date(ms); return {y:d.getUTCFullYear(), m:d.getUTCMonth()+1, d:d.getUTCDate()}; }
+function isoOf(c){ return c.y+'-'+pad(c.m)+'-'+pad(c.d); }
+function dowOf(c){ return new Date(civilToUTC(c)).getUTCDay(); }
+function labelOf(c){ return DOW[dowOf(c)]+' '+c.d+' '+MES[c.m-1]; }
+function nextBusinessDays(n){
+  var out=[], ms=civilToUTC(madridToday()), guard=0;
+  while(out.length<n && guard<20){
+    var cc=fromUTC(ms), w=dowOf(cc);
+    if(w>=1 && w<=5) out.push({iso:isoOf(cc), label:labelOf(cc)});
+    ms+=86400000; guard++;
+  }
+  return out;
+}
+
+// --- red ---
+async function podo(payload){
+  try{
+    var r = await fetch(EDGE_URL,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(payload)});
+    return await r.json();
+  }catch(e){ return {ok:false, _neterr:true}; }
+}
+
+// --- render ---
 function toggleChat(){
   var m = document.getElementById('wm-mod');
-  if(m.classList.contains('open')){
-    if(chatStep >= 1 && chatStep < 3) return;
-    m.classList.remove('open');
-  } else {
-    m.classList.add('open');
-    if(!chatStarted){ chatStarted = true; startChat(); }
-  }
+  if(m.classList.contains('open')){ m.classList.remove('open'); }
+  else { m.classList.add('open'); if(!chatStarted){ chatStarted=true; startAna(); } }
 }
 function openChat(){
   var m = document.getElementById('wm-mod');
-  if(!m.classList.contains('open')){ m.classList.add('open'); }
-  if(!chatStarted){ chatStarted = true; startChat(); }
+  m.classList.add('open');
+  if(!chatStarted){ chatStarted=true; startAna(); }
+}
+function showTyping(){
+  var b=document.getElementById('wm-body');
+  var d=document.createElement('div');
+  d.className='msg bot'; d.id='wm-typing';
+  d.innerHTML='<div class="typing"><span></span><span></span><span></span></div>';
+  b.appendChild(d); b.scrollTop=b.scrollHeight;
+}
+function hideTyping(){ var t=document.getElementById('wm-typing'); if(t) t.remove(); }
+function botNow(text, cb){
+  var b=document.getElementById('wm-body');
+  var d=document.createElement('div'); d.className='msg bot';
+  var inner=document.createElement('div'); inner.className='b'; inner.textContent=text;
+  d.appendChild(inner); b.appendChild(d); b.scrollTop=b.scrollHeight;
+  if(cb) cb();
 }
 function addBot(text, cb, delay){
   showTyping();
-  setTimeout(function(){
-    hideTyping();
-    var b = document.getElementById('wm-body');
-    var d = document.createElement('div');
-    d.className = 'msg bot';
-    var inner = document.createElement('div');
-    inner.className = 'b';
-    inner.textContent = text;
-    d.appendChild(inner);
-    b.appendChild(d);
-    b.scrollTop = b.scrollHeight;
-    if(cb) cb();
-  }, delay || 750);
+  setTimeout(function(){ hideTyping(); botNow(text, cb); }, delay || 700);
 }
 function addUser(text){
-  var b = document.getElementById('wm-body');
-  var d = document.createElement('div');
-  d.className = 'msg usr';
-  var inner = document.createElement('div');
-  inner.className = 'b';
-  inner.textContent = text;
-  d.appendChild(inner);
-  b.appendChild(d);
-  b.scrollTop = b.scrollHeight;
+  var b=document.getElementById('wm-body');
+  var d=document.createElement('div'); d.className='msg usr';
+  var inner=document.createElement('div'); inner.className='b'; inner.textContent=text;
+  d.appendChild(inner); b.appendChild(d); b.scrollTop=b.scrollHeight;
 }
-function showTyping(){
-  var b = document.getElementById('wm-body');
-  var d = document.createElement('div');
-  d.className = 'msg bot';
-  d.id = 'wm-typing';
-  d.innerHTML = '<div class="typing"><span></span><span></span><span></span></div>';
-  b.appendChild(d);
-  b.scrollTop = b.scrollHeight;
+function chips(items){
+  var b=document.getElementById('wm-body');
+  var w=document.createElement('div'); w.className='wm-chips';
+  items.forEach(function(it){
+    var btn=document.createElement('button');
+    btn.className='wm-chip'; btn.textContent=it.label;
+    btn.onclick=function(){ w.remove(); it.fn(); };
+    w.appendChild(btn);
+  });
+  b.appendChild(w); b.scrollTop=b.scrollHeight;
+  return w;
 }
-function hideTyping(){
-  var t = document.getElementById('wm-typing');
-  if(t) t.remove();
+
+// --- flujo ---
+function startAna(){
+  capture=0;
+  addBot('¡Hola! Soy ANA, la recepcionista virtual de WhiteMoon Podología 🌙\n¿Qué necesitas? Dime el tratamiento y te busco un hueco 👇', function(){
+    startTratChips();
+  }, 1100);
 }
-function addQuickButtons(opts, grid){
-  var b = document.getElementById('wm-body');
-  var w = document.createElement('div');
-  w.className = grid ? 'qbtns-grid' : 'qbtns';
-  for(var i=0;i<opts.length;i++){
-    (function(o){
-      var btn = document.createElement('button');
-      btn.className = 'qbtn';
-      btn.textContent = o.label;
-      btn.onclick = function(){ w.remove(); o.action(); };
-      w.appendChild(btn);
-    })(opts[i]);
+function startTratChips(){
+  chips(TRATAMIENTOS.map(function(t){
+    return {label:t.n+' · '+t.d+' min', fn:function(){ pickTrat(t); }};
+  }));
+}
+function pickTrat(t){
+  addUser(t.n);
+  ana.tratamiento=t.n; ana.duracion=t.d;
+  askDay();
+}
+function askDay(){
+  addBot('¿Qué día te viene bien?', function(){
+    var items = nextBusinessDays(5).map(function(dd){
+      return {label:dd.label, fn:function(){ addUser(dd.label); ana.dia=dd.iso; ana.diaLabel=dd.label; loadSlots(); }};
+    });
+    items.push({label:'🗓️ Otro día', fn:showDatePicker});
+    chips(items);
+  });
+}
+function showDatePicker(){
+  var b=document.getElementById('wm-body');
+  var wrap=document.createElement('div'); wrap.className='wm-chips';
+  var inp=document.createElement('input');
+  inp.type='date'; inp.className='wm-date'; inp.min=isoOf(madridToday());
+  inp.onchange=function(){
+    if(!inp.value) return;
+    wrap.remove();
+    var p=inp.value.split('-'), cc={y:+p[0], m:+p[1], d:+p[2]};
+    addUser(labelOf(cc));
+    ana.dia=inp.value; ana.diaLabel=labelOf(cc);
+    loadSlots();
+  };
+  wrap.appendChild(inp); b.appendChild(wrap); b.scrollTop=b.scrollHeight;
+}
+async function loadSlots(){
+  showTyping();
+  var res = await podo({action:'huecos', dia:ana.dia, duracion_min:ana.duracion});
+  hideTyping();
+  if(res._neterr){ netError(); return; }
+  var huecos = (res && res.huecos) || [];
+  if(!huecos.length){
+    botNow('Ese día está completo 😕. ¿Probamos con otro?', function(){ askDay(); });
+    return;
   }
-  b.appendChild(w);
-  b.scrollTop = b.scrollHeight;
-}
-
-// ===== FLOWS =====
-function startChat(){
-  chatStep = 0;
-  updateCaptureUI();
-  addBot('¡Hola! 🦶 Bienvenido/a a WhiteMoon Podología.\n¿En qué puedo ayudarte?', function(){
-    addQuickButtons([
-      {label:'📅 Pedir cita', action:function(){ addUser('Pedir cita'); flowCita(); }},
-      {label:'💰 Ver precios', action:function(){ addUser('Ver precios'); flowPrecios(); }},
-      {label:'⏰ Horario y dirección', action:function(){ addUser('Horario'); flowHorario(); }},
-      {label:'🩺 Servicios', action:function(){ addUser('Servicios'); flowServicios(); }},
-      {label:'🚨 Tengo una urgencia', action:function(){ addUser('Urgencia'); flowUrgencia(); }}
-    ]);
-  }, 1400);
-}
-
-function flowCita(){
-  addBot('Estupendo 😊 ¿Para qué tratamiento quieres pedir cita?', function(){
-    addQuickButtons([
-      {label:'🦶 Quiropodía', action:function(){ addUser('Quiropodía'); lead.servicio='Quiropodía'; askHorario(); }},
-      {label:'👟 Plantillas', action:function(){ addUser('Plantillas'); lead.servicio='Plantillas / Biomecánica'; askHorario(); }},
-      {label:'🩺 Pie Diabético', action:function(){ addUser('Pie diabético'); lead.servicio='Pie Diabético'; askHorario(); }},
-      {label:'⚽ Deportiva', action:function(){ addUser('Deportiva'); lead.servicio='Podología Deportiva'; askHorario(); }},
-      {label:'💊 Cirugía Ungueal', action:function(){ addUser('Cirugía ungueal'); lead.servicio='Cirugía Ungueal'; askHorario(); }},
-      {label:'🔬 Verrugas', action:function(){ addUser('Verrugas'); lead.servicio='Verrugas Plantares'; askHorario(); }}
-    ], true);
+  botNow('Estos son los huecos libres para el '+ana.diaLabel+' 👇', function(){
+    chips(huecos.slice(0,6).map(function(iso){
+      return {label: iso.slice(11,16), fn:function(){ pickSlot(iso); }};
+    }));
   });
 }
-function askHorario(){
-  addBot('¿Tienes alguna preferencia de horario?', function(){
-    addQuickButtons([
-      {label:'🌅 Mañana (9-14h)', action:function(){ addUser('Mañana'); lead.horario='Mañana (9-14h)'; askName(); }},
-      {label:'🌆 Tarde (16-20h)', action:function(){ addUser('Tarde'); lead.horario='Tarde (16-20h)'; askName(); }},
-      {label:'🤷 Me da igual', action:function(){ addUser('Me da igual'); lead.horario='Indiferente'; askName(); }}
-    ]);
-  });
+function pickSlot(iso){
+  addUser(iso.slice(11,16));
+  ana.cita_at=iso;
+  askName();
 }
-
-function flowPrecios(){
-  addBot('Nuestros precios orientativos:\n🦶 Quiropodía / Pedicura médica: desde 35€\n👟 Estudio biomecánico + plantillas: desde 120€\n🩺 Revisión pie diabético: desde 40€\n⚽ Podología deportiva: desde 45€\n💊 Cirugía ungueal: desde 80€\n🔬 Eliminación verrugas: desde 60€\n\n💳 Aceptamos todas las tarjetas.\n📋 Mutuas: Adeslas, Asisa, Mapfre y más.\n¿Quieres pedir cita para algún tratamiento?', function(){
-    addQuickButtons([
-      {label:'✅ Pedir cita', action:function(){ addUser('Pedir cita'); flowCita(); }},
-      {label:'❓ Más info', action:function(){ addUser('Más info'); flowServicios(); }}
-    ]);
-  });
-}
-
-function flowHorario(){
-  addBot('Nuestro horario de atención:\n📅 Lunes a Viernes: 9:00 - 14:00\n                    16:00 - 20:00\n📅 Sábados: 9:00 - 13:00\n🚫 Domingos: cerrado\n\n📍 C/ Principal 25, Madrid\n📞 ' + PHONE_DISPLAY + '\n\n¿Quieres reservar cita?', function(){
-    addQuickButtons([
-      {label:'✅ Reservar', action:function(){ addUser('Reservar'); flowCita(); }},
-      {label:'📞 Llamar ahora', action:function(){ addUser('Llamar'); window.location.href='tel:+'+WA_NUMBER; }}
-    ]);
-  });
-}
-
-function flowUrgencia(){
-  lead.urgente = true;
-  addBot('Entiendo que tienes molestias 🤝\n¿Qué síntoma describes mejor?', function(){
-    addQuickButtons([
-      {label:'😣 Dolor agudo', action:function(){ addUser('Dolor agudo'); lead.sintoma='Dolor agudo'; lead.servicio='Urgencia - Dolor agudo'; urgenciaConfirm(); }},
-      {label:'🔴 Uña encarnada', action:function(){ addUser('Uña encarnada'); lead.sintoma='Uña encarnada'; lead.servicio='Urgencia - Uña encarnada'; urgenciaConfirm(); }},
-      {label:'🦠 Verruga/hongo', action:function(){ addUser('Verruga/hongo'); lead.sintoma='Verruga/hongo'; lead.servicio='Urgencia - Verruga/hongo'; urgenciaConfirm(); }},
-      {label:'💢 Otro', action:function(){ addUser('Otro'); lead.sintoma='Otro síntoma'; lead.servicio='Urgencia - Otro'; urgenciaConfirm(); }}
-    ], true);
-  });
-}
-function urgenciaConfirm(){
-  addBot('Te reservamos cita urgente.\nDime tu nombre y teléfono y te llamamos en menos de 1 hora.', askName);
-}
-
-function flowServicios(){
-  addBot('Ofrecemos 6 tratamientos especializados:\n🦶 Quiropodía — durezas, callos, uñas\n👟 Biomecánica — estudio pisada y plantillas\n🩺 Pie Diabético — prevención y control\n⚽ Podología Deportiva — lesiones y rendimiento\n💊 Cirugía Ungueal — uñas encarnadas definitivo\n🔬 Verrugas — láser CO2 y crioterapia\n\n¿Cuál te interesa?', function(){
-    addQuickButtons([
-      {label:'🦶 Quiropodía', action:function(){ addUser('Quiropodía'); lead.servicio='Quiropodía'; askHorario(); }},
-      {label:'👟 Plantillas', action:function(){ addUser('Plantillas'); lead.servicio='Plantillas / Biomecánica'; askHorario(); }},
-      {label:'🩺 Pie Diabético', action:function(){ addUser('Pie diabético'); lead.servicio='Pie Diabético'; askHorario(); }},
-      {label:'⚽ Deportiva', action:function(){ addUser('Deportiva'); lead.servicio='Podología Deportiva'; askHorario(); }},
-      {label:'💊 Cirugía Ungueal', action:function(){ addUser('Cirugía ungueal'); lead.servicio='Cirugía Ungueal'; askHorario(); }},
-      {label:'🔬 Verrugas', action:function(){ addUser('Verrugas'); lead.servicio='Verrugas Plantares'; askHorario(); }}
-    ], true);
-  });
-}
-
-function flowDespedida(){
-  addBot('¡Gracias por contactar con WhiteMoon Podología! 🙏\nEstaremos encantados de atenderte.\n📞 ' + PHONE_DISPLAY + ' · 🌐 whitemoon.es\n¡Que tengas un buen día! 🌟', function(){
-    chatStep = 9;
-    updateCaptureUI();
-    var b = document.getElementById('wm-body');
-    var btn = document.createElement('button');
-    btn.className = 'reset-btn';
-    btn.textContent = '🔄 Nueva consulta';
-    btn.onclick = function(){
-      document.getElementById('wm-body').innerHTML = '';
-      lead = {nombre:'', telefono:'', servicio:'', horario:'', urgente:false, sintoma:''};
-      chatStep = 0;
-      updateCaptureUI();
-      startChat();
-    };
-    b.appendChild(btn);
-    b.scrollTop = b.scrollHeight;
-  });
-}
-
-// ===== LEAD CAPTURE =====
 function askName(){
-  chatStep = 1;
-  updateCaptureUI();
-  addBot('Para reservarte la cita necesito tu nombre y teléfono 📱\n¿Me dices tu nombre?');
+  capture=1;
+  addBot('¡Perfecto! ¿A nombre de quién pongo la cita?');
 }
 function askPhone(){
-  chatStep = 2;
-  updateCaptureUI();
-  addBot('Perfecto ' + lead.nombre + '. ¿Me facilitas tu teléfono de contacto?');
+  capture=2;
+  addBot('Gracias, '+ana.nombre+'. ¿Y un teléfono de contacto? 📱');
 }
-function finishCapture(){
-  chatStep = 3;
-  updateCaptureUI();
-  var urgentTxt = lead.urgente ? '\n\n🚨 Caso marcado como urgente. Te llamamos en menos de 1 hora.' : '';
-  var msg = '✅ ¡Cita solicitada, ' + lead.nombre + '!\nTe llamamos en breve para confirmar día y hora exacta.\n📞 También puedes llamarnos al ' + PHONE_DISPLAY + ' en horario de consulta.' + urgentTxt;
-  addBot(msg, function(){
-    var b = document.getElementById('wm-body');
-    var waPrefix = lead.urgente ? '🚨 URGENTE: ' : '';
-    var waMsg = waPrefix + '🦶 *NUEVA CITA PODOLOGÍA*\n\n👤 ' + lead.nombre + '\n📱 +34' + lead.telefono + '\n🏥 Tratamiento: ' + (lead.servicio || '-') + '\n🕐 Preferencia: ' + (lead.horario || '-') + (lead.sintoma ? '\n💢 Síntoma: ' + lead.sintoma : '') + '\n📍 WhiteMoon Podología Demo\n\n_Vía chatbot whitemoon.es_';
-    var url = 'https://wa.me/' + WA_NUMBER + '?text=' + encodeURIComponent(waMsg);
-    var a = document.createElement('a');
-    a.href = url;
-    a.target = '_blank';
-    a.rel = 'noopener';
-    a.className = 'wa-btn';
-    a.innerHTML = '<svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M17.5 14.4c-.3-.1-1.7-.8-2-.9-.3-.1-.5-.1-.7.1-.2.3-.8.9-.9 1.1-.2.2-.3.2-.6.1-.3-.1-1.2-.5-2.3-1.4-.9-.8-1.4-1.7-1.6-2-.2-.3 0-.4.1-.6.1-.1.3-.3.4-.5.1-.2.2-.3.3-.5.1-.2 0-.4 0-.5 0-.1-.7-1.7-1-2.3-.3-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.5s1 2.9 1.2 3.1c.1.2 2 3 4.8 4.2.7.3 1.2.5 1.6.6.7.2 1.3.2 1.8.1.5-.1 1.7-.7 2-1.4.2-.7.2-1.3.2-1.4-.1-.1-.3-.2-.6-.3z"/><path d="M12 2C6.5 2 2 6.5 2 12c0 1.8.5 3.5 1.3 5L2 22l5.1-1.3c1.4.8 3.1 1.3 4.9 1.3 5.5 0 10-4.5 10-10S17.5 2 12 2zm0 18c-1.6 0-3.1-.4-4.4-1.2l-.3-.2-3.2.8.9-3.1-.2-.3C3.9 14.7 3.5 13.4 3.5 12c0-4.7 3.8-8.5 8.5-8.5s8.5 3.8 8.5 8.5-3.8 8.5-8.5 8.5z"/></svg> Enviar resumen por WhatsApp';
-    b.appendChild(a);
-    b.scrollTop = b.scrollHeight;
+async function doReservar(){
+  capture=0;
+  showTyping();
+  var res = await podo({
+    action:'reservar',
+    paciente_nombre:ana.nombre,
+    paciente_telefono:ana.telefono,
+    tratamiento:ana.tratamiento,
+    duracion_min:ana.duracion,
+    cita_at:ana.cita_at
   });
+  hideTyping();
+  if(res._neterr){ netError(); return; }
+  if(res && res.ok){
+    botNow('¡Cita confirmada, '+ana.nombre+' ✓!\nTe esperamos el '+res.cuando+'.\nSi necesitas cambiarla, llámanos al '+PHONE_DISPLAY+'.', endChat);
+  } else {
+    var reason = (res && res.reason) || 'ese hueco ya no está disponible';
+    botNow('Vaya… '+reason+'. Te muestro los huecos actualizados 👇', function(){ loadSlots(); });
+  }
+}
+function endChat(){
+  var b=document.getElementById('wm-body');
+  var btn=document.createElement('button');
+  btn.className='wm-reset'; btn.textContent='🔄 Nueva cita';
+  btn.onclick=function(){
+    b.innerHTML='';
+    ana={tratamiento:'', duracion:0, dia:'', diaLabel:'', cita_at:'', nombre:'', telefono:''};
+    capture=0;
+    startAna();
+  };
+  b.appendChild(btn); b.scrollTop=b.scrollHeight;
+}
+function netError(){
+  botNow('Ahora mismo no puedo conectar con la agenda 😔.\nInténtalo de nuevo en un momento o llámanos al '+PHONE_DISPLAY+'.', endChat);
 }
 
-// ===== SERVICE CTA FROM PAGE =====
+// --- entrada desde tarjetas de servicio de la web ---
 function askService(name){
-  var m = document.getElementById('wm-mod');
-  if(!m.classList.contains('open')){ m.classList.add('open'); }
-  if(!chatStarted){ chatStarted = true; chatStep=0; updateCaptureUI(); }
-  setTimeout(function(){
-    addUser('Quiero info sobre ' + name);
-    lead.servicio = name;
-    addBot('Genial. ' + name + ' es uno de nuestros tratamientos más solicitados. ¿Te ayudo a pedir cita?', function(){
-      addQuickButtons([
-        {label:'✅ Sí, quiero cita', action:function(){ addUser('Sí, quiero cita'); askHorario(); }},
-        {label:'💰 Ver precios', action:function(){ addUser('Ver precios'); flowPrecios(); }},
-        {label:'❓ Tengo otra duda', action:function(){ addUser('Tengo otra duda'); addBot('Adelante, te escucho.'); }}
-      ]);
-    });
-  }, 200);
+  var m=document.getElementById('wm-mod');
+  m.classList.add('open'); chatStarted=true; capture=0;
+  addUser('Me interesa: '+name);
+  var mapped = SERV_MAP[name];
+  if(mapped){
+    var t = TRATAMIENTOS.filter(function(x){ return x.n===mapped; })[0];
+    ana.tratamiento=t.n; ana.duracion=t.d;
+    addBot('¡Perfecto! Vamos a reservar tu cita de '+t.n+' 🌙', function(){ askDay(); });
+  } else {
+    addBot('¡Genial! Dime qué tratamiento necesitas y te busco hueco 👇', function(){ startTratChips(); });
+  }
 }
 
-// ===== KEYWORD MATCH =====
-function matchKeyword(t){
-  var n = normalize(t);
-  var hit = function(arr){ for(var i=0;i<arr.length;i++) if(n.indexOf(arr[i])!==-1) return true; return false; };
-  if(hit(['gracias','adios','chao','hasta luego','nada mas','nada más'])) return {fn:flowDespedida};
-  if(hit(['urgente','urgencia','dolor fuerte','infeccion','infectada','sangra','me duele mucho'])) return {fn:flowUrgencia};
-  if(hit(['cita','reservar','reserva','agendar','quiero cita','pedir cita'])) return {fn:flowCita};
-  if(hit(['precio','cuanto','cuesta','tarifa','vale','coste'])) return {fn:flowPrecios};
-  if(hit(['horario','cuando','abierto','abren','direccion','donde'])) return {fn:flowHorario};
-  if(hit(['servicio','tratamiento','tratamientos','servicios'])) return {fn:flowServicios};
-  if(hit(['dolor','duele','molestia'])) return {fn:flowUrgencia};
-  return null;
-}
-function intentBooking(t){
-  var n = normalize(t);
-  var triggers = ['cita','reservar','quiero','necesito','agendar','consulta'];
-  for(var i=0;i<triggers.length;i++) if(n.indexOf(triggers[i])!==-1) return true;
-  return false;
-}
-
+// --- entrada de texto libre ---
 function sendUser(){
-  if(chatStep === 9) return;
-  var inp = document.getElementById('wm-in');
-  var v = (inp.value || '').trim();
+  var inp=document.getElementById('wm-in');
+  var v=(inp.value||'').trim();
   if(!v) return;
-  inp.value = '';
+  inp.value='';
   addUser(v);
-  handleUser(v);
+  handleText(v);
 }
-function handleUser(t){
-  if(chatStep === 1){
-    var name = t.replace(/[^A-Za-zÀ-ÿ\s]/g,'').trim();
-    if(name.length < 2){ addBot('¿Me dices tu nombre, por favor?'); return; }
-    lead.nombre = name;
-    askPhone();
+function handleText(t){
+  if(capture===1){
+    var name=t.replace(/[^A-Za-zÀ-ÿ' ]/g,'').trim();
+    if(name.length<2){ addBot('¿Me dices tu nombre, por favor?'); return; }
+    ana.nombre=name; askPhone(); return;
+  }
+  if(capture===2){
+    var d=(t.match(/\d/g)||[]).join('');
+    if(d.length<9){ addBot('Necesito un teléfono válido (mínimo 9 dígitos). ¿Me lo repites?'); return; }
+    ana.telefono=d; doReservar(); return;
+  }
+  var n=normalize(t);
+  // REGLA CLÍNICA: ANA nunca diagnostica ni da consejo médico.
+  if(/(dolor|duele|sangr|infec|pus|herida|inflam|molest|ampoll|supura|hincha)/.test(n)){
+    addBot('Eso lo valorará el podólogo en tu visita ⚠️. Yo te ayudo a reservarla ahora mismo.', function(){
+      if(ana.tratamiento) askDay(); else startTratChips();
+    });
     return;
   }
-  if(chatStep === 2){
-    var d = (t.match(/\d/g) || []).join('');
-    if(d.length < 9){ addBot('Necesito un teléfono válido de 9 dígitos. ¿Puedes repetirlo?'); return; }
-    lead.telefono = d.slice(-9);
-    finishCapture();
+  if(/(cita|reserv|hora|agenda|pedir|quiero)/.test(n)){
+    if(ana.tratamiento) askDay(); else startTratChips();
     return;
   }
-  var m = matchKeyword(t);
-  if(m){
-    if(m.fn){ m.fn(); return; }
-    if(m.text){ addBot(m.text, m.after); return; }
-  }
-  if(intentBooking(t)){ flowCita(); return; }
-  addBot('Puedo ayudarte con información sobre tratamientos o reservar tu cita 🦶\n¿Qué necesitas?', function(){
-    addQuickButtons([
-      {label:'📅 Pedir cita', action:function(){ addUser('Pedir cita'); flowCita(); }},
-      {label:'💰 Ver precios', action:function(){ addUser('Ver precios'); flowPrecios(); }},
-      {label:'⏰ Horario', action:function(){ addUser('Horario'); flowHorario(); }}
-    ]);
-  });
+  addBot('Puedo ayudarte a reservar tu cita 🙂 Elige un tratamiento 👇', function(){ startTratChips(); });
 }
 </script>
 </body>
