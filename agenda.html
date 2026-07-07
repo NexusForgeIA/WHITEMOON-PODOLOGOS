@@ -146,6 +146,20 @@ button{font-family:inherit}
 .rchip:hover{background:var(--primary);color:#fff;border-color:var(--primary)}
 .rdate{background:var(--card);border:1px solid var(--border2);color:var(--text);padding:9px 13px;border-radius:11px;font-size:.82rem;font-family:inherit;cursor:pointer;color-scheme:dark}
 
+/* OBSERVACIONES */
+.notas-box{margin-top:20px}
+.notas-box>label{display:block;font-size:.68rem;color:var(--muted2);text-transform:uppercase;letter-spacing:.6px;font-weight:600;margin-bottom:6px}
+.notas-box textarea{width:100%;min-height:88px;resize:vertical;background:var(--card);border:1px solid var(--border2);color:var(--text);border-radius:12px;padding:11px 13px;font-family:inherit;font-size:.88rem;line-height:1.5;outline:none;transition:border-color .18s}
+.notas-box textarea:focus{border-color:var(--primary)}
+.notas-box textarea::placeholder{color:var(--muted2)}
+.notas-foot{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-top:9px}
+.notas-count{font-size:.72rem;color:var(--muted2);font-variant-numeric:tabular-nums}
+.notas-count.over{color:#fca5a5}
+.btn-notas{background:var(--grad);border:none;color:#fff;padding:9px 18px;border-radius:11px;font-size:.84rem;font-weight:700;cursor:pointer;font-family:inherit;transition:opacity .2s}
+.btn-notas:hover{opacity:.92}
+.btn-notas:disabled{opacity:.5;cursor:default}
+.note-ico{margin-left:5px;font-size:.72rem;opacity:.95;cursor:default}
+
 /* TOAST */
 #toast{position:fixed;bottom:24px;left:50%;transform:translate(-50%,20px);background:var(--panel);border:1px solid var(--border2);color:var(--text);padding:13px 22px;border-radius:13px;font-size:.88rem;font-weight:600;z-index:80;opacity:0;pointer-events:none;transition:all .25s;box-shadow:0 16px 40px rgba(0,0,0,.5)}
 #toast.show{opacity:1;transform:translate(-50%,0)}
@@ -425,7 +439,7 @@ function citaBlock(c){
   el.style.background=hexA(info.c,.16);
   el.style.borderLeftColor=info.c;
   el.style.color=lighten(info.c);
-  el.innerHTML='<div class="ct">'+minToStr(start)+'</div><div class="cn">'+esc(c.paciente_nombre)+'</div><div class="cs">'+esc(c.tratamiento||'')+'</div>';
+  el.innerHTML='<div class="ct">'+minToStr(start)+'</div><div class="cn">'+esc(c.paciente_nombre)+noteIco(c)+'</div><div class="cs">'+esc(c.tratamiento||'')+'</div>';
   el.onclick=function(){ openPanel(c); };
   return el;
 }
@@ -443,7 +457,7 @@ function renderList(days, todayIso){
       var row=document.createElement('div');
       row.className='lrow '+x.estado; row.style.borderLeftColor=info.c;
       row.innerHTML='<div class="lt">'+minToStr(citaMinutes(x))+'</div>'+
-        '<div class="li"><b>'+esc(x.paciente_nombre)+'</b><span>'+esc(x.tratamiento||'')+' · '+(x.duracion_min||30)+' min</span></div>'+
+        '<div class="li"><b>'+esc(x.paciente_nombre)+noteIco(x)+'</b><span>'+esc(x.tratamiento||'')+' · '+(x.duracion_min||30)+' min</span></div>'+
         '<span class="pill" style="background:'+hexA(info.c,.16)+';color:'+lighten(info.c)+'">'+info.label+'</span>';
       row.onclick=function(){ openPanel(x); };
       grp.appendChild(row);
@@ -465,8 +479,15 @@ function openPanel(c){
     '<div class="field"><label>Estado</label><div><span class="pill" style="position:static;margin:0;background:'+hexA(info.c,.16)+';color:'+lighten(info.c)+'">'+info.label+'</span></div></div>'+
     '<div class="field"><label>Tratamiento</label><div>'+esc(c.tratamiento||'—')+' · '+(c.duracion_min||30)+' min</div></div>'+
     '<div class="field"><label>Teléfono</label><div><a href="tel:'+esc(c.paciente_telefono||'')+'">'+esc(c.paciente_telefono||'—')+'</a></div></div>'+
-    (c.notas?'<div class="field"><label>Notas</label><div>'+esc(c.notas)+'</div></div>':'')+
     (c.resena_enviada?'<div class="field"><label>Reseña GMB</label><div>✓ Enviada</div></div>':'')+
+    '<div class="notas-box">'+
+      '<label>Observaciones</label>'+
+      '<textarea id="notasTa" maxlength="2000" oninput="updateNotasCount()" placeholder="Notas internas de la cita: material, avisos, seguimiento…">'+esc(c.notas||'')+'</textarea>'+
+      '<div class="notas-foot">'+
+        '<span class="notas-count" id="notasCount">0 / 2000</span>'+
+        '<button class="btn-notas" id="notasBtn" onclick="saveNotas()">Guardar observaciones</button>'+
+      '</div>'+
+    '</div>'+
     '<div class="acts">'+
       '<button class="act confirm" onclick="act(\'confirmada\')">✓ Confirmar</button>'+
       '<button class="act done" onclick="act(\'completada\')">✔ Completada</button>'+
@@ -475,6 +496,7 @@ function openPanel(c){
       '<button class="act repro" onclick="startRepro()">🔁 Reprogramar</button>'+
     '</div>'+
     '<div id="reproBox"></div>';
+  updateNotasCount();
   document.getElementById('scrim').classList.add('open');
   document.getElementById('panel').classList.add('open');
 }
@@ -491,6 +513,35 @@ async function act(estado){
     toast(msg,'ok'); closePanel(); await loadWeek();
   } else {
     toast((res && res.reason) || 'No se pudo actualizar','err');
+  }
+}
+
+// ===== OBSERVACIONES =====
+function updateNotasCount(){
+  var ta=document.getElementById('notasTa'), el=document.getElementById('notasCount');
+  if(!ta||!el) return;
+  var n=ta.value.length;
+  el.textContent=n+' / 2000';
+  el.classList.toggle('over', n>2000);
+}
+async function saveNotas(){
+  if(!current) return;
+  var ta=document.getElementById('notasTa'), btn=document.getElementById('notasBtn');
+  if(!ta||!btn) return;
+  var val=ta.value;
+  var prev=btn.textContent;
+  btn.disabled=true; btn.textContent='Guardando…';
+  var res=await podo({action:'notas', cita_id:current.id, notas:val});
+  btn.disabled=false; btn.textContent=prev;
+  if(res && res.ok && !res._neterr){
+    // refrescar en memoria sin cambiar de semana visible
+    current.notas=val;
+    var m=citas.filter(function(x){ return x.id===current.id; })[0];
+    if(m) m.notas=val;
+    render();
+    toast(val.trim() ? 'Observaciones guardadas' : 'Observaciones eliminadas','ok');
+  } else {
+    toast((res && res.reason) || 'No se pudieron guardar las observaciones','err');
   }
 }
 
@@ -542,6 +593,8 @@ function shiftWeek(n){ currentMonday=addDays(currentMonday,n*7); loadWeek(); }
 function thisWeek(){ currentMonday=mondayOf(madridToday()); loadWeek(); }
 
 // ===== UTILS =====
+function hasNotas(c){ return !!(c && c.notas!=null && String(c.notas).trim()!==''); }
+function noteIco(c){ return hasNotas(c) ? ' <span class="note-ico" title="Tiene observaciones">📝</span>' : ''; }
 function esc(s){ return String(s==null?'':s).replace(/[&<>"']/g,function(m){ return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]; }); }
 function hexA(hex,a){ var n=parseInt(hex.slice(1),16); return 'rgba('+((n>>16)&255)+','+((n>>8)&255)+','+(n&255)+','+a+')'; }
 function lighten(hex){
