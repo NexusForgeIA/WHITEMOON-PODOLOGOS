@@ -1,0 +1,562 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>Agenda · WhiteMoon Podología</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --primary:#0ea5e9;
+  --primary-dark:#0284c7;
+  --bg:#08080d;
+  --bg2:#0b1220;
+  --panel:#0f172a;
+  --card:#132033;
+  --border:rgba(148,163,184,.14);
+  --border2:rgba(14,165,233,.22);
+  --text:#e2e8f0;
+  --muted:#8892a6;
+  --muted2:#64748b;
+  --grad:linear-gradient(135deg,#0ea5e9 0%,#0284c7 100%);
+  --agendada:#0ea5e9; --confirmada:#10b981; --completada:#94a3b8; --noshow:#ef4444; --cancelada:#475569;
+}
+html,body{height:100%}
+body{font-family:'Sora',system-ui,-apple-system,Segoe UI,Roboto,sans-serif;background:radial-gradient(1200px 700px at 80% -10%,rgba(14,165,233,.10),transparent 60%),var(--bg);color:var(--text);-webkit-font-smoothing:antialiased;min-height:100vh}
+button{font-family:inherit}
+
+/* GATE */
+#gate{position:fixed;inset:0;z-index:100;background:radial-gradient(900px 600px at 70% 0%,rgba(14,165,233,.14),transparent 60%),var(--bg);display:flex;align-items:center;justify-content:center;padding:24px}
+#gate.hidden{display:none}
+.gate-card{width:100%;max-width:380px;background:var(--bg2);border:1px solid var(--border2);border-radius:22px;padding:38px 32px;box-shadow:0 30px 70px rgba(0,0,0,.55);text-align:center}
+.gate-ico{width:60px;height:60px;border-radius:16px;background:var(--grad);display:flex;align-items:center;justify-content:center;margin:0 auto 20px;box-shadow:0 10px 26px rgba(14,165,233,.4)}
+.gate-ico svg{width:30px;height:30px;color:#fff}
+.gate-card h1{font-size:1.4rem;font-weight:800;letter-spacing:-.4px;margin-bottom:6px}
+.gate-card p{color:var(--muted);font-size:.9rem;margin-bottom:24px}
+.gate-card input{width:100%;background:var(--card);border:1px solid var(--border2);color:var(--text);padding:14px 16px;border-radius:13px;font-size:.95rem;font-family:inherit;outline:none;margin-bottom:12px;text-align:center;letter-spacing:1px}
+.gate-card input:focus{border-color:var(--primary)}
+.gate-card button{width:100%;background:var(--grad);border:none;color:#fff;padding:14px;border-radius:13px;font-weight:700;font-size:.95rem;cursor:pointer;transition:opacity .2s}
+.gate-card button:hover{opacity:.92}
+.gate-err{color:#fca5a5;font-size:.82rem;height:18px;margin-top:10px}
+
+/* TOPBAR */
+.top{position:sticky;top:0;z-index:20;background:rgba(11,18,32,.82);backdrop-filter:blur(16px);border-bottom:1px solid var(--border2);padding:14px 26px}
+.top-inner{max-width:1280px;margin:0 auto;display:flex;align-items:center;gap:20px;flex-wrap:wrap}
+.brand{display:flex;align-items:center;gap:11px}
+.brand .ico{width:38px;height:38px;border-radius:11px;background:var(--grad);display:flex;align-items:center;justify-content:center;box-shadow:0 8px 20px rgba(14,165,233,.38)}
+.brand .ico svg{width:20px;height:20px;color:#fff}
+.brand b{font-size:1.05rem;font-weight:800;letter-spacing:-.3px}
+.brand span{display:block;font-size:.7rem;color:var(--muted);font-weight:600;letter-spacing:.5px;text-transform:uppercase}
+.counters{display:flex;gap:10px;margin-left:auto}
+.counter{background:var(--card);border:1px solid var(--border);border-radius:13px;padding:8px 16px;text-align:center;min-width:78px}
+.counter b{display:block;font-size:1.25rem;font-weight:800;line-height:1;background:linear-gradient(135deg,#38bdf8,#34d399);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+.counter span{font-size:.66rem;color:var(--muted);font-weight:600;text-transform:uppercase;letter-spacing:.5px}
+.logout{background:rgba(148,163,184,.10);border:1px solid var(--border);color:var(--muted);padding:9px 14px;border-radius:11px;font-size:.8rem;font-weight:600;cursor:pointer;transition:all .2s}
+.logout:hover{color:var(--text);border-color:var(--border2)}
+
+/* WEEK NAV */
+.weeknav{max-width:1280px;margin:0 auto;padding:20px 26px 6px;display:flex;align-items:center;justify-content:space-between;gap:14px;flex-wrap:wrap}
+.weeknav .range{font-size:1.15rem;font-weight:700;letter-spacing:-.3px}
+.weeknav .range small{display:block;font-size:.74rem;color:var(--muted);font-weight:500;letter-spacing:.4px;text-transform:uppercase;margin-top:2px}
+.wbtns{display:flex;gap:8px}
+.wbtn{background:var(--card);border:1px solid var(--border2);color:var(--text);padding:9px 15px;border-radius:11px;font-size:.85rem;font-weight:600;cursor:pointer;transition:all .18s;display:inline-flex;align-items:center;gap:6px}
+.wbtn:hover{background:rgba(14,165,233,.14);border-color:var(--primary)}
+.wbtn.now{background:var(--grad);border-color:transparent;color:#fff}
+.wbtn svg{width:15px;height:15px}
+
+/* CALENDAR */
+.wrap{max-width:1280px;margin:0 auto;padding:16px 26px 60px}
+.loading{text-align:center;color:var(--muted);padding:60px 0;font-size:.9rem}
+.calhead{display:grid;grid-template-columns:64px repeat(5,1fr);gap:0;position:sticky;top:70px;z-index:10}
+.dh{padding:12px 8px;text-align:center;border-bottom:1px solid var(--border2)}
+.dh:first-child{border-bottom:none}
+.dh b{font-size:.95rem;font-weight:700}
+.dh span{display:block;font-size:.68rem;color:var(--muted);text-transform:uppercase;letter-spacing:.6px;margin-top:2px}
+.dh.today b{color:#7dd3fc}
+.dh.today{background:rgba(14,165,233,.08);border-radius:12px 12px 0 0}
+.calgrid{display:grid;grid-template-columns:64px repeat(5,1fr);gap:0}
+.gutter{position:relative}
+.gutter .tl{position:absolute;right:8px;transform:translateY(-50%);font-size:.68rem;color:var(--muted2);font-weight:500;white-space:nowrap}
+.daycol{position:relative;border-left:1px solid var(--border)}
+.daycol.today{background:rgba(14,165,233,.045)}
+.slotline{position:absolute;left:0;right:0;height:1px;background:var(--border)}
+.slotline.hour{background:rgba(148,163,184,.18)}
+.midday{position:absolute;left:0;right:0;display:flex;align-items:center;justify-content:center;font-size:.64rem;color:var(--muted2);letter-spacing:1px;text-transform:uppercase;background:repeating-linear-gradient(-45deg,rgba(148,163,184,.05),rgba(148,163,184,.05) 6px,transparent 6px,transparent 12px);border-top:1px dashed var(--border);border-bottom:1px dashed var(--border)}
+.midday.gut{background:none;border:none}
+
+/* CITA BLOCK */
+.cita{position:absolute;left:4px;right:4px;border-radius:9px;padding:6px 8px;overflow:hidden;cursor:pointer;border-left:3px solid;transition:transform .12s,box-shadow .12s;z-index:2}
+.cita:hover{transform:translateY(-1px);box-shadow:0 8px 20px rgba(0,0,0,.4);z-index:3}
+.cita .ct{font-size:.72rem;font-weight:700;line-height:1.1}
+.cita .cn{font-size:.78rem;font-weight:600;margin-top:1px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.cita .cs{font-size:.68rem;opacity:.85;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.cita.cancelada{opacity:.5}
+.cita.cancelada .cn{text-decoration:line-through}
+
+/* LIST (móvil) */
+.list{display:none;padding-top:6px}
+.daygroup{margin-bottom:22px}
+.daygroup h3{font-size:.92rem;font-weight:700;margin-bottom:10px;padding-bottom:8px;border-bottom:1px solid var(--border2)}
+.daygroup h3.today{color:#7dd3fc}
+.daygroup .empty{color:var(--muted2);font-size:.82rem;padding:4px 0}
+.lrow{display:flex;align-items:center;gap:12px;background:var(--card);border:1px solid var(--border);border-left:3px solid;border-radius:12px;padding:11px 13px;margin-bottom:8px;cursor:pointer;transition:border-color .18s}
+.lrow:hover{border-color:var(--border2)}
+.lrow .lt{font-size:.9rem;font-weight:700;min-width:44px}
+.lrow .li b{font-size:.88rem;font-weight:600;display:block}
+.lrow .li span{font-size:.76rem;color:var(--muted)}
+.lrow.cancelada{opacity:.55}
+.lrow.cancelada b{text-decoration:line-through}
+
+.pill{display:inline-block;font-size:.66rem;font-weight:700;padding:3px 9px;border-radius:20px;text-transform:uppercase;letter-spacing:.4px;margin-left:auto;white-space:nowrap}
+
+/* PANEL */
+.scrim{position:fixed;inset:0;background:rgba(0,0,0,.5);backdrop-filter:blur(3px);z-index:40;opacity:0;pointer-events:none;transition:opacity .25s}
+.scrim.open{opacity:1;pointer-events:auto}
+.panel{position:fixed;top:0;right:0;height:100%;width:380px;max-width:92vw;background:var(--bg2);border-left:1px solid var(--border2);z-index:50;transform:translateX(100%);transition:transform .28s cubic-bezier(.4,0,.2,1);display:flex;flex-direction:column;box-shadow:-20px 0 60px rgba(0,0,0,.5)}
+.panel.open{transform:translateX(0)}
+.panel-head{padding:20px 22px;border-bottom:1px solid var(--border);display:flex;align-items:flex-start;gap:12px}
+.panel-head .ph-t{flex:1}
+.panel-head h2{font-size:1.15rem;font-weight:700;letter-spacing:-.3px}
+.panel-head .sub{font-size:.8rem;color:var(--muted);margin-top:3px}
+.panel-close{background:rgba(148,163,184,.12);border:none;color:var(--muted);width:32px;height:32px;border-radius:50%;cursor:pointer;font-size:1.2rem;line-height:1;flex-shrink:0}
+.panel-close:hover{color:var(--text)}
+.panel-body{flex:1;overflow-y:auto;padding:22px}
+.field{margin-bottom:16px}
+.field label{display:block;font-size:.68rem;color:var(--muted2);text-transform:uppercase;letter-spacing:.6px;font-weight:600;margin-bottom:4px}
+.field div{font-size:.95rem;font-weight:500}
+.field a{color:#7dd3fc;text-decoration:none}
+.acts{display:grid;grid-template-columns:1fr 1fr;gap:9px;margin-top:22px}
+.act{border:1px solid var(--border2);background:var(--card);color:var(--text);padding:12px;border-radius:12px;font-size:.86rem;font-weight:600;cursor:pointer;transition:all .18s}
+.act:hover{transform:translateY(-1px)}
+.act.confirm:hover{background:rgba(16,185,129,.16);border-color:var(--confirmada);color:#6ee7b7}
+.act.done:hover{background:rgba(148,163,184,.16);border-color:var(--completada)}
+.act.noshow:hover{background:rgba(239,68,68,.14);border-color:var(--noshow);color:#fca5a5}
+.act.cancel:hover{background:rgba(239,68,68,.10);border-color:var(--noshow);color:#fca5a5}
+.act.repro{grid-column:1/3}
+.act.repro:hover{background:rgba(14,165,233,.14);border-color:var(--primary);color:#7dd3fc}
+.act:disabled{opacity:.4;cursor:default;transform:none}
+.repro-box{margin-top:18px;border-top:1px solid var(--border);padding-top:18px}
+.repro-box .rt{font-size:.82rem;color:var(--muted);margin-bottom:10px}
+.rchips{display:flex;flex-wrap:wrap;gap:8px}
+.rchip{background:rgba(14,165,233,.10);border:1px solid var(--border2);color:#7dd3fc;padding:9px 13px;border-radius:11px;font-size:.82rem;font-weight:600;cursor:pointer;transition:all .15s}
+.rchip:hover{background:var(--primary);color:#fff;border-color:var(--primary)}
+.rdate{background:var(--card);border:1px solid var(--border2);color:var(--text);padding:9px 13px;border-radius:11px;font-size:.82rem;font-family:inherit;cursor:pointer;color-scheme:dark}
+
+/* TOAST */
+#toast{position:fixed;bottom:24px;left:50%;transform:translate(-50%,20px);background:var(--panel);border:1px solid var(--border2);color:var(--text);padding:13px 22px;border-radius:13px;font-size:.88rem;font-weight:600;z-index:80;opacity:0;pointer-events:none;transition:all .25s;box-shadow:0 16px 40px rgba(0,0,0,.5)}
+#toast.show{opacity:1;transform:translate(-50%,0)}
+#toast.ok{border-color:var(--confirmada)}
+#toast.err{border-color:var(--noshow)}
+
+@media(max-width:820px){
+  .counters{order:3;width:100%;margin-left:0;justify-content:flex-start}
+}
+@media(max-width:600px){
+  .top{padding:12px 16px}
+  .weeknav{padding:16px 16px 4px}
+  .weeknav .range{font-size:1.02rem}
+  .wrap{padding:12px 16px 60px}
+  .calhead,.calgrid{display:none}
+  .list{display:block}
+  .wbtn span{display:none}
+  .wbtn{padding:9px 12px}
+  .panel{width:100%;max-width:100%}
+}
+</style>
+</head>
+<body>
+
+<!-- LOGIN -->
+<div id="gate">
+  <div class="gate-card">
+    <div class="gate-ico">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
+    </div>
+    <h1>Agenda WhiteMoon</h1>
+    <p>Acceso del equipo podológico</p>
+    <input id="gate-in" type="password" placeholder="Clave de acceso" autocomplete="off" onkeydown="if(event.key==='Enter')doLogin()">
+    <button onclick="doLogin()">Entrar</button>
+    <div class="gate-err" id="gate-err"></div>
+  </div>
+</div>
+
+<!-- APP -->
+<div id="app" style="display:none">
+  <div class="top">
+    <div class="top-inner">
+      <div class="brand">
+        <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2c-2 0-3.5 1.5-3.5 4 0 2 1 3.5 1 5.5 0 1.5-1 2.5-2 3.5-1.5 1.5-2 3-1 4.5 1 1.5 3 1 4.5 0 1-.7 2-1.5 3-1.5s2 .8 3 1.5c1.5 1 3.5 1.5 4.5 0 1-1.5 .5-3-1-4.5-1-1-2-2-2-3.5 0-2 1-3.5 1-5.5 0-2.5-1.5-4-3.5-4z"/></svg></div>
+        <div><b>WhiteMoon</b><span>Agenda podológica</span></div>
+      </div>
+      <div class="counters">
+        <div class="counter"><b id="cHoy">0</b><span>Hoy</span></div>
+        <div class="counter"><b id="cSem">0</b><span>Semana</span></div>
+      </div>
+      <button class="logout" onclick="logout()">Salir</button>
+    </div>
+  </div>
+
+  <div class="weeknav">
+    <div class="range"><span id="rangeMain">—</span><small id="rangeSub">Semana</small></div>
+    <div class="wbtns">
+      <button class="wbtn" onclick="shiftWeek(-1)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg><span>Anterior</span></button>
+      <button class="wbtn now" onclick="thisWeek()">Esta semana</button>
+      <button class="wbtn" onclick="shiftWeek(1)"><span>Siguiente</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg></button>
+    </div>
+  </div>
+
+  <div class="wrap">
+    <div class="calhead" id="calhead"></div>
+    <div class="calgrid" id="calgrid"></div>
+    <div class="list" id="list"></div>
+    <div class="loading" id="loading" style="display:none">Cargando agenda…</div>
+  </div>
+</div>
+
+<!-- PANEL -->
+<div class="scrim" id="scrim" onclick="closePanel()"></div>
+<aside class="panel" id="panel" aria-label="Detalle de cita">
+  <div class="panel-head">
+    <div class="ph-t">
+      <h2 id="pName">—</h2>
+      <div class="sub" id="pWhen">—</div>
+    </div>
+    <button class="panel-close" onclick="closePanel()" aria-label="Cerrar">×</button>
+  </div>
+  <div class="panel-body" id="panelBody"></div>
+</aside>
+
+<div id="toast"></div>
+
+<script>
+// ===== CONFIG =====
+var EDGE_URL = 'https://mlaqtniujnvfxcvcourm.supabase.co/functions/v1/podo-cita';
+var CLAVE = 'podo2026';
+var DOW  = ['Dom','Lun','Mar','Mié','Jue','Vie','Sáb'];
+var DOWL = ['domingo','lunes','martes','miércoles','jueves','viernes','sábado'];
+var MES  = ['ene','feb','mar','abr','may','jun','jul','ago','sep','oct','nov','dic'];
+var ESTADOS = {
+  agendada:{label:'Agendada', c:'#0ea5e9'},
+  confirmada:{label:'Confirmada', c:'#10b981'},
+  completada:{label:'Completada', c:'#94a3b8'},
+  no_show:{label:'No show', c:'#ef4444'},
+  cancelada:{label:'Cancelada', c:'#475569'}
+};
+function estadoInfo(e){ return ESTADOS[e] || ESTADOS.agendada; }
+
+// franjas horarias (min desde medianoche)
+var M_START=570, M_END=840, T_START=960, T_END=1200;  // 9:30-14:00 · 16:00-20:00
+var PPM=46/30;        // px por minuto (fila 30min = 46px)
+var SEP=36;           // banda separadora del mediodía
+var M_H=(M_END-M_START)*PPM, T_H=(T_END-T_START)*PPM, TOTAL_H=M_H+SEP+T_H;
+
+// ===== STATE =====
+var currentMonday, citas=[], current=null;
+
+// ===== DATE HELPERS =====
+function pad(n){ return (n<10?'0':'')+n; }
+function madridToday(){
+  var s=new Intl.DateTimeFormat('en-CA',{timeZone:'Europe/Madrid',year:'numeric',month:'2-digit',day:'2-digit'}).format(new Date());
+  var p=s.split('-'); return {y:+p[0],m:+p[1],d:+p[2]};
+}
+function civilToUTC(c){ return Date.UTC(c.y,c.m-1,c.d); }
+function fromUTC(ms){ var d=new Date(ms); return {y:d.getUTCFullYear(),m:d.getUTCMonth()+1,d:d.getUTCDate()}; }
+function isoOf(c){ return c.y+'-'+pad(c.m)+'-'+pad(c.d); }
+function dowOf(c){ return new Date(civilToUTC(c)).getUTCDay(); }
+function addDays(c,n){ return fromUTC(civilToUTC(c)+n*86400000); }
+function mondayOf(c){ var off=(dowOf(c)+6)%7; return fromUTC(civilToUTC(c)-off*86400000); }
+function madridOffset(dateObj){
+  try{
+    var s=new Intl.DateTimeFormat('en-US',{timeZone:'Europe/Madrid',timeZoneName:'longOffset'}).format(dateObj);
+    var m=s.match(/GMT([+-]\d{2}:\d{2})/); if(m) return m[1];
+    var m2=s.match(/GMT([+-])(\d{1,2})/); if(m2) return m2[1]+pad(+m2[2])+':00';
+  }catch(e){}
+  return '+01:00';
+}
+function weekRange(monday){
+  var next=addDays(monday,7);
+  var offA=madridOffset(new Date(isoOf(monday)+'T12:00:00Z'));
+  var offB=madridOffset(new Date(isoOf(next)+'T12:00:00Z'));
+  return { desde: isoOf(monday)+'T00:00:00'+offA, hasta: isoOf(next)+'T00:00:00'+offB };
+}
+function nextBusinessDays(n){
+  var out=[], ms=civilToUTC(madridToday()), guard=0;
+  while(out.length<n && guard<20){
+    var cc=fromUTC(ms), w=dowOf(cc);
+    if(w>=1&&w<=5) out.push({iso:isoOf(cc), label:DOW[w]+' '+cc.d+' '+MES[cc.m-1]});
+    ms+=86400000; guard++;
+  }
+  return out;
+}
+function minToStr(m){ return pad(Math.floor(m/60))+':'+pad(m%60); }
+function minutesToY(m){
+  if(m<=M_END) return (m-M_START)*PPM;
+  return M_H+SEP+(m-T_START)*PPM;
+}
+// El backend devuelve cita_at en UTC (agenda) o con offset de Madrid (huecos).
+// Convertimos el instante absoluto a hora de pared de Madrid (fecha + HH:MM).
+function madridParts(isoStr){
+  var d=new Date(isoStr);
+  var parts=new Intl.DateTimeFormat('en-CA',{timeZone:'Europe/Madrid',year:'numeric',month:'2-digit',day:'2-digit',hour:'2-digit',minute:'2-digit',hour12:false}).formatToParts(d);
+  var o={}; parts.forEach(function(p){ o[p.type]=p.value; });
+  var hh=(o.hour==='24')?'00':o.hour;
+  return { date:o.year+'-'+o.month+'-'+o.day, hm:hh+':'+o.minute, min:(+hh)*60+(+o.minute) };
+}
+function citaMinutes(c){ return c._md.min; }
+
+// ===== NET =====
+async function podo(payload){
+  try{
+    var r=await fetch(EDGE_URL,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(payload)});
+    return await r.json();
+  }catch(e){ return {ok:false,_neterr:true}; }
+}
+function toast(msg, kind){
+  var t=document.getElementById('toast');
+  t.textContent=msg; t.className='show '+(kind||'');
+  clearTimeout(t._t); t._t=setTimeout(function(){ t.className=''; }, 2600);
+}
+
+// ===== AUTH =====
+function doLogin(){
+  var v=document.getElementById('gate-in').value.trim();
+  if(v===CLAVE){
+    try{ sessionStorage.setItem('podo_auth','1'); }catch(e){}
+    enter();
+  } else {
+    document.getElementById('gate-err').textContent='Clave incorrecta';
+  }
+}
+function logout(){
+  try{ sessionStorage.removeItem('podo_auth'); }catch(e){}
+  location.reload();
+}
+function enter(){
+  document.getElementById('gate').classList.add('hidden');
+  document.getElementById('app').style.display='block';
+  currentMonday=mondayOf(madridToday());
+  loadWeek();
+}
+
+// ===== LOAD & RENDER =====
+async function loadWeek(){
+  document.getElementById('loading').style.display='block';
+  var r=weekRange(currentMonday);
+  var res=await podo({action:'agenda', desde:r.desde, hasta:r.hasta});
+  document.getElementById('loading').style.display='none';
+  if(res._neterr){ toast('No se pudo conectar con la agenda','err'); citas=[]; }
+  else { citas=(res&&res.citas)||[]; }
+  citas.forEach(function(c){ c._md=madridParts(c.cita_at); });
+  render();
+}
+function render(){
+  var mon=currentMonday, fri=addDays(mon,4);
+  var days=[]; for(var i=0;i<5;i++) days.push(addDays(mon,i));
+  var todayIso=isoOf(madridToday());
+
+  // rango + contadores
+  document.getElementById('rangeMain').textContent = mon.d+' '+MES[mon.m-1]+' – '+fri.d+' '+MES[fri.m-1]+' '+fri.y;
+  document.getElementById('rangeSub').textContent = 'Semana laboral · L a V';
+  var activas=citas.filter(function(c){ return c.estado!=='cancelada'; });
+  document.getElementById('cSem').textContent = activas.length;
+  document.getElementById('cHoy').textContent = activas.filter(function(c){ return c._md.date===todayIso; }).length;
+
+  renderHead(days, todayIso);
+  renderGrid(days, todayIso);
+  renderList(days, todayIso);
+}
+function renderHead(days, todayIso){
+  var h=document.getElementById('calhead');
+  h.innerHTML='<div class="dh"></div>';
+  days.forEach(function(c){
+    var t=isoOf(c)===todayIso;
+    h.innerHTML+='<div class="dh'+(t?' today':'')+'"><b>'+DOW[dowOf(c)]+'</b><span>'+c.d+' '+MES[c.m-1]+'</span></div>';
+  });
+}
+function renderGrid(days, todayIso){
+  var g=document.getElementById('calgrid');
+  g.innerHTML='';
+  // gutter con etiquetas horarias
+  var gut=document.createElement('div'); gut.className='gutter'; gut.style.height=TOTAL_H+'px';
+  var m;
+  for(m=M_START;m<=M_END;m+=30) gut.appendChild(tlabel(m));
+  for(m=T_START;m<=T_END;m+=30) gut.appendChild(tlabel(m));
+  var mg=document.createElement('div'); mg.className='midday gut'; mg.style.top=M_H+'px'; mg.style.height=SEP+'px';
+  gut.appendChild(mg);
+  g.appendChild(gut);
+
+  days.forEach(function(c){
+    var col=document.createElement('div');
+    col.className='daycol'+(isoOf(c)===todayIso?' today':'');
+    col.style.height=TOTAL_H+'px';
+    // líneas de franja
+    for(m=M_START;m<=M_END;m+=30) col.appendChild(sline(m));
+    for(m=T_START;m<=T_END;m+=30) col.appendChild(sline(m));
+    // banda mediodía
+    var band=document.createElement('div'); band.className='midday';
+    band.style.top=M_H+'px'; band.style.height=SEP+'px'; band.textContent='14:00 – 16:00';
+    col.appendChild(band);
+    // citas del día
+    citas.filter(function(x){ return x._md.date===isoOf(c); }).forEach(function(x){
+      col.appendChild(citaBlock(x));
+    });
+    g.appendChild(col);
+  });
+}
+function tlabel(m){
+  var d=document.createElement('div'); d.className='tl'; d.style.top=minutesToY(m)+'px'; d.textContent=minToStr(m);
+  return d;
+}
+function sline(m){
+  var d=document.createElement('div'); d.className='slotline'+(m%60===0?' hour':''); d.style.top=minutesToY(m)+'px';
+  return d;
+}
+function citaBlock(c){
+  var info=estadoInfo(c.estado);
+  var start=citaMinutes(c), dur=c.duracion_min||30;
+  var el=document.createElement('div');
+  el.className='cita '+c.estado;
+  el.style.top=minutesToY(start)+'px';
+  el.style.height=Math.max(dur*PPM-3,26)+'px';
+  el.style.background=hexA(info.c,.16);
+  el.style.borderLeftColor=info.c;
+  el.style.color=lighten(info.c);
+  el.innerHTML='<div class="ct">'+minToStr(start)+'</div><div class="cn">'+esc(c.paciente_nombre)+'</div><div class="cs">'+esc(c.tratamiento||'')+'</div>';
+  el.onclick=function(){ openPanel(c); };
+  return el;
+}
+function renderList(days, todayIso){
+  var wrap=document.getElementById('list'); wrap.innerHTML='';
+  days.forEach(function(c){
+    var iso=isoOf(c), t=iso===todayIso;
+    var dayCitas=citas.filter(function(x){ return x._md.date===iso; })
+                      .sort(function(a,b){ return citaMinutes(a)-citaMinutes(b); });
+    var grp=document.createElement('div'); grp.className='daygroup';
+    grp.innerHTML='<h3'+(t?' class="today"':'')+'>'+DOW[dowOf(c)]+' '+c.d+' '+MES[c.m-1]+(t?' · hoy':'')+'</h3>';
+    if(!dayCitas.length){ grp.innerHTML+='<div class="empty">Sin citas</div>'; }
+    else dayCitas.forEach(function(x){
+      var info=estadoInfo(x.estado);
+      var row=document.createElement('div');
+      row.className='lrow '+x.estado; row.style.borderLeftColor=info.c;
+      row.innerHTML='<div class="lt">'+minToStr(citaMinutes(x))+'</div>'+
+        '<div class="li"><b>'+esc(x.paciente_nombre)+'</b><span>'+esc(x.tratamiento||'')+' · '+(x.duracion_min||30)+' min</span></div>'+
+        '<span class="pill" style="background:'+hexA(info.c,.16)+';color:'+lighten(info.c)+'">'+info.label+'</span>';
+      row.onclick=function(){ openPanel(x); };
+      grp.appendChild(row);
+    });
+    wrap.appendChild(grp);
+  });
+}
+
+// ===== PANEL =====
+function openPanel(c){
+  current=c;
+  var info=estadoInfo(c.estado);
+  var dp=c._md.date.split('-'), dc={y:+dp[0],m:+dp[1],d:+dp[2]};
+  var whenTxt=DOWL[dowOf(dc)]+', '+dc.d+' '+MES[dc.m-1]+' · '+c._md.hm;
+  document.getElementById('pName').textContent=c.paciente_nombre;
+  document.getElementById('pWhen').textContent=whenTxt;
+  var b=document.getElementById('panelBody');
+  b.innerHTML=
+    '<div class="field"><label>Estado</label><div><span class="pill" style="position:static;margin:0;background:'+hexA(info.c,.16)+';color:'+lighten(info.c)+'">'+info.label+'</span></div></div>'+
+    '<div class="field"><label>Tratamiento</label><div>'+esc(c.tratamiento||'—')+' · '+(c.duracion_min||30)+' min</div></div>'+
+    '<div class="field"><label>Teléfono</label><div><a href="tel:'+esc(c.paciente_telefono||'')+'">'+esc(c.paciente_telefono||'—')+'</a></div></div>'+
+    (c.notas?'<div class="field"><label>Notas</label><div>'+esc(c.notas)+'</div></div>':'')+
+    (c.resena_enviada?'<div class="field"><label>Reseña GMB</label><div>✓ Enviada</div></div>':'')+
+    '<div class="acts">'+
+      '<button class="act confirm" onclick="act(\'confirmada\')">✓ Confirmar</button>'+
+      '<button class="act done" onclick="act(\'completada\')">✔ Completada</button>'+
+      '<button class="act noshow" onclick="act(\'no_show\')">✕ No show</button>'+
+      '<button class="act cancel" onclick="act(\'cancelada\')">🗑 Cancelar</button>'+
+      '<button class="act repro" onclick="startRepro()">🔁 Reprogramar</button>'+
+    '</div>'+
+    '<div id="reproBox"></div>';
+  document.getElementById('scrim').classList.add('open');
+  document.getElementById('panel').classList.add('open');
+}
+function closePanel(){
+  document.getElementById('scrim').classList.remove('open');
+  document.getElementById('panel').classList.remove('open');
+  current=null;
+}
+async function act(estado){
+  if(!current) return;
+  var res=await podo({action:'estado', cita_id:current.id, estado:estado});
+  if(res && res.ok!==false && !res._neterr){
+    var msg = estado==='completada' ? 'Cita completada · reseña enviada' : 'Cita marcada como '+estadoInfo(estado).label.toLowerCase();
+    toast(msg,'ok'); closePanel(); await loadWeek();
+  } else {
+    toast((res && res.reason) || 'No se pudo actualizar','err');
+  }
+}
+
+// ===== REPROGRAMAR =====
+function startRepro(){
+  var box=document.getElementById('reproBox');
+  box.innerHTML='<div class="repro-box"><div class="rt">Elige el nuevo día:</div><div class="rchips" id="rDays"></div></div>';
+  var wrap=document.getElementById('rDays');
+  nextBusinessDays(5).forEach(function(dd){
+    var btn=document.createElement('button'); btn.className='rchip'; btn.textContent=dd.label;
+    btn.onclick=function(){ reproSlots(dd.iso, dd.label); };
+    wrap.appendChild(btn);
+  });
+  var inp=document.createElement('input'); inp.type='date'; inp.className='rdate'; inp.min=isoOf(madridToday());
+  inp.onchange=function(){ if(inp.value){ var p=inp.value.split('-'),cc={y:+p[0],m:+p[1],d:+p[2]}; reproSlots(inp.value, DOW[dowOf(cc)]+' '+cc.d+' '+MES[cc.m-1]); } };
+  wrap.appendChild(inp);
+}
+async function reproSlots(dia, label){
+  var box=document.getElementById('reproBox');
+  box.innerHTML='<div class="repro-box"><div class="rt">Buscando huecos para el '+label+'…</div></div>';
+  var res=await podo({action:'huecos', dia:dia, duracion_min:(current&&current.duracion_min)||30});
+  var huecos=(res&&res.huecos)||[];
+  if(res._neterr){ box.innerHTML='<div class="repro-box"><div class="rt">Error de conexión. Inténtalo de nuevo.</div></div>'; return; }
+  if(!huecos.length){
+    box.innerHTML='<div class="repro-box"><div class="rt">Ese día está completo 😕. Prueba con otro.</div></div>';
+    setTimeout(startRepro,1200); return;
+  }
+  box.innerHTML='<div class="repro-box"><div class="rt">Huecos libres el '+label+':</div><div class="rchips" id="rHours"></div></div>';
+  var wrap=document.getElementById('rHours');
+  huecos.slice(0,8).forEach(function(iso){
+    var btn=document.createElement('button'); btn.className='rchip'; btn.textContent=iso.slice(11,16);
+    btn.onclick=function(){ doRepro(iso); };
+    wrap.appendChild(btn);
+  });
+}
+async function doRepro(cita_at){
+  if(!current) return;
+  var res=await podo({action:'reprogramar', cita_id:current.id, cita_at:cita_at});
+  if(res && res.ok && !res._neterr){
+    toast('Cita reprogramada','ok'); closePanel(); await loadWeek();
+  } else {
+    toast((res && res.reason) || 'No se pudo reprogramar','err');
+    if(current){ var p=cita_at.slice(0,10).split('-'),cc={y:+p[0],m:+p[1],d:+p[2]}; reproSlots(cita_at.slice(0,10), DOW[dowOf(cc)]+' '+cc.d+' '+MES[cc.m-1]); }
+  }
+}
+
+// ===== WEEK NAV =====
+function shiftWeek(n){ currentMonday=addDays(currentMonday,n*7); loadWeek(); }
+function thisWeek(){ currentMonday=mondayOf(madridToday()); loadWeek(); }
+
+// ===== UTILS =====
+function esc(s){ return String(s==null?'':s).replace(/[&<>"']/g,function(m){ return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]; }); }
+function hexA(hex,a){ var n=parseInt(hex.slice(1),16); return 'rgba('+((n>>16)&255)+','+((n>>8)&255)+','+(n&255)+','+a+')'; }
+function lighten(hex){
+  var n=parseInt(hex.slice(1),16), r=(n>>16)&255, g=(n>>8)&255, b=n&255;
+  r=Math.round(r+(255-r)*.55); g=Math.round(g+(255-g)*.55); b=Math.round(b+(255-b)*.55);
+  return 'rgb('+r+','+g+','+b+')';
+}
+
+// ===== INIT =====
+(function(){
+  var authed=false;
+  try{ authed=sessionStorage.getItem('podo_auth')==='1'; }catch(e){}
+  if(authed) enter();
+  else document.getElementById('gate-in').focus();
+})();
+</script>
+</body>
+</html>
