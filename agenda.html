@@ -241,6 +241,81 @@ textarea.ta{min-height:90px;resize:vertical;line-height:1.5}
 .modal-head h3{font-size:1.1rem;font-weight:700}
 .modal-body{padding:20px}
 
+/* ===== SERVICIOS ===== */
+.srv-table{display:flex;flex-direction:column;gap:12px}
+.srv-row{background:var(--bg2);border:1px solid var(--border);border-radius:14px;padding:15px 18px;display:flex;flex-wrap:wrap;align-items:center;gap:14px 22px;transition:border-color .18s,box-shadow .18s}
+.srv-row.dirty{border-color:var(--border2);box-shadow:0 0 0 1px var(--border2)}
+.srv-name{flex:1 1 150px;font-size:1rem;font-weight:700;min-width:0}
+.srv-fld{display:flex;flex-direction:column;gap:5px}
+.srv-fld>label{font-size:.64rem;color:var(--muted2);text-transform:uppercase;letter-spacing:.6px;font-weight:600}
+.srv-inp{width:70px;background:var(--card);border:1px solid var(--border2);color:var(--text);border-radius:10px;padding:8px 10px;font-family:inherit;font-size:.9rem;text-align:center;outline:none;font-variant-numeric:tabular-nums}
+.srv-inp:focus{border-color:var(--primary)}
+.srv-inp::-webkit-outer-spin-button,.srv-inp::-webkit-inner-spin-button{-webkit-appearance:none;margin:0}
+.srv-inp[type=number]{-moz-appearance:textfield}
+.price-grp{display:inline-flex;align-items:center;gap:6px}
+.price-grp .srv-inp{width:82px}
+.step{width:30px;height:30px;border-radius:9px;border:1px solid var(--border2);background:var(--card);color:var(--text);font-size:1.15rem;font-weight:700;cursor:pointer;line-height:1;flex-shrink:0;transition:all .15s}
+.step:hover{background:rgba(14,165,233,.14);border-color:var(--primary);color:#7dd3fc}
+.sw{position:relative;display:inline-flex;width:46px;height:26px;cursor:pointer;flex-shrink:0}
+.sw input{position:absolute;opacity:0;width:100%;height:100%;margin:0;cursor:pointer;z-index:2}
+.sw .track{position:absolute;inset:0;background:var(--card);border:1px solid var(--border2);border-radius:20px;transition:.2s}
+.sw .track::after{content:'';position:absolute;top:3px;left:3px;width:18px;height:18px;border-radius:50%;background:var(--muted);transition:.2s}
+.sw input:checked~.track{background:rgba(16,185,129,.22);border-color:var(--confirmada)}
+.sw input:checked~.track::after{transform:translateX(20px);background:#34d399}
+.srv-upd{font-size:.72rem;color:var(--muted2);flex:1 1 90px;text-align:right;min-width:80px}
+.srv-save{background:var(--grad);border:none;color:#fff;padding:9px 16px;border-radius:10px;font-size:.82rem;font-weight:700;cursor:pointer;font-family:inherit;transition:opacity .2s;display:none}
+.srv-save:hover{opacity:.92}
+.srv-save:disabled{opacity:.5;cursor:default}
+.srv-row.dirty .srv-save{display:inline-block}
+.srv-err{flex-basis:100%;color:#fca5a5;font-size:.8rem;margin:0}
+.srv-note{background:rgba(14,165,233,.06);border:1px solid var(--border2);border-radius:12px;padding:13px 16px;margin-top:16px;font-size:.82rem;line-height:1.55;color:var(--muted)}
+
+/* ===== ESTADÍSTICAS ===== */
+.stat-seg{display:inline-flex;gap:4px;background:var(--card);border:1px solid var(--border);border-radius:12px;padding:4px;flex-wrap:wrap;margin-bottom:6px}
+.seg-btn{background:none;border:none;color:var(--muted);padding:8px 14px;border-radius:9px;font-size:.83rem;font-weight:600;cursor:pointer;font-family:inherit;transition:.18s}
+.seg-btn:hover{color:var(--text)}
+.seg-btn.active{background:var(--grad);color:#fff}
+.kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:14px;margin:22px 0 24px}
+.kpi{background:var(--bg2);border:1px solid var(--border);border-radius:16px;padding:17px 19px}
+.kpi b{display:block;font-size:1.8rem;font-weight:800;line-height:1.05;background:linear-gradient(135deg,#38bdf8,#34d399);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;font-variant-numeric:tabular-nums;letter-spacing:-.5px}
+.kpi>span{display:block;font-size:.7rem;color:var(--muted);text-transform:uppercase;letter-spacing:.5px;font-weight:600;margin-top:7px}
+.kpi small{display:block;font-size:.72rem;color:var(--muted2);margin-top:4px}
+.stat-card{background:var(--bg2);border:1px solid var(--border);border-radius:16px;padding:20px 22px;margin-bottom:18px}
+.stat-card h3{font-size:1rem;font-weight:700;margin-bottom:4px}
+.stat-card .sc-sub{font-size:.76rem;color:var(--muted2);margin-bottom:16px}
+.stat-empty{color:var(--muted2);font-size:.86rem;padding:26px 0;text-align:center}
+/* barras por tratamiento (horizontales) */
+.tbar{margin-bottom:14px}
+.tbar:last-child{margin-bottom:0}
+.tbar-top{display:flex;justify-content:space-between;align-items:baseline;gap:10px;font-size:.85rem;margin-bottom:5px}
+.tbar-name{font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.tbar-val{color:var(--muted);white-space:nowrap;font-variant-numeric:tabular-nums;flex-shrink:0}
+.tbar-val b{color:#7dd3fc;font-weight:700}
+.tbar-val i{color:var(--muted2);font-style:normal}
+.tbar-track{height:12px;background:var(--card);border-radius:8px;overflow:hidden}
+.tbar-fill{height:100%;background:linear-gradient(90deg,#0ea5e9,#34d399);border-radius:8px;min-width:2px;transition:width .5s cubic-bezier(.4,0,.2,1)}
+/* histograma de franjas (columnas verticales) */
+.st-hist{display:flex;align-items:flex-end;gap:3px;height:168px;overflow-x:auto;padding-bottom:2px}
+.hcol{flex:1 0 15px;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;height:100%}
+.hcol .hn{font-size:.62rem;color:var(--muted);margin-bottom:3px;font-variant-numeric:tabular-nums;height:12px}
+.hcol .hbar{width:100%;max-width:24px;background:linear-gradient(180deg,#38bdf8,#0284c7);border-radius:5px 5px 0 0;min-height:2px}
+.hcol.hot .hbar{background:linear-gradient(180deg,#34d399,#0ea5e9)}
+.hcol .hl{font-size:.58rem;color:var(--muted2);margin-top:6px;white-space:nowrap;height:10px}
+/* pacientes */
+.pat-split{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.nr-bar{height:18px;border-radius:9px;overflow:hidden;display:flex;margin:14px 0 12px;background:var(--card)}
+.nr-new{background:#34d399}
+.nr-rec{background:#0ea5e9}
+.nr-legend{display:flex;gap:20px;font-size:.83rem;flex-wrap:wrap}
+.nr-legend b{color:var(--text)}
+.nr-legend i{display:inline-block;width:10px;height:10px;border-radius:3px;margin-right:7px;vertical-align:middle}
+.top5{display:flex;flex-direction:column;gap:10px}
+.top-row{display:flex;align-items:center;gap:12px;font-size:.88rem}
+.top-rank{width:23px;height:23px;border-radius:7px;background:var(--card);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:.72rem;font-weight:800;color:#7dd3fc;flex-shrink:0}
+.top-name{font-weight:600;cursor:pointer;text-decoration:underline;text-decoration-color:rgba(125,211,252,.35);text-underline-offset:3px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.top-name:hover{color:#7dd3fc}
+.top-n{margin-left:auto;color:var(--muted);font-size:.8rem;white-space:nowrap;flex-shrink:0}
+
 @media(max-width:820px){
   .counters{order:3;width:100%;margin-left:0;justify-content:flex-start}
 }
@@ -260,6 +335,15 @@ textarea.ta{min-height:90px;resize:vertical;line-height:1.5}
   .pac-stat{min-width:42px}
   .pac-stat b{font-size:.92rem}
   .ver-ficha{display:none}
+  .srv-row{gap:12px 18px}
+  .srv-name{flex:1 1 100%}
+  .srv-upd{flex:1 1 100%;text-align:left}
+  .kpis{grid-template-columns:1fr 1fr;gap:11px}
+  .kpi{padding:14px 15px}
+  .kpi b{font-size:1.5rem}
+  .pat-split{grid-template-columns:1fr}
+  .st-hist{height:150px}
+  .hcol{flex:1 0 13px}
 }
 </style>
 </head>
@@ -290,6 +374,8 @@ textarea.ta{min-height:90px;resize:vertical;line-height:1.5}
       <nav class="tabs">
         <button class="tab active" id="tab-agenda" onclick="showView('agenda')">Agenda</button>
         <button class="tab" id="tab-pacientes" onclick="showView('pacientes')">Pacientes</button>
+        <button class="tab" id="tab-servicios" onclick="showView('servicios')">Servicios</button>
+        <button class="tab" id="tab-estadisticas" onclick="showView('estadisticas')">Estadísticas</button>
         <button class="tab" id="tab-perfil" onclick="showView('perfil')">Perfil</button>
       </nav>
       <div class="counters" id="counters">
@@ -319,6 +405,8 @@ textarea.ta{min-height:90px;resize:vertical;line-height:1.5}
   </div>
 
   <div id="view-pacientes" style="display:none"></div>
+  <div id="view-servicios" style="display:none"></div>
+  <div id="view-estadisticas" style="display:none"></div>
   <div id="view-perfil" style="display:none"></div>
 </div>
 
@@ -695,7 +783,7 @@ function thisWeek(){ currentMonday=mondayOf(madridToday()); loadWeek(); }
 
 // ===== VISTAS (Agenda | Pacientes | Perfil) =====
 function applyViewVisibility(){
-  ['agenda','pacientes','perfil'].forEach(function(x){
+  ['agenda','pacientes','servicios','estadisticas','perfil'].forEach(function(x){
     document.getElementById('view-'+x).style.display = (x===activeView?'':'none');
     document.getElementById('tab-'+x).classList.toggle('active', x===activeView);
   });
@@ -704,6 +792,8 @@ function applyViewVisibility(){
 function showView(v){
   activeView=v; applyViewVisibility();
   if(v==='pacientes') loadPacientes();
+  if(v==='servicios') loadServicios();
+  if(v==='estadisticas') loadStats();
   if(v==='perfil') loadPerfil();
 }
 function field(label, control){ return '<div class="fld"><label>'+label+'</label>'+control+'</div>'; }
@@ -894,6 +984,270 @@ async function saveNuevoPaciente(){
   btn.disabled=false; btn.textContent=prev;
   if(res && res.ok && !res._neterr){ closeModal(); toast('Paciente creado','ok'); loadPacientes(); }
   else { err.textContent=(res && (res.reason||res.error)) || 'No se pudo crear el paciente'; }
+}
+
+// ===== SERVICIOS =====
+var tratamientosCache=[];
+function byOrden(a,b){ return (a.orden||0)-(b.orden||0) || String(a.nombre).localeCompare(b.nombre); }
+async function loadServicios(){
+  var host=document.getElementById('view-servicios');
+  host.innerHTML='<div class="pane"><h2 class="pane-h">Servicios</h2><div class="pac-empty">Cargando servicios…</div></div>';
+  var res=await podo({action:'tratamientos-list'});
+  if(!res || res._neterr || res.ok===false){
+    host.innerHTML='<div class="pane"><h2 class="pane-h">Servicios</h2><div class="pac-empty">No se pudieron cargar los servicios.</div></div>';
+    return;
+  }
+  tratamientosCache=(res.tratamientos||[]).slice().sort(byOrden);
+  renderServicios();
+}
+function renderServicios(){
+  var rows=tratamientosCache.map(function(t){
+    var pre=(t.precio_eur!=null?Number(t.precio_eur):0).toFixed(2);
+    var dur=(t.duracion_min!=null?t.duracion_min:30);
+    var upd=t.updated_at?('Modif. '+fmtShort(t.updated_at)):'—';
+    return '<div class="srv-row" id="srv-row-'+t.id+'" data-dur="'+dur+'" data-pre="'+pre+'" data-act="'+(t.activo?1:0)+'">'+
+      '<div class="srv-name">'+esc(t.nombre)+'</div>'+
+      '<div class="srv-fld"><label>Duración</label>'+
+        '<div class="price-grp"><input class="srv-inp" type="number" inputmode="numeric" step="5" id="srv-dur-'+t.id+'" value="'+dur+'" oninput="srvDirty(\''+t.id+'\')"><span class="srv-upd" style="flex:0;min-width:0">min</span></div>'+
+      '</div>'+
+      '<div class="srv-fld"><label>Precio</label>'+
+        '<div class="price-grp">'+
+          '<button class="step" onclick="srvStep(\''+t.id+'\',-5)" aria-label="Bajar 5€">−</button>'+
+          '<input class="srv-inp" type="number" inputmode="decimal" step="0.01" id="srv-pre-'+t.id+'" value="'+pre+'" oninput="srvDirty(\''+t.id+'\')">'+
+          '<button class="step" onclick="srvStep(\''+t.id+'\',5)" aria-label="Subir 5€">+</button>'+
+          '<span class="srv-upd" style="flex:0;min-width:0">€</span>'+
+        '</div>'+
+      '</div>'+
+      '<div class="srv-fld"><label>Activo</label>'+
+        '<label class="sw"><input type="checkbox" id="srv-act-'+t.id+'" '+(t.activo?'checked':'')+' onchange="srvDirty(\''+t.id+'\')"><span class="track"></span></label>'+
+      '</div>'+
+      '<span class="srv-upd">'+esc(upd)+'</span>'+
+      '<button class="srv-save" id="srv-save-'+t.id+'" onclick="srvSave(\''+t.id+'\')">Guardar</button>'+
+      '<div class="srv-err" id="srv-err-'+t.id+'"></div>'+
+    '</div>';
+  }).join('');
+  document.getElementById('view-servicios').innerHTML=
+    '<div class="pane">'+
+      '<h2 class="pane-h">Servicios y precios</h2>'+
+      '<div class="srv-table">'+(rows||'<div class="pac-empty">No hay tratamientos en el catálogo.</div>')+'</div>'+
+      '<div class="srv-note">El precio se aplica a las estadísticas desde ahora; las citas pasadas se valoran con el precio actual.</div>'+
+    '</div>';
+}
+function srvStep(id, delta){
+  var inp=document.getElementById('srv-pre-'+id); if(!inp) return;
+  var v=parseFloat(inp.value); if(isNaN(v)) v=0;
+  v=Math.max(0, v+delta);
+  inp.value=v.toFixed(2);
+  srvDirty(id);
+}
+function srvDirty(id){
+  var row=document.getElementById('srv-row-'+id); if(!row) return;
+  var dur=document.getElementById('srv-dur-'+id).value.trim();
+  var pre=parseFloat(document.getElementById('srv-pre-'+id).value);
+  var preStr=isNaN(pre)?'':pre.toFixed(2);
+  var act=document.getElementById('srv-act-'+id).checked?'1':'0';
+  var dirty=(dur!==row.dataset.dur)||(preStr!==row.dataset.pre)||(act!==row.dataset.act);
+  row.classList.toggle('dirty', dirty);
+  if(!dirty){ var er=document.getElementById('srv-err-'+id); if(er) er.textContent=''; }
+}
+async function srvSave(id){
+  var row=document.getElementById('srv-row-'+id); if(!row) return;
+  var err=document.getElementById('srv-err-'+id), btn=document.getElementById('srv-save-'+id);
+  err.textContent='';
+  var durRaw=document.getElementById('srv-dur-'+id).value.trim();
+  var preRaw=document.getElementById('srv-pre-'+id).value.trim();
+  var campos={
+    duracion_min: parseInt(durRaw,10),
+    precio_eur: Math.round(parseFloat(preRaw)*100)/100,
+    activo: document.getElementById('srv-act-'+id).checked
+  };
+  if(durRaw===''||isNaN(campos.duracion_min)){ err.textContent='Indica una duración válida.'; return; }
+  if(preRaw===''||isNaN(campos.precio_eur)){ err.textContent='Indica un precio válido.'; return; }
+  var prev=btn.textContent; btn.disabled=true; btn.textContent='Guardando…';
+  var res=await podo({action:'tratamiento-set', id:id, campos:campos});
+  btn.disabled=false; btn.textContent=prev;
+  if(res && res.ok && !res._neterr){
+    toast('Servicio actualizado','ok');
+    loadServicios();
+  } else {
+    err.textContent=(res && (res.error||res.reason)) || 'No se pudo guardar el servicio';
+    toast('Revisa los datos del servicio','err');
+  }
+}
+
+// ===== ESTADÍSTICAS =====
+var currentStatRange='mes';
+var STAT_LABELS={ mes:'Este mes', mespasado:'Mes pasado', sem4:'Últimas 4 semanas', anio:'Este año' };
+function addMonth(c,n){ var idx=c.m-1+n, y=c.y+Math.floor(idx/12), m=((idx%12)+12)%12; return {y:y,m:m+1,d:1}; }
+function rangeIso(fromC, toC){
+  var offA=madridOffset(new Date(isoOf(fromC)+'T12:00:00Z'));
+  var offB=madridOffset(new Date(isoOf(toC)+'T12:00:00Z'));
+  return { desde: isoOf(fromC)+'T00:00:00'+offA, hasta: isoOf(toC)+'T00:00:00'+offB };
+}
+function statRange(key){
+  var t=madridToday(), from, to;
+  if(key==='mespasado'){ to={y:t.y,m:t.m,d:1}; from=addMonth(to,-1); }
+  else if(key==='sem4'){ from=addDays(t,-27); to=addDays(t,1); }
+  else if(key==='anio'){ from={y:t.y,m:1,d:1}; to={y:t.y+1,m:1,d:1}; }
+  else { from={y:t.y,m:t.m,d:1}; to=addMonth(from,1); }
+  return rangeIso(from,to);
+}
+function fmtHoras(min){
+  var h=Math.floor(min/60), m=min%60;
+  if(h===0) return m+'m';
+  if(m===0) return h+'h';
+  return h+'h '+m+'m';
+}
+function eur(n){ return (n||0).toLocaleString('es-ES',{minimumFractionDigits:2,maximumFractionDigits:2})+' €'; }
+function statSeg(){
+  return '<div class="stat-seg">'+Object.keys(STAT_LABELS).map(function(k){
+    return '<button class="seg-btn'+(k===currentStatRange?' active':'')+'" onclick="setStatRange(\''+k+'\')">'+STAT_LABELS[k]+'</button>';
+  }).join('')+'</div>';
+}
+function setStatRange(k){ currentStatRange=k; loadStats(); }
+var statLoadSeq=0;
+async function loadStats(){
+  var seq=++statLoadSeq;
+  var host=document.getElementById('view-estadisticas');
+  host.innerHTML='<div class="pane"><div class="pane-top"><h2 class="pane-h">Estadísticas</h2></div>'+statSeg()+
+    '<div class="stat-empty" id="stat-body">Calculando…</div></div>';
+  var r=statRange(currentStatRange);
+  var reqs=[
+    podo({action:'agenda', desde:r.desde, hasta:r.hasta}),
+    podo({action:'tratamientos-list'}),
+    podo({action:'agenda', desde:'2020-01-01T00:00:00+01:00', hasta:r.desde})
+  ];
+  var out=await Promise.all(reqs);
+  if(seq!==statLoadSeq) return; // llegó una petición más reciente
+  var body=document.getElementById('stat-body'); if(!body) return; // cambió de vista
+  var ag=out[0], tr=out[1], bf=out[2];
+  if((ag&&ag._neterr) || (tr&&tr._neterr)){
+    body.className='stat-empty'; body.textContent='No se pudieron cargar las estadísticas.'; return;
+  }
+  var citas=(ag&&ag.citas)||[];
+  var tratamientos=(tr&&tr.tratamientos)||[];
+  var before=(bf&&!bf._neterr&&bf.citas)||[];
+  renderStats(computeStats(citas, tratamientos, before));
+}
+function computeStats(citas, tratamientos, beforeCitas){
+  citas.forEach(function(c){ c._md=madridParts(c.cita_at); });
+  var precio={}; tratamientos.forEach(function(t){ if(t.nombre!=null) precio[t.nombre]=(t.precio_eur!=null?Number(t.precio_eur):null); });
+  var total=citas.length;
+  var comp=citas.filter(function(e){ return e.estado==='completada'; });
+  var noShow=citas.filter(function(e){ return e.estado==='no_show'; }).length;
+  var cancel=citas.filter(function(e){ return e.estado==='cancelada'; }).length;
+  var denom=total-cancel;
+  var noShowPct=denom>0 ? (noShow/denom*100) : 0;
+  var horas=comp.reduce(function(s,e){ return s+(e.duracion_min||30); }, 0);
+  var fact=0, sinPrecio=0, perTrat={};
+  comp.forEach(function(e){
+    var name=e.tratamiento || '(sin tratamiento)';
+    var p=precio[name];
+    var has=(p!=null);
+    var val=has?p:0;
+    fact+=val;
+    if(!has) sinPrecio++;
+    if(!perTrat[name]) perTrat[name]={name:name, count:0, euros:0, has:has};
+    perTrat[name].count++; perTrat[name].euros+=val;
+  });
+  var ticket=comp.length ? fact/comp.length : 0;
+  var trats=Object.keys(perTrat).map(function(k){ return perTrat[k]; })
+    .sort(function(a,b){ return b.euros-a.euros || b.count-a.count; });
+  // histograma 9:30–20:00 en franjas de 30 min (todas menos canceladas)
+  var slots=[]; for(var m=570;m<1200;m+=30) slots.push({m:m, count:0});
+  citas.filter(function(e){ return e.estado!=='cancelada'; }).forEach(function(e){
+    var mm=e._md.min;
+    if(mm>=570 && mm<1200){ var idx=Math.floor((mm-570)/30); if(slots[idx]) slots[idx].count++; }
+  });
+  // pacientes
+  var beforeSet={}; beforeCitas.forEach(function(e){ if(e.paciente_id) beforeSet[e.paciente_id]=1; });
+  var uniq={}, nuevos=0, recur=0;
+  citas.forEach(function(e){ if(e.paciente_id) uniq[e.paciente_id]=1; });
+  Object.keys(uniq).forEach(function(id){ if(beforeSet[id]) recur++; else nuevos++; });
+  var vc={}, vn={};
+  citas.filter(function(e){ return e.estado!=='cancelada'; }).forEach(function(e){
+    if(!e.paciente_id) return;
+    vc[e.paciente_id]=(vc[e.paciente_id]||0)+1; vn[e.paciente_id]=e.paciente_nombre;
+  });
+  var top=Object.keys(vc).map(function(id){ return {id:id, n:vc[id], nombre:vn[id]}; })
+    .sort(function(a,b){ return b.n-a.n; }).slice(0,5);
+  return {
+    total:total, comp:comp.length, noShow:noShow, noShowPct:noShowPct,
+    horas:horas, fact:fact, ticket:ticket, sinPrecio:sinPrecio,
+    trats:trats, slots:slots, nuevos:nuevos, recur:recur, top:top, hasData:total>0
+  };
+}
+function renderStats(s){
+  var body=document.getElementById('stat-body'); if(!body) return;
+  if(!s.hasData){
+    body.className='stat-empty'; body.textContent='Sin citas en este rango'; return;
+  }
+  body.className='';
+  var kpis='<div class="kpis">'+
+    kpi(s.total, 'Citas totales')+
+    kpi(s.comp, 'Completadas')+
+    kpi(s.noShowPct.toFixed(0)+'%', 'No-show', s.noShow+(s.noShow===1?' cita':' citas'))+
+    kpi(fmtHoras(s.horas), 'Horas de atención')+
+    kpi(eur(s.fact), 'Facturación estim.', s.sinPrecio? (s.sinPrecio+' sin precio') : '')+
+    kpi(eur(s.ticket), 'Ticket medio')+
+  '</div>';
+
+  // B) barras por tratamiento
+  var maxEur=Math.max.apply(null, s.trats.map(function(t){ return t.euros; }).concat([0.0001]));
+  var totalEur=s.trats.reduce(function(a,t){ return a+t.euros; },0) || 1;
+  var barsHTML = s.trats.length ? s.trats.map(function(t){
+    var pct=Math.round(t.euros/totalEur*100);
+    var w=Math.max(t.euros/maxEur*100, t.euros>0?4:0);
+    return '<div class="tbar">'+
+      '<div class="tbar-top"><span class="tbar-name">'+esc(t.name)+(t.has?'':' <i>· sin precio</i>')+'</span>'+
+        '<span class="tbar-val"><b>'+eur(t.euros)+'</b> · '+t.count+' cita'+(t.count===1?'':'s')+' · '+pct+'%</span></div>'+
+      '<div class="tbar-track"><div class="tbar-fill" style="width:'+w+'%"></div></div>'+
+    '</div>';
+  }).join('') : '<div class="stat-empty">Sin citas completadas en el rango</div>';
+  var secB='<div class="stat-card"><h3>Ingresos por tratamiento</h3>'+
+    '<div class="sc-sub">Citas completadas · ordenado por facturación</div>'+barsHTML+'</div>';
+
+  // C) histograma de franjas
+  var maxCount=Math.max.apply(null, s.slots.map(function(x){ return x.count; }).concat([1]));
+  var colsHTML=s.slots.map(function(x){
+    var hh=Math.round(x.count/maxCount*118);
+    var lbl=(x.m%60===0)?minToStr(x.m):'';
+    var hot=(x.count===maxCount && x.count>0)?' hot':'';
+    return '<div class="hcol'+hot+'"><div class="hn">'+(x.count||'')+'</div>'+
+      '<div class="hbar" style="height:'+Math.max(hh,x.count>0?4:2)+'px"></div>'+
+      '<div class="hl">'+lbl+'</div></div>';
+  }).join('');
+  var secC='<div class="stat-card"><h3>Ocupación por franja horaria</h3>'+
+    '<div class="sc-sub">Citas (todas menos canceladas) por media hora · hora de Madrid</div>'+
+    '<div class="st-hist">'+colsHTML+'</div></div>';
+
+  // D) pacientes
+  var totPac=s.nuevos+s.recur;
+  var pNew=totPac? Math.round(s.nuevos/totPac*100):0;
+  var nrBar = totPac
+    ? '<div class="nr-bar"><div class="nr-new" style="width:'+(s.nuevos/totPac*100)+'%"></div><div class="nr-rec" style="width:'+(s.recur/totPac*100)+'%"></div></div>'
+    : '<div class="nr-bar"></div>';
+  var secDnew='<div class="stat-card"><h3>Nuevos vs recurrentes</h3>'+
+    '<div class="sc-sub">'+totPac+' paciente'+(totPac===1?'':'s')+' con cita en el rango</div>'+
+    nrBar+
+    '<div class="nr-legend"><span><i class="nr-new"></i>Nuevos: <b>'+s.nuevos+'</b> ('+pNew+'%)</span>'+
+      '<span><i class="nr-rec"></i>Recurrentes: <b>'+s.recur+'</b></span></div></div>';
+  var topHTML=s.top.length ? '<div class="top5">'+s.top.map(function(t,i){
+    return '<div class="top-row"><span class="top-rank">'+(i+1)+'</span>'+
+      '<span class="top-name" onclick="openFichaFromStats(\''+t.id+'\')">'+esc(t.nombre||'—')+'</span>'+
+      '<span class="top-n">'+t.n+' visita'+(t.n===1?'':'s')+'</span></div>';
+  }).join('')+'</div>' : '<div class="stat-empty">Sin visitas en el rango</div>';
+  var secDtop='<div class="stat-card"><h3>Top 5 pacientes</h3>'+
+    '<div class="sc-sub">Por número de visitas en el rango</div>'+topHTML+'</div>';
+
+  body.innerHTML=kpis+secB+secC+'<div class="pat-split">'+secDnew+secDtop+'</div>';
+}
+function kpi(num, label, sub){
+  return '<div class="kpi"><b>'+num+'</b><span>'+label+'</span>'+(sub?('<small>'+esc(String(sub))+'</small>'):'')+'</div>';
+}
+function openFichaFromStats(id){
+  activeView='pacientes'; applyViewVisibility();
+  openFicha(id);
 }
 
 // ===== UTILS =====
