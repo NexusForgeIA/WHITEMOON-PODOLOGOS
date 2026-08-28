@@ -7,8 +7,11 @@
    `podo-cita` (action 'huecos'), y al elegir hora se reserva de verdad
    (action 'reservar'), así la cita aparece en el panel de agenda.html.
 
-   Al cerrar se guarda además el lead en leads_web (con cita_dia / cita_hora)
-   y se dispara el aviso por Telegram vía `podologos-notify`.
+   El lead se guarda SIEMPRE en leads_web (con cita_dia / cita_hora si las
+   hay). El aviso por Telegram, en cambio, es uno solo por reserva:
+     - con cita reservada  -> avisa `podo-cita` con su "📅 NUEVA CITA"
+     - sin cita            -> avisa `podologos-notify` con el lead
+   Así nunca salen dos mensajes por la misma solicitud.
 
    Nada de apikeys en cliente: la publishable key solo puede INSERT en
    leads_web vía RLS, y `podo-cita` / `podologos-notify` son verify_jwt:false
@@ -572,17 +575,22 @@
       cita_hora: lead.hora || null,
     }, { "Prefer": "return=minimal" });
 
-    // 2) Aviso por Telegram vía Edge Function. El token vive en los Secrets.
-    await post(NOTIFY_FN, {
-      nombre: lead.nombre,
-      telefono: lead.telefono,
-      motivo: lead.servicio,
-      dia: lead.dia,
-      hora: lead.hora,
-      reservada: Boolean(lead.citaId),
-      urgencia: lead.urgente,
-      origen: ORIGEN,
-    });
+    // 2) Aviso por Telegram SOLO si no ha habido reserva.
+    //    Cuando `reservar` sale bien, podo-cita ya manda su "📅 NUEVA CITA":
+    //    disparar aquí el aviso de lead dejaría dos Telegram por la misma
+    //    reserva. Con cita_id el aviso ya está dado; sin él, este es el único.
+    if (!lead.citaId) {
+      await post(NOTIFY_FN, {
+        nombre: lead.nombre,
+        telefono: lead.telefono,
+        motivo: lead.servicio,
+        dia: lead.dia,
+        hora: lead.hora,
+        reservada: false,
+        urgencia: lead.urgente,
+        origen: ORIGEN,
+      });
+    }
 
     return inserted;
   }
