@@ -387,6 +387,30 @@ section[id]{scroll-margin-top:calc(var(--nav-h) + 12px)}
 .watio-foot button svg{width:19px;height:19px;color:#fff}
 .watio-note{text-align:center;padding:8px 14px;font-size:.68rem;color:var(--muted);background:var(--bone);border-top:1px solid var(--line)}
 
+/* ---------- Agenda del chat: calendario y horas ----------
+   Contraste medido: dia #16323d/blanco 13.48:1 · hover #1a6f9c/#e8f3fa 4.91:1
+   · dia elegido #fff/#1a6f9c 5.53:1 · cabecera y nota #4f6b78 5.67:1. */
+#watio-widget{align-self:stretch;background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:14px;animation:msgin .32s ease}
+.watio-cal__nav{display:flex;align-items:center;gap:8px;margin-bottom:10px}
+.watio-cal__mes{flex:1;text-align:center;font-family:var(--display);font-weight:700;font-size:.94rem;color:var(--ink)}
+.watio-cal__btn{width:32px;height:32px;flex-shrink:0;display:grid;place-items:center;border:1px solid var(--line-2);border-radius:9px;background:var(--white);color:var(--ink);font-size:1.15rem;line-height:1;cursor:pointer;transition:border-color .2s,background-color .2s,color .2s}
+.watio-cal__btn:hover:not(:disabled){border-color:var(--blue);background:var(--blue-chip);color:var(--blue)}
+.watio-cal__btn:disabled{opacity:.32;cursor:not-allowed}
+.watio-cal__grid{display:grid;grid-template-columns:repeat(7,1fr);gap:4px}
+.watio-cal__wd{text-align:center;font-size:.66rem;font-weight:600;letter-spacing:.04em;text-transform:uppercase;color:var(--muted);padding-bottom:5px}
+.watio-cal__day{aspect-ratio:1;min-height:30px;display:grid;place-items:center;border:1px solid transparent;border-radius:9px;background:var(--white);font-family:var(--body);font-size:.82rem;color:var(--ink);cursor:pointer;transition:border-color .2s,background-color .2s,color .2s}
+.watio-cal__day:hover:not(:disabled){background:var(--blue-chip);border-color:var(--blue);color:var(--blue)}
+.watio-cal__day:disabled{background:transparent;color:#93a7b0;cursor:not-allowed}
+.watio-cal__day.is-empty{background:transparent;border:0;cursor:default}
+.watio-cal__day.is-today{border-color:var(--line-2);font-weight:700}
+.watio-cal__nota{margin-top:10px;font-size:.72rem;color:var(--muted)}
+.watio-slots{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:6px}
+.watio-slots__sep{grid-column:1/-1;margin:6px 0 0;font-size:.7rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.watio-slot{padding:9px 4px;border:1px solid var(--line-2);border-radius:9px;background:var(--white);font-family:var(--body);font-size:.82rem;font-weight:500;color:var(--ink);cursor:pointer;transition:border-color .2s,background-color .2s,color .2s}
+.watio-slot:hover{border-color:var(--green);background:var(--green-chip);color:var(--green)}
+.watio-back{grid-column:1/-1;margin-top:10px;padding:0;border:0;background:none;font-family:var(--body);font-size:.79rem;color:var(--blue);cursor:pointer;text-decoration:underline;text-underline-offset:3px;justify-self:start}
+.watio-back:hover{color:var(--blue-deep)}
+
 /* ---------- Confirmación de reserva ----------
    Verde profundo #0c6250 sobre verde muy claro #e3f6f0 = 6.50:1. El verde
    claro solo pinta el borde y el disco del check, nunca texto. */
@@ -423,6 +447,7 @@ section[id]{scroll-margin-top:calc(var(--nav-h) + 12px)}
   .contact-card{padding:28px 22px}
   .foot-bottom{flex-direction:column;text-align:center}
   .watio-panel{right:0;bottom:0;width:100vw;max-width:100vw;height:100svh;max-height:100svh;border-radius:0;border:0}
+  .watio-slots{grid-template-columns:repeat(3,minmax(0,1fr))}
   .watio-btn{right:16px;bottom:16px;height:54px;width:54px;padding:0;justify-content:center}
   .watio-btn .label{display:none}
   .watio-btn .pulse{left:50%;margin-left:-13px}

@@ -9,14 +9,16 @@ import "jsr:@supabase/functions-js/edge-runtime.d.ts";
 // del notificador: solo la publishable key de Supabase, que únicamente puede
 // INSERT en leads_web vía RLS.
 //
-// Recibe (POST JSON): { nombre, telefono, motivo, urgencia, origen }
+// Recibe (POST JSON): { nombre, telefono, motivo, dia, hora, reservada,
+//                        urgencia, origen }
 //
 // Secrets usados (nunca en cliente):
 //   - TELEGRAM_BOT_TOKEN : token del bot de Telegram
 //   - TELEGRAM_CHAT_ID   : chat destino del aviso
 //
-// IMPORTANTE: es una SOLICITUD de contacto, no una cita confirmada. La clínica
-// devuelve la llamada para cerrar día y hora.
+// `reservada` distingue los dos casos: true = el hueco ya quedó escrito en la
+// agenda vía `podo-cita` (que manda además su propio aviso de cita nueva);
+// false = solo tenemos el lead y la clínica debe llamar para cerrar día y hora.
 //
 // Regla del proyecto: si el envío falla → console.warn, nunca interrumpe nada.
 //
@@ -52,8 +54,11 @@ Deno.serve(async (req: Request) => {
   const nombre = String(data.nombre ?? "").trim();
   const telefono = String(data.telefono ?? "").trim();
   const motivo = String(data.motivo ?? "").trim();
+  const dia = String(data.dia ?? "").trim();
+  const hora = String(data.hora ?? "").trim();
   const origen = String(data.origen ?? "podologia-demo").trim();
   const esUrgencia = data.urgencia === true || data.urgencia === "Sí";
+  const reservada = data.reservada === true || data.reservada === "Sí";
 
   // Guard de lead incompleto — estándar WhiteMoon.
   // Un lead solo es válido con nombre Y teléfono: sin ambos no se avisa.
@@ -67,8 +72,12 @@ Deno.serve(async (req: Request) => {
       : `🦶 NUEVA SOLICITUD DE CITA — ${origen}\n\n`) +
     `👤 ${nombre}\n` +
     `📱 ${telefono}\n` +
-    `🩺 Motivo: ${motivo || "-"}\n\n` +
-    `⚠️ Es una SOLICITUD: la clínica debe llamar para cerrar día y hora.\n` +
+    `🩺 Motivo: ${motivo || "-"}\n` +
+    (dia && hora ? `📅 ${dia} a las ${hora}\n` : "📅 Sin franja elegida\n") +
+    `\n` +
+    (reservada
+      ? "✅ Hueco YA reservado en la agenda. No hay que llamar para cerrarlo.\n"
+      : "⚠️ Solo tenemos el lead: hay que llamar para cerrar día y hora.\n") +
     `📲 CONTACTAR: https://wa.me/34${telefono.replace(/\D/g, "")}`;
 
   let notified = false;
