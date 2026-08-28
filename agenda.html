@@ -191,9 +191,6 @@ button{font-family:inherit}
 .inp:focus{border-color:var(--primary)}
 .inp::placeholder{color:var(--muted2)}
 textarea.ta{min-height:90px;resize:vertical;line-height:1.5}
-.api-state{text-transform:none;letter-spacing:0;font-weight:600;margin-left:8px}
-.api-state .ok{color:#6ee7b7}
-.api-state .muted{color:var(--muted2)}
 .saveline{display:flex;align-items:center;justify-content:space-between;gap:14px;margin-top:6px;flex-wrap:wrap}
 .upd{font-size:.74rem;color:var(--muted2)}
 .form-err{color:#fca5a5;font-size:.82rem;min-height:16px;margin:4px 0}
@@ -812,9 +809,6 @@ async function loadPerfil(){
 }
 function renderPerfil(){
   var c=configCache||{};
-  var apiState = c.tiene_apikey
-    ? '<span class="api-state"><span class="ok">Configurada ✓</span></span>'
-    : '<span class="api-state"><span class="muted">Sin configurar — se usan los avisos demo</span></span>';
   var upd = c.updated_at ? ('Última actualización: '+fmtDateTime(c.updated_at)) : '';
   document.getElementById('view-perfil').innerHTML=
     '<div class="pane">'+
@@ -823,19 +817,15 @@ function renderPerfil(){
         field('Nombre de la clínica','<input class="inp" id="cf-nombre" value="'+esc(c.clinica_nombre||'')+'" placeholder="WhiteMoon Podología">')+
         field('Nombre del gerente','<input class="inp" id="cf-gerente" value="'+esc(c.gerente_nombre||'')+'" placeholder="Nombre y apellidos">')+
         field('WhatsApp de avisos','<input class="inp" id="cf-wa" value="'+esc(c.wa_number||'')+'" placeholder="34600111222" inputmode="numeric">')+
-        field('Apikey CallMeBot'+apiState,'<input class="inp" id="cf-apikey" type="password" placeholder="Dejar vacío para no cambiar" autocomplete="new-password">')+
         field('URL de reseñas Google','<input class="inp" id="cf-gmb" value="'+esc(c.gmb_url||'')+'" placeholder="https://g.page/r/…/review">')+
         '<div class="form-err" id="cf-err"></div>'+
         '<div class="saveline"><span class="upd" id="cf-upd">'+esc(upd)+'</span>'+
           '<button class="btn-prim" id="cf-save" onclick="savePerfil()">Guardar perfil</button></div>'+
       '</div>'+
       '<div class="help-box">'+
-        '<b>Para recibir los avisos en tu WhatsApp:</b>'+
-        '<ol>'+
-          '<li>Guarda el número <b>+34 644 60 49 48</b> como <b>CallMeBot</b>.</li>'+
-          '<li>Envíale por WhatsApp: <code>I allow callmebot to send me messages.</code></li>'+
-          '<li>Recibirás tu apikey — pégala aquí y guarda.</li>'+
-        '</ol>'+
+        '<b>¿Dónde llegan los avisos?</b>'+
+        '<p>Las nuevas citas se avisan por <b>Telegram</b>. El token del bot vive en los Secrets de la Edge Function, nunca en esta página.</p>'+
+        '<p>El WhatsApp de arriba es el número de contacto que ve el paciente, no el canal del aviso.</p>'+
       '</div>'+
     '</div>';
 }
@@ -846,8 +836,6 @@ async function savePerfil(){
     wa_number: val('cf-wa').trim(),
     gmb_url: val('cf-gmb').trim()
   };
-  var apik=val('cf-apikey');
-  if(apik.trim()!=='') campos.callmebot_apikey=apik.trim(); // vacía = no tocar
   var btn=document.getElementById('cf-save'), err=document.getElementById('cf-err');
   err.textContent=''; var prev=btn.textContent; btn.disabled=true; btn.textContent='Guardando…';
   var res=await podo({action:'config-set', campos:campos});
